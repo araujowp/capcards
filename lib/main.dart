@@ -16,9 +16,12 @@ class MyApp extends StatelessWidget {
       title: 'cap-cards',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        appBarTheme: const AppBarTheme(color: Colors.green),
+        scaffoldBackgroundColor: Colors.lightGreen.withOpacity(0.5),
+        listTileTheme: const ListTileThemeData(tileColor: Colors.white),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: Container(color: Colors.white, child: const MyHomePage()),
     );
   }
 }
