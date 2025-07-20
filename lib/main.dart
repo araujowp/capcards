@@ -1,5 +1,5 @@
-import 'package:capcards/repository/card_dto.dart';
-import 'package:capcards/repository/card_repository.dart';
+import 'package:capcards/repository/deck/deck_dto.dart';
+import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,8 +39,8 @@ class MyHomePage extends StatelessWidget {
           IconButton(icon: const Icon(Icons.edit), onPressed: () {})
         ],
       ),
-      body: FutureBuilder<List<CardDTO>>(
-          future: CardRepositoy.getList(1),
+      body: FutureBuilder<List<DeckDTO>>(
+          future: DeckRepository.getAll(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());

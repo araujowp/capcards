@@ -1,4 +1,4 @@
-import 'package:capcards/repository/card_dto.dart';
+import 'package:capcards/repository/card/card_dto.dart';
 
 class CardRepositoy {
   static List<CardDTO> cards = [
