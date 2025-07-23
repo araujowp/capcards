@@ -1,3 +1,4 @@
+import 'package:capcards/page/new_deck_page.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
@@ -15,19 +16,47 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'cap-cards',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         appBarTheme: const AppBarTheme(color: Colors.green),
-        scaffoldBackgroundColor: Colors.lightGreen.withOpacity(0.5),
+        scaffoldBackgroundColor: const Color.fromARGB(110, 165, 245, 80),
         listTileTheme: const ListTileThemeData(tileColor: Colors.white),
+        inputDecorationTheme: const InputDecorationTheme(
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green, width: 2))),
         useMaterial3: true,
       ),
-      home: Container(color: Colors.white, child: const MyHomePage()),
+      home: const MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  late Future<List<DeckDTO>> _futureDecks;
+
+  @override
+  void initState() {
+    super.initState();
+    _futureDecks = DeckRepository.getAll();
+  }
+
+  addDeck(BuildContext context) async {
+    final result = await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const NewDeckPage()));
+
+    if (result != null) {
+      setState(() {
+        _futureDecks = DeckRepository.getAll();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +65,15 @@ class MyHomePage extends StatelessWidget {
         child: SafeArea(child: Text('no futuro teremos um menu')),
       ),
       appBar: AppBar(
-        title: const Text("baralhos"),
+        title: const Text("Decks"),
         actions: [
-          IconButton(icon: const Icon(Icons.add), onPressed: () {}),
+          IconButton(
+              icon: const Icon(Icons.add), onPressed: () => addDeck(context)),
           IconButton(icon: const Icon(Icons.edit), onPressed: () {})
         ],
       ),
       body: FutureBuilder<List<DeckDTO>>(
-          future: DeckRepository.getAll(),
+          future: _futureDecks,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
