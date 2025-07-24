@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Future<List<DeckDTO>> _futureDecks;
+  bool editMode = false;
 
   @override
   void initState() {
@@ -19,15 +20,26 @@ class _HomePageState extends State<HomePage> {
     _futureDecks = DeckRepository.getAll();
   }
 
-  addDeck(BuildContext context) async {
+  saveDeck(BuildContext context, int id, String description) async {
     final result = await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const NewDeckPage()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => NewDeckPage(
+                  id: id,
+                  description: description,
+                )));
 
     if (result != null) {
       setState(() {
         _futureDecks = DeckRepository.getAll();
       });
     }
+  }
+
+  edit() {
+    setState(() {
+      editMode = !editMode;
+    });
   }
 
   @override
@@ -40,8 +52,9 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Decks"),
         actions: [
           IconButton(
-              icon: const Icon(Icons.add), onPressed: () => addDeck(context)),
-          IconButton(icon: const Icon(Icons.edit), onPressed: () {})
+              icon: const Icon(Icons.add),
+              onPressed: () => saveDeck(context, 0, "")),
+          IconButton(icon: const Icon(Icons.edit), onPressed: () => edit())
         ],
       ),
       body: FutureBuilder<List<DeckDTO>>(
@@ -56,18 +69,24 @@ class _HomePageState extends State<HomePage> {
                   child: Text('Erro ao carregar os cards: ${snapshot.error}'));
             }
             if (snapshot.hasData) {
-              final cards = snapshot.data!;
+              final decks = snapshot.data!;
               return ListView.builder(
-                itemCount: cards.length, // Quantidade de itens na lista
+                itemCount: decks.length,
                 itemBuilder: (context, index) {
-                  final card = cards[index];
+                  final deck = decks[index];
                   return ListTile(
-                    title: Text(card.description),
-                  ); // Widget para exibir cada card
+                    title: Text(deck.description),
+                    trailing: editMode ? const Icon(Icons.arrow_right) : null,
+                    onTap: () {
+                      if (editMode) {
+                        saveDeck(context, deck.id, deck.description);
+                      }
+                    },
+                  );
                 },
               );
             } else {
-              return const Center(child: Text('Nenhum card encontrado.'));
+              return const Center(child: Text('Nenhum deck encontrado.'));
             }
           }),
     );

@@ -12,10 +12,25 @@ class DeckRepository {
   }
 
   static Future<int> add(String name) async {
-    int id = decks.length;
-    DeckDTO deckDTO = DeckDTO(id: id, description: name);
+    int maxId = decks.isEmpty
+        ? 0
+        : decks.map((deck) => deck.id).reduce((a, b) => a > b ? a : b);
+    int newId = maxId + 1;
+    DeckDTO deckDTO = DeckDTO(id: newId, description: name);
     await Future.delayed(const Duration(milliseconds: 500));
     decks.add(deckDTO);
+    return newId;
+  }
+
+  static Future<int> update(int id, String description) async {
+    int index = decks.indexWhere((e) => e.id == id);
+
+    if (index == -1) {
+      throw Exception("Deck $id not found !");
+    }
+
+    decks[index].description = description;
+    await Future.delayed(const Duration(milliseconds: 500));
     return id;
   }
 }

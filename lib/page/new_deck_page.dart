@@ -2,17 +2,36 @@ import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
 
 class NewDeckPage extends StatefulWidget {
-  const NewDeckPage({super.key});
+  final int id;
+  final String description;
+  const NewDeckPage({super.key, required this.id, required this.description});
 
   @override
   State<NewDeckPage> createState() => _NewDeckPageState();
 }
 
 class _NewDeckPageState extends State<NewDeckPage> {
-  final TextEditingController controllerName = TextEditingController();
+  late TextEditingController controllerName;
 
-  Future<int> add() async {
-    int id = await DeckRepository.add(controllerName.text);
+  @override
+  void initState() {
+    super.initState();
+    controllerName = TextEditingController(text: widget.description);
+  }
+
+  @override
+  void dispose() {
+    controllerName.dispose();
+    super.dispose();
+  }
+
+  Future<int> save() async {
+    int id;
+    if (widget.id == 0) {
+      id = await DeckRepository.add(controllerName.text);
+    } else {
+      id = await DeckRepository.update(widget.id, controllerName.text);
+    }
     return id;
   }
 
@@ -20,7 +39,7 @@ class _NewDeckPageState extends State<NewDeckPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("new Deck"),
+        title: Text(widget.id == 0 ? "new Deck" : "Edit deck"),
       ),
       body: Column(
         children: [
@@ -33,13 +52,13 @@ class _NewDeckPageState extends State<NewDeckPage> {
           ),
           ElevatedButton(
               onPressed: () async {
-                int newId = await add();
+                int newId = await save();
                 if (mounted) {
                   Navigator.of(context).pop(newId);
                   controllerName.clear();
                 }
               },
-              child: const Text("Cadastrar"))
+              child: const Text("Salvar"))
         ],
       ),
     );
