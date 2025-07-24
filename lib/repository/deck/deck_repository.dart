@@ -13,7 +13,6 @@ class DeckRepository {
 
   static Future<int> add(String name) async {
     int id = decks.length;
-    print(" meu id: $id");
     DeckDTO deckDTO = DeckDTO(id: id, description: name);
     await Future.delayed(const Duration(milliseconds: 500));
     decks.add(deckDTO);
