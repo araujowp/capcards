@@ -35,6 +35,11 @@ class _NewDeckPageState extends State<NewDeckPage> {
     return id;
   }
 
+  Future<bool> delete() async {
+    bool ret = await DeckRepository.delete(widget.id);
+    return ret;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,15 +55,29 @@ class _NewDeckPageState extends State<NewDeckPage> {
               decoration: const InputDecoration(label: Text("new deck")),
             ),
           ),
-          ElevatedButton(
-              onPressed: () async {
-                int newId = await save();
-                if (mounted) {
-                  Navigator.of(context).pop(newId);
-                  controllerName.clear();
-                }
-              },
-              child: const Text("Salvar"))
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                  onPressed: () async {
+                    int newId = await save();
+                    if (mounted) {
+                      Navigator.of(context).pop(newId);
+                      controllerName.clear();
+                    }
+                  },
+                  child: const Text("Salvar")),
+              ElevatedButton(
+                  onPressed: () async {
+                    await delete();
+                    if (mounted) {
+                      Navigator.of(context).pop(widget.id);
+                      controllerName.clear();
+                    }
+                  },
+                  child: const Text("Excluir"))
+            ],
+          )
         ],
       ),
     );

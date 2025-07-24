@@ -33,4 +33,16 @@ class DeckRepository {
     await Future.delayed(const Duration(milliseconds: 500));
     return id;
   }
+
+  static Future<bool> delete(int id) async {
+    final index = decks.indexWhere((e) => e.id == id);
+
+    if (index == -1) {
+      throw Exception(" id $id not found!");
+    }
+    decks.removeAt(index);
+
+    await Future.delayed(const Duration(milliseconds: 500));
+    return true;
+  }
 }
