@@ -40,6 +40,18 @@ class _NewDeckPageState extends State<NewDeckPage> {
     return ret;
   }
 
+  Widget _buildButton(String label, Future Function() action) {
+    return ElevatedButton(
+        onPressed: () async {
+          await action();
+          if (mounted) {
+            Navigator.of(context).pop(widget.id);
+            controllerName.clear();
+          }
+        },
+        child: Text(label));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,24 +70,8 @@ class _NewDeckPageState extends State<NewDeckPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(
-                  onPressed: () async {
-                    int newId = await save();
-                    if (mounted) {
-                      Navigator.of(context).pop(newId);
-                      controllerName.clear();
-                    }
-                  },
-                  child: const Text("Salvar")),
-              ElevatedButton(
-                  onPressed: () async {
-                    await delete();
-                    if (mounted) {
-                      Navigator.of(context).pop(widget.id);
-                      controllerName.clear();
-                    }
-                  },
-                  child: const Text("Excluir"))
+              _buildButton("Salvar", save),
+              if (widget.id != 0) _buildButton("Excluir", delete),
             ],
           )
         ],
