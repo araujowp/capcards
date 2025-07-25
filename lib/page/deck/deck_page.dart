@@ -1,16 +1,17 @@
+import 'package:capcards/page/card/search_card_page.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
 
-class NewDeckPage extends StatefulWidget {
+class DeckPage extends StatefulWidget {
   final int id;
   final String description;
-  const NewDeckPage({super.key, required this.id, required this.description});
+  const DeckPage({super.key, required this.id, required this.description});
 
   @override
-  State<NewDeckPage> createState() => _NewDeckPageState();
+  State<DeckPage> createState() => _DeckPageState();
 }
 
-class _NewDeckPageState extends State<NewDeckPage> {
+class _DeckPageState extends State<DeckPage> {
   late TextEditingController controllerName;
 
   @override
@@ -52,6 +53,14 @@ class _NewDeckPageState extends State<NewDeckPage> {
         child: Text(label));
   }
 
+  editCards(BuildContext context, int deckId) async {
+    print("------------------------ pressionando");
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SearchCardPage(deckId: deckId)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +82,15 @@ class _NewDeckPageState extends State<NewDeckPage> {
               _buildButton("Salvar", save),
               if (widget.id != 0) _buildButton("Excluir", delete),
             ],
-          )
+          ),
+          Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: ListTile(
+                  title: const Text("Edit cards"),
+                  onTap: () {
+                    print(" ---------------- dentro do botão ");
+                    editCards(context, widget.id);
+                  })),
         ],
       ),
     );

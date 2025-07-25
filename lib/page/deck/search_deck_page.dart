@@ -1,16 +1,16 @@
-import 'package:capcards/page/new_deck_page.dart';
+import 'package:capcards/page/deck/deck_page.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class SearchDeckPage extends StatefulWidget {
+  const SearchDeckPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SearchDeckPage> createState() => _SearchDeckPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SearchDeckPageState extends State<SearchDeckPage> {
   late Future<List<DeckDTO>> _futureDecks;
   bool editMode = false;
 
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => NewDeckPage(
+            builder: (context) => DeckPage(
                   id: id,
                   description: description,
                 )));

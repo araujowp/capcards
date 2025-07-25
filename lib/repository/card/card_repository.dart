@@ -8,7 +8,9 @@ class CardRepositoy {
     CardDTO(id: 4, description: "Cartão 1 deck 2", deckId: 2),
     CardDTO(id: 5, description: "Cartão 1 deck 2", deckId: 2),
   ];
-  static Future<List<CardDTO>> getList(int deckId) async {
+
+  static Future<List<CardDTO>> getByDeckId(int deckId) async {
+    await Future.delayed(const Duration(milliseconds: 500));
     return cards.where((e) => e.deckId == deckId).toList();
   }
 }

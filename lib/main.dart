@@ -1,4 +1,4 @@
-import 'package:capcards/page/home_page.dart';
+import 'package:capcards/page/deck/search_deck_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.green, width: 2))),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const SearchDeckPage(),
     );
   }
 }
