@@ -41,18 +41,6 @@ class _DeckPageState extends State<DeckPage> {
     return ret;
   }
 
-  Widget _buildButton(String label, Future Function() action) {
-    return ElevatedButton(
-        onPressed: () async {
-          await action();
-          if (mounted) {
-            Navigator.of(context).pop(widget.id);
-            controllerName.clear();
-          }
-        },
-        child: Text(label));
-  }
-
   editCards(BuildContext context, int deckId) async {
     print("------------------------ pressionando");
     Navigator.push(
@@ -76,21 +64,21 @@ class _DeckPageState extends State<DeckPage> {
               decoration: const InputDecoration(label: Text("new deck")),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildButton("Salvar", save),
-              if (widget.id != 0) _buildButton("Excluir", delete),
-            ],
+          ListTile(
+            title: const Text("Salvar"),
+            onTap: save,
           ),
-          Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: ListTile(
-                  title: const Text("Edit cards"),
-                  onTap: () {
-                    print(" ---------------- dentro do botão ");
-                    editCards(context, widget.id);
-                  })),
+          if (widget.id != 0)
+            ListTile(
+              title: const Text("Excluir"),
+              onTap: delete,
+            ),
+          ListTile(
+              title: const Text("Edit cards"),
+              onTap: () {
+                print(" ---------------- dentro do botão ");
+                editCards(context, widget.id);
+              }),
         ],
       ),
     );
