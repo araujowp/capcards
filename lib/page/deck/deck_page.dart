@@ -26,6 +26,18 @@ class _DeckPageState extends State<DeckPage> {
     super.dispose();
   }
 
+  myAction(String action) async {
+    print("pressionamos $action");
+    int id = 0;
+    switch (action) {
+      case "Save":
+        id = await save();
+        if (mounted) {
+          editCards(context, id);
+        }
+    }
+  }
+
   Future<int> save() async {
     int id;
     if (widget.id == 0) {
@@ -42,7 +54,6 @@ class _DeckPageState extends State<DeckPage> {
   }
 
   editCards(BuildContext context, int deckId) async {
-    print("------------------------ pressionando");
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -66,7 +77,7 @@ class _DeckPageState extends State<DeckPage> {
           ),
           ListTile(
             title: const Text("Salvar"),
-            onTap: save,
+            onTap: () => myAction("Save"),
           ),
           if (widget.id != 0)
             ListTile(
@@ -76,7 +87,6 @@ class _DeckPageState extends State<DeckPage> {
           ListTile(
               title: const Text("Edit cards"),
               onTap: () {
-                print(" ---------------- dentro do botão ");
                 editCards(context, widget.id);
               }),
         ],
