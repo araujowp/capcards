@@ -27,7 +27,6 @@ class _DeckPageState extends State<DeckPage> {
   }
 
   myAction(String action) async {
-    print("pressionamos $action");
     int id = 0;
     switch (action) {
       case "Save":
@@ -35,6 +34,14 @@ class _DeckPageState extends State<DeckPage> {
         if (mounted) {
           editCards(context, id);
         }
+        break;
+      case "Excluir":
+        // ignore: unused_local_variable
+        bool result = await delete();
+        if (mounted) {
+          Navigator.pop(context);
+        }
+        break;
     }
   }
 
@@ -82,7 +89,7 @@ class _DeckPageState extends State<DeckPage> {
           if (widget.id != 0)
             ListTile(
               title: const Text("Excluir"),
-              onTap: delete,
+              onTap: () => myAction("Excluir"),
             ),
           ListTile(
               title: const Text("Edit cards"),

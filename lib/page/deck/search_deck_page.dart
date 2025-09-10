@@ -21,6 +21,7 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
   }
 
   saveDeck(BuildContext context, int id, String description) async {
+    // ignore: unused_local_variable
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
@@ -29,11 +30,9 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
                   description: description,
                 )));
 
-    if (result != null) {
-      setState(() {
-        _futureDecks = DeckRepository.getAll();
-      });
-    }
+    setState(() {
+      _futureDecks = DeckRepository.getAll();
+    });
   }
 
   edit() {
