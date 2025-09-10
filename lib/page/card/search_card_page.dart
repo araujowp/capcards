@@ -19,11 +19,16 @@ class _SearchCardPageState extends State<SearchCardPage> {
     _futureCards = CardRepositoy.getByDeckId(widget.deckId);
   }
 
+  void addCard() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Edit cards"),
+        actions: [
+          IconButton(icon: const Icon(Icons.add), onPressed: () => addCard())
+        ],
       ),
       body: FutureBuilder<List<CardDTO>>(
         future: _futureCards,
