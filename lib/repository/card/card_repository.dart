@@ -1,4 +1,5 @@
 import 'package:capcards/repository/card/card_dto.dart';
+import 'package:capcards/repository/card/card_dto_new.dart';
 
 class CardRepositoy {
   static List<CardDTO> cards = [
@@ -12,5 +13,13 @@ class CardRepositoy {
   static Future<List<CardDTO>> getByDeckId(int deckId) async {
     await Future.delayed(const Duration(milliseconds: 500));
     return cards.where((e) => e.deckId == deckId).toList();
+  }
+
+  static void save(CardDTONew card) {
+    int count = cards.length;
+    CardDTO dto = CardDTO(
+        id: count, description: card.frontDescription, deckId: card.deckId);
+    cards.add(dto);
+    print("temos ${cards.length} cards");
   }
 }

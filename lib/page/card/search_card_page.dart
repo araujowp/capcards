@@ -21,6 +21,7 @@ class _SearchCardPageState extends State<SearchCardPage> {
   }
 
   void addCard() async {
+    // ignore: unused_local_variable
     final result = await Navigator.push(
         context,
         MaterialPageRoute(

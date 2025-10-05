@@ -1,3 +1,5 @@
+import 'package:capcards/repository/card/card_dto_new.dart';
+import 'package:capcards/repository/card/card_repository.dart';
 import 'package:flutter/material.dart';
 
 class CardPage extends StatefulWidget {
@@ -31,6 +33,15 @@ class _CardPageState extends State<CardPage> {
     Navigator.pop(context);
   }
 
+  save() async {
+    CardDTONew card = CardDTONew(
+        frontDescription: textControllerFront.text,
+        backDescription: textControllerBack.text,
+        deckId: widget.deckId);
+    CardRepositoy.save(card);
+    cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +70,7 @@ class _CardPageState extends State<CardPage> {
           ),
           ListTile(
             title: const Text("Salvar"),
-            onTap: () => {},
+            onTap: save,
           ),
           ListTile(
             title: const Text("Cancelar"),
