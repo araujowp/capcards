@@ -27,6 +27,10 @@ class _CardPageState extends State<CardPage> {
     super.dispose();
   }
 
+  cancel() async {
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +57,14 @@ class _CardPageState extends State<CardPage> {
               ),
             ),
           ),
+          ListTile(
+            title: const Text("Salvar"),
+            onTap: () => {},
+          ),
+          ListTile(
+            title: const Text("Cancelar"),
+            onTap: cancel,
+          )
         ],
       ),
     );
