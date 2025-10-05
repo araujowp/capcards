@@ -14,6 +14,20 @@ class _CardPageState extends State<CardPage> {
   late TextEditingController textControllerBack;
 
   @override
+  void initState() {
+    super.initState();
+    textControllerFront = TextEditingController();
+    textControllerBack = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textControllerFront.dispose();
+    textControllerBack.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -1,3 +1,4 @@
+import 'package:capcards/page/card/card_page.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,17 @@ class _SearchCardPageState extends State<SearchCardPage> {
     _futureCards = CardRepositoy.getByDeckId(widget.deckId);
   }
 
-  void addCard() {}
+  void addCard() async {
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => CardPage(
+                  deckId: widget.deckId,
+                )));
+    setState(() {
+      _futureCards = CardRepositoy.getByDeckId(widget.deckId);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
