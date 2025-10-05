@@ -40,7 +40,7 @@ class _CardPageState extends State<CardPage> {
             child: TextField(
               controller: textControllerFront,
               decoration: const InputDecoration(
-                label: Text("Front of card"),
+                label: Text("Frente"),
               ),
             ),
           ),
@@ -49,7 +49,7 @@ class _CardPageState extends State<CardPage> {
             child: TextField(
               controller: textControllerBack,
               decoration: const InputDecoration(
-                label: Text("Back of card"),
+                label: Text("Verso"),
               ),
             ),
           ),
