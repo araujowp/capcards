@@ -76,7 +76,7 @@ class _DeckPageState extends State<DeckPage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextField(
               controller: controllerName,
               decoration: const InputDecoration(label: Text("new deck")),
