@@ -75,12 +75,24 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
                   final deck = decks[index];
                   return ListTile(
                     title: Text(deck.description),
-                    trailing: editMode ? const Icon(Icons.arrow_right) : null,
-                    onTap: () {
-                      if (editMode) {
-                        saveDeck(context, deck.id, deck.description);
-                      }
-                    },
+                    trailing: !editMode
+                        ? null
+                        : Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const IconButton(
+                                  onPressed: null,
+                                  icon: Icon(Icons.delete,
+                                      color: Color.fromARGB(255, 5, 85, 8))),
+                              IconButton(
+                                  icon: const Icon(Icons.arrow_right,
+                                      color: Color.fromARGB(255, 5, 85, 8)),
+                                  onPressed: () {
+                                    saveDeck(
+                                        context, deck.id, deck.description);
+                                  })
+                            ],
+                          ),
                   );
                 },
               );
