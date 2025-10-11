@@ -33,6 +33,13 @@ class _SearchCardPageState extends State<SearchCardPage> {
     });
   }
 
+  delete(int cardId) {
+    CardRepositoy.delete(cardId);
+    setState(() {
+      _futureCards = CardRepositoy.getByDeckId(widget.deckId);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +67,15 @@ class _SearchCardPageState extends State<SearchCardPage> {
                 itemCount: cards.length,
                 itemBuilder: (context, index) {
                   final card = cards[index];
-                  return ListTile(title: Text(card.frontDescription));
+                  return ListTile(
+                    title: Text(card.frontDescription),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        delete(card.id);
+                      },
+                    ),
+                  );
                 });
           } else {
             return const Center(

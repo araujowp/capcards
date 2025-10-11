@@ -43,6 +43,17 @@ class CardRepositoy {
         backDescription: card.backDescription,
         deckId: card.deckId);
     cards.add(dto);
-    print("temos ${cards.length} cards");
+  }
+
+  static Future<bool> delete(int id) async {
+    final index = cards.indexWhere((e) => e.id == id);
+
+    if (index == -1) {
+      throw Exception(" id $id not found!");
+    }
+    cards.removeAt(index);
+
+    await Future.delayed(const Duration(milliseconds: 500));
+    return true;
   }
 }
