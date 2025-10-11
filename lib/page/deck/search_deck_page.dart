@@ -29,7 +29,10 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
                   id: id,
                   description: description,
                 )));
+  }
 
+  delete(int deckId) {
+    DeckRepository.delete(deckId);
     setState(() {
       _futureDecks = DeckRepository.getAll();
     });
@@ -80,10 +83,12 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
                         : Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const IconButton(
-                                  onPressed: null,
-                                  icon: Icon(Icons.delete,
-                                      color: Color.fromARGB(255, 5, 85, 8))),
+                              IconButton(
+                                  icon: const Icon(Icons.delete,
+                                      color: Color.fromARGB(255, 5, 85, 8)),
+                                  onPressed: () {
+                                    delete(deck.id);
+                                  }),
                               IconButton(
                                   icon: const Icon(Icons.arrow_right,
                                       color: Color.fromARGB(255, 5, 85, 8)),
