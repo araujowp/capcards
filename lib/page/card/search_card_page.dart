@@ -60,7 +60,7 @@ class _SearchCardPageState extends State<SearchCardPage> {
                 itemCount: cards.length,
                 itemBuilder: (context, index) {
                   final card = cards[index];
-                  return ListTile(title: Text(card.description));
+                  return ListTile(title: Text(card.frontDescription));
                 });
           } else {
             return const Center(

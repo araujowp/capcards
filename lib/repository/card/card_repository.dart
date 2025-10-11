@@ -3,11 +3,31 @@ import 'package:capcards/repository/card/card_dto_new.dart';
 
 class CardRepositoy {
   static List<CardDTO> cards = [
-    CardDTO(id: 1, description: "Cartão 1 deck 1", deckId: 1),
-    CardDTO(id: 2, description: "Cartão 2 deck 1", deckId: 1),
-    CardDTO(id: 3, description: "Cartão 3 deck 1", deckId: 1),
-    CardDTO(id: 4, description: "Cartão 1 deck 2", deckId: 2),
-    CardDTO(id: 5, description: "Cartão 1 deck 2", deckId: 2),
+    CardDTO(
+        id: 1,
+        frontDescription: "Cartão 1 deck 1",
+        backDescription: "verso 1:1",
+        deckId: 1),
+    CardDTO(
+        id: 2,
+        frontDescription: "Cartão 2 deck 1",
+        backDescription: "verso 2:1",
+        deckId: 1),
+    CardDTO(
+        id: 3,
+        frontDescription: "Cartão 3 deck 1",
+        backDescription: "verso 3:1",
+        deckId: 1),
+    CardDTO(
+        id: 4,
+        frontDescription: "Cartão 1 deck 2",
+        backDescription: "verso 1:2",
+        deckId: 2),
+    CardDTO(
+        id: 5,
+        frontDescription: "Cartão 2 deck 2",
+        backDescription: "verso 2:2",
+        deckId: 2),
   ];
 
   static Future<List<CardDTO>> getByDeckId(int deckId) async {
@@ -18,7 +38,10 @@ class CardRepositoy {
   static void save(CardDTONew card) {
     int count = cards.length;
     CardDTO dto = CardDTO(
-        id: count, description: card.frontDescription, deckId: card.deckId);
+        id: count,
+        frontDescription: card.frontDescription,
+        backDescription: card.backDescription,
+        deckId: card.deckId);
     cards.add(dto);
     print("temos ${cards.length} cards");
   }
