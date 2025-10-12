@@ -1,4 +1,5 @@
 import 'package:capcards/page/deck/deck_page.dart';
+import 'package:capcards/page/test_page.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,13 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
     setState(() {
       editMode = !editMode;
     });
+  }
+
+  test(int deckId) {
+    if (!editMode) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => TestPage(deckId: deckId)));
+    }
   }
 
   @override
@@ -98,6 +106,9 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
                                   })
                             ],
                           ),
+                    onTap: () {
+                      test(deck.id);
+                    },
                   );
                 },
               );
