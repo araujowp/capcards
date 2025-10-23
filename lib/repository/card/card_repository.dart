@@ -1,7 +1,7 @@
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
 
-class CardRepositoy {
+class CardRepository {
   static List<CardDTO> cards = [
     CardDTO(
         id: 1,

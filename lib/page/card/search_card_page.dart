@@ -17,7 +17,7 @@ class _SearchCardPageState extends State<SearchCardPage> {
   @override
   void initState() {
     super.initState();
-    _futureCards = CardRepositoy.getByDeckId(widget.deckId);
+    _futureCards = CardRepository.getByDeckId(widget.deckId);
   }
 
   void addCard() async {
@@ -29,14 +29,14 @@ class _SearchCardPageState extends State<SearchCardPage> {
                   deckId: widget.deckId,
                 )));
     setState(() {
-      _futureCards = CardRepositoy.getByDeckId(widget.deckId);
+      _futureCards = CardRepository.getByDeckId(widget.deckId);
     });
   }
 
   delete(int cardId) {
-    CardRepositoy.delete(cardId);
+    CardRepository.delete(cardId);
     setState(() {
-      _futureCards = CardRepositoy.getByDeckId(widget.deckId);
+      _futureCards = CardRepository.getByDeckId(widget.deckId);
     });
   }
 

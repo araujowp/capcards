@@ -38,7 +38,7 @@ class _CardPageState extends State<CardPage> {
         frontDescription: textControllerFront.text,
         backDescription: textControllerBack.text,
         deckId: widget.deckId);
-    CardRepositoy.save(card);
+    CardRepository.save(card);
     cancel();
   }
 
