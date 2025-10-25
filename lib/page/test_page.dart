@@ -14,6 +14,7 @@ class TestPage extends StatefulWidget {
 class _TestPageState extends State<TestPage> {
   final FlipCardController controller = FlipCardController();
   late Future<List<CardDTO>> cards;
+  String message = "default";
 
   @override
   void initState() {
@@ -59,48 +60,71 @@ class _TestPageState extends State<TestPage> {
 
             return Column(
               children: [
-                FlipCard(
-                  rotateSide: RotateSide.left,
-                  onTapFlipping: true,
-                  axis: FlipAxis.vertical,
-                  controller: controller,
-                  frontWidget: Container(
-                    height: 200,
-                    width: cardWidth,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        firstCard.frontDescription,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
+                GestureDetector(
+                  onVerticalDragEnd: (vDrag) {
+                    if (vDrag.primaryVelocity != null) {
+                      print(vDrag.primaryVelocity);
+
+                      message = "velocidade $vDrag.primaryVelocity!";
+                    }
+
+                    if (vDrag.primaryVelocity! < 0) {
+                      setState(() {
+                        print("para cima");
+                        message += " para cima";
+                      });
+                    } else if (vDrag.primaryVelocity! > 0) {
+                      setState(() {
+                        print("para baixo");
+                        message += " para Baixo";
+                      });
+                    }
+                    print("ponto x $message");
+                  },
+                  child: FlipCard(
+                    rotateSide: RotateSide.left,
+                    onTapFlipping: true,
+                    axis: FlipAxis.vertical,
+                    controller: controller,
+                    frontWidget: Container(
+                      height: 400,
+                      width: cardWidth,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text(
+                          firstCard.frontDescription,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  backWidget: Container(
-                    height: 200,
-                    width: cardWidth,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        firstCard.backDescription,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
+                    backWidget: Container(
+                      height: 200,
+                      width: cardWidth,
+                      decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text(
+                          firstCard.backDescription,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
+                Text(message),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
