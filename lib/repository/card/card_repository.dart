@@ -13,10 +13,7 @@ class CardRepository {
     CardDTO(
         id: 5, frontDescription: "Castle", backDescription: "Roque", deckId: 1),
     CardDTO(
-        id: 6,
-        frontDescription: "Cartão 3 deck 1",
-        backDescription: "verso 3:1",
-        deckId: 1),
+        id: 6, frontDescription: "Bishop", backDescription: "Bispo", deckId: 1),
     CardDTO(
         id: 7,
         frontDescription: "Cartão 1 deck 2",
