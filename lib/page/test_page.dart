@@ -15,8 +15,10 @@ class _TestPageState extends State<TestPage> {
   final FlipCardController controller = FlipCardController();
   late List<CardDTO> cards;
   String message = "default";
-  bool isLoading = true; // Controla o estado de carregamento
+  bool isLoading = true;
+  int errorCount = 0;
   int position = 0;
+  int tries = 0;
 
   @override
   void initState() {
@@ -38,12 +40,10 @@ class _TestPageState extends State<TestPage> {
   }
 
   int getNext() {
-    print(" -- tamanho da lista ${cards.length} -- posicao -- $position");
     int next = position + 1;
     if (next >= cards.length) {
       return 0;
     }
-    print("retorno next $next");
     return next;
   }
 
@@ -56,10 +56,10 @@ class _TestPageState extends State<TestPage> {
   }
 
   void wrong() {
-    print("passou no wrong ");
+    errorCount++;
     setState(() {
       position = getNext();
-      print(" ---- acertou -----  $position");
+      print(" ---- errou -----  $position");
     });
   }
 
@@ -99,17 +99,18 @@ class _TestPageState extends State<TestPage> {
           children: [
             GestureDetector(
               onVerticalDragEnd: (vDrag) {
-                if (vDrag.primaryVelocity != null) {
-                  print(vDrag.primaryVelocity);
-                  message = "velocidade ${vDrag.primaryVelocity}!";
-                }
-
+                String action = "";
                 if (vDrag.primaryVelocity! < 0) {
                   correct();
-                  message += " cima $position";
+                  action = "cima";
                 } else if (vDrag.primaryVelocity! > 0) {
+                  action = "baixo";
                   wrong();
-                  message += " Baixo $position";
+                }
+
+                if (vDrag.primaryVelocity != null) {
+                  tries++;
+                  message = "tentativas: $tries erros: $errorCount $action";
                 }
               },
               child: FlipCard(
