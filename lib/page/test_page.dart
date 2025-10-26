@@ -5,7 +5,9 @@ import 'package:flutter_flip_card/flutter_flip_card.dart';
 
 class TestPage extends StatefulWidget {
   final int deckId;
-  const TestPage({super.key, required this.deckId});
+  final String deckDescription;
+  const TestPage(
+      {super.key, required this.deckId, required this.deckDescription});
 
   @override
   State<TestPage> createState() => _TestPageState();
@@ -72,7 +74,7 @@ class _TestPageState extends State<TestPage> {
     if (isLoading) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text("Página de Teste"),
+          title: Text(widget.deckDescription),
         ),
         body: const Center(child: CircularProgressIndicator()),
       );
@@ -91,7 +93,7 @@ class _TestPageState extends State<TestPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Página de Teste"),
+        title: Text(widget.deckDescription),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

@@ -45,10 +45,15 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
     });
   }
 
-  test(int deckId) {
+  test(int deckId, String deckDescription) {
     if (!editMode) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => TestPage(deckId: deckId)));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => TestPage(
+                    deckId: deckId,
+                    deckDescription: deckDescription,
+                  )));
     }
   }
 
@@ -107,7 +112,7 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
                             ],
                           ),
                     onTap: () {
-                      test(deck.id);
+                      test(deck.id, deck.description);
                     },
                   );
                 },
