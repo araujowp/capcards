@@ -1,3 +1,4 @@
+import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,9 @@ class _TestPageState extends State<TestPage> {
   late List<CardDTO> cards;
   String message = "default";
   bool isLoading = true;
-  int errorCount = 0;
   int currentCardIndex = 0;
   CardDTO currentCard = CardDTO.empty();
-  int tries = 0;
+  TestStats stats = TestStats();
 
   @override
   void initState() {
@@ -56,7 +56,7 @@ class _TestPageState extends State<TestPage> {
   }
 
   void correct() {
-    print("passou no correct ");
+    stats.correct();
     setState(() {
       cards.removeAt(currentCardIndex);
       currentCard = getNext();
@@ -65,7 +65,7 @@ class _TestPageState extends State<TestPage> {
   }
 
   void wrong() {
-    errorCount++;
+    stats.fail();
 
     final card = cards[currentCardIndex];
     cards.removeAt(currentCardIndex);
@@ -121,8 +121,8 @@ class _TestPageState extends State<TestPage> {
                 }
 
                 if (vDrag.primaryVelocity != null) {
-                  tries++;
-                  message = "tentativas: $tries erros: $errorCount $action";
+                  message =
+                      "tentativas: ${stats.tries} erros: ${stats.wrongs} $action";
                 }
               },
               child: FlipCard(
