@@ -27,7 +27,6 @@ class _TestPageState extends State<TestPage> {
   void initState() {
     super.initState();
     _loadShuffleCards();
-    currentCard = getNext();
   }
 
   Future<void> _loadShuffleCards() async {
@@ -40,15 +39,19 @@ class _TestPageState extends State<TestPage> {
     }
     setState(() {
       isLoading = false;
+      currentCard = cards.isNotEmpty ? cards[0] : CardDTO.empty();
     });
   }
 
   CardDTO getNext() {
-    if (cards.isEmpty) CardDTO.empty();
-    if (cards.length == 1) return cards[0];
-    if (cards.length == currentCardIndex + 1) return cards[0];
+    if (cards.isEmpty) return CardDTO.empty();
 
-    currentCardIndex++;
+    if (cards.length >= currentCardIndex - 1) {
+      return cards[0];
+    } else {
+      currentCardIndex++;
+    }
+
     return cards[currentCardIndex];
   }
 
