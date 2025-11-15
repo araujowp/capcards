@@ -19,13 +19,15 @@ class _TestPageState extends State<TestPage> {
   String message = "default";
   bool isLoading = true;
   int errorCount = 0;
-  int position = 0;
+  int currentCardIndex = 0;
+  CardDTO currentCard = CardDTO.empty();
   int tries = 0;
 
   @override
   void initState() {
     super.initState();
     _loadShuffleCards();
+    currentCard = getNext();
   }
 
   Future<void> _loadShuffleCards() async {
@@ -41,27 +43,34 @@ class _TestPageState extends State<TestPage> {
     });
   }
 
-  int getNext() {
-    int next = position + 1;
-    if (next >= cards.length) {
-      return 0;
-    }
-    return next;
+  CardDTO getNext() {
+    if (cards.isEmpty) CardDTO.empty();
+    if (cards.length == 1) return cards[0];
+    if (cards.length == currentCardIndex + 1) return cards[0];
+
+    currentCardIndex++;
+    return cards[currentCardIndex];
   }
 
   void correct() {
     print("passou no correct ");
     setState(() {
-      position = getNext();
-      print(" ---- acertou -----  $position");
+      cards.removeAt(currentCardIndex);
+      currentCard = getNext();
+      print(" ---- acertou -----  ${currentCard.id}");
     });
   }
 
   void wrong() {
     errorCount++;
+
+    final card = cards[currentCardIndex];
+    cards.removeAt(currentCardIndex);
+    cards.add(card);
+
     setState(() {
-      position = getNext();
-      print(" ---- errou -----  $position");
+      currentCard = getNext();
+      print(" ---- errou -----  ${currentCard.id}");
     });
   }
 
@@ -88,8 +97,6 @@ class _TestPageState extends State<TestPage> {
         body: const Center(child: Text('Nenhum cartão encontrado')),
       );
     }
-
-    final cardTest = cards[position];
 
     return Scaffold(
       appBar: AppBar(
@@ -129,7 +136,7 @@ class _TestPageState extends State<TestPage> {
                   ),
                   child: Center(
                     child: Text(
-                      cardTest.frontDescription,
+                      currentCard.frontDescription,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.white,
@@ -147,7 +154,7 @@ class _TestPageState extends State<TestPage> {
                   ),
                   child: Center(
                     child: Text(
-                      cardTest.backDescription,
+                      currentCard.backDescription,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.white,
