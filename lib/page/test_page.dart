@@ -1,3 +1,5 @@
+import 'package:capcards/page/statistics/no_cards_page.dart';
+import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
@@ -22,6 +24,7 @@ class _TestPageState extends State<TestPage> {
   int currentCardIndex = 0;
   CardDTO currentCard = CardDTO.empty();
   TestStats stats = TestStats();
+  bool startedTest = false;
 
   @override
   void initState() {
@@ -56,6 +59,7 @@ class _TestPageState extends State<TestPage> {
   }
 
   void correct() {
+    startedTest = true;
     stats.correct();
     setState(() {
       cards.removeAt(currentCardIndex);
@@ -65,6 +69,7 @@ class _TestPageState extends State<TestPage> {
   }
 
   void wrong() {
+    startedTest = true;
     stats.fail();
 
     final card = cards[currentCardIndex];
@@ -93,12 +98,11 @@ class _TestPageState extends State<TestPage> {
     }
 
     if (cards.isEmpty) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text("Página de Teste"),
-        ),
-        body: const Center(child: Text('Nenhum cartão encontrado')),
-      );
+      if (startedTest) {
+        return ResultPage(stats);
+      } else {
+        return const NoCardsPage();
+      }
     }
 
     return Scaffold(
