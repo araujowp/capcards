@@ -5,8 +5,6 @@ class ResultPage extends StatelessWidget {
   final TestStats stats;
 
   const ResultPage(this.stats, {super.key});
-  // Ou, se preferir nomeado (recomendado para clareza):
-  // const ResultPage({super.key, required this.stats});
 
   @override
   Widget build(BuildContext context) {

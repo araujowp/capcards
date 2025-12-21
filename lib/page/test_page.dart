@@ -3,14 +3,13 @@ import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
+import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
 
 class TestPage extends StatefulWidget {
-  final int deckId;
-  final String deckDescription;
-  const TestPage(
-      {super.key, required this.deckId, required this.deckDescription});
+  final DeckDTO deckDTO;
+  const TestPage({super.key, required this.deckDTO});
 
   @override
   State<TestPage> createState() => _TestPageState();
@@ -34,10 +33,9 @@ class _TestPageState extends State<TestPage> {
 
   Future<void> _loadShuffleCards() async {
     try {
-      cards = await CardRepository.getByDeckId(widget.deckId);
+      cards = await CardRepository.getByDeckId(widget.deckDTO.id);
       cards.shuffle();
     } catch (e) {
-      print('Erro ao carregar cards: $e');
       cards = [];
     }
     setState(() {
@@ -64,7 +62,6 @@ class _TestPageState extends State<TestPage> {
     setState(() {
       cards.removeAt(currentCardIndex);
       currentCard = getNext();
-      print(" ---- acertou -----  ${currentCard.id}");
     });
   }
 
@@ -78,7 +75,6 @@ class _TestPageState extends State<TestPage> {
 
     setState(() {
       currentCard = getNext();
-      print(" ---- errou -----  ${currentCard.id}");
     });
   }
 
@@ -91,7 +87,7 @@ class _TestPageState extends State<TestPage> {
     if (isLoading) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(widget.deckDescription),
+          title: Text(widget.deckDTO.description),
         ),
         body: const Center(child: CircularProgressIndicator()),
       );
@@ -101,13 +97,13 @@ class _TestPageState extends State<TestPage> {
       if (startedTest) {
         return ResultPage(stats);
       } else {
-        return const NoCardsPage();
+        return NoCardsPage(widget.deckDTO);
       }
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.deckDescription),
+        title: Text(widget.deckDTO.description),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
