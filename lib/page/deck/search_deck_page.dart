@@ -4,6 +4,9 @@ import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
 
+final RouteObserver<PageRoute<dynamic>> routeObserver =
+    RouteObserver<PageRoute<dynamic>>();
+
 class SearchDeckPage extends StatefulWidget {
   const SearchDeckPage({super.key});
 
@@ -11,7 +14,7 @@ class SearchDeckPage extends StatefulWidget {
   State<SearchDeckPage> createState() => _SearchDeckPageState();
 }
 
-class _SearchDeckPageState extends State<SearchDeckPage> {
+class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   late Future<List<DeckDTO>> _futureDecks;
   bool editMode = false;
 
@@ -19,6 +22,26 @@ class _SearchDeckPageState extends State<SearchDeckPage> {
   void initState() {
     super.initState();
     _futureDecks = DeckRepository.getAll();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(
+        this, ModalRoute.of(context)! as PageRoute<dynamic>);
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
+  void didPopNext() {
+    setState(() {
+      _futureDecks = DeckRepository.getAll();
+    });
   }
 
   saveDeck(BuildContext context, int id, String description) async {
