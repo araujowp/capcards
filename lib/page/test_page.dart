@@ -170,12 +170,6 @@ class _TestPageState extends State<TestPage> {
             ),
             Text(message),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                controller.flipcard();
-              },
-              child: const Text('Virar Programaticamente'),
-            ),
           ],
         ),
       ),

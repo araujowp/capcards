@@ -28,9 +28,6 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: AppBar(
-        title: const Text('App com Bottom Navigation'),
-      ),*/
       body: IndexedStack(
         index: _selectedIndex, // Mantém o estado das páginas
         children: _pages,
