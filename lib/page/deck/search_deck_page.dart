@@ -78,9 +78,6 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(
-        child: SafeArea(child: Text('no futuro teremos um menu')),
-      ),
       appBar: AppBar(
         title: const Text("Decks"),
         actions: [

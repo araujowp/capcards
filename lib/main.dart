@@ -1,5 +1,5 @@
 import 'package:capcards/page/deck/search_deck_page.dart';
-import 'package:capcards/page/about_page.dart';
+import 'package:capcards/page/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: const SearchDeckPage(),
-      home: const AboutPage(),
+      home: const MainPage(),
       navigatorObservers: [routeObserver],
     );
   }

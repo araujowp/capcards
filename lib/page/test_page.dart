@@ -1,4 +1,4 @@
-import 'package:capcards/page/statistics/no_cards_page.dart';
+import 'package:capcards/page/card/no_cards_page.dart';
 import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/repository/card/card_dto.dart';

@@ -27,7 +27,7 @@ class AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sobre o Capbank')),
+      appBar: AppBar(title: const Text('Sobre o Capcards')),
       body: Center(
         child: Text('Versão: $_version'),
       ),
