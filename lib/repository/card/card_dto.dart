@@ -1,7 +1,19 @@
-class CardDTO {
+import 'package:hive/hive.dart';
+
+part 'card_dto.g.dart';
+
+@HiveType(typeId: 0)
+class CardDTO extends HiveObject {
+  @HiveField(0)
   int id;
+
+  @HiveField(1)
   String frontDescription;
+
+  @HiveField(2)
   String backDescription;
+
+  @HiveField(3)
   int deckId;
   CardDTO(
       {required this.id,

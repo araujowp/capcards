@@ -1,8 +1,21 @@
 import 'package:capcards/page/deck/search_deck_page.dart';
 import 'package:capcards/page/main_page.dart';
+import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:capcards/repository/card/card_dto.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(CardDTOAdapter());
+  Hive.registerAdapter(DeckDTOAdapter());
+
+  await Hive.openBox<CardDTO>('cardsBox');
+  await Hive.openBox<DeckDTO>('decksBox');
+
   runApp(const MyApp());
 }
 
