@@ -50,6 +50,12 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "capcards-${variant.baseName}-${variant.versionName}.apk"
+        }
+    }
 }
 
 flutter {
