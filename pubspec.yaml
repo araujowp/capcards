@@ -1,8 +1,8 @@
 name: capcards
-description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+description: "an application for memorization through spaced repetition."
+publish_to: 'none' 
 
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: '>=3.2.2 <4.0.0'
@@ -15,7 +15,6 @@ dependencies:
   hive_flutter: ^1.1.0
 
   cupertino_icons: ^1.0.2
-  flutter_flip_card: ^0.0.6
   package_info_plus: ^5.0.1
 
 dev_dependencies:

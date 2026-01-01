@@ -1,5 +1,5 @@
 import 'package:capcards/page/deck/deck_page.dart';
-import 'package:capcards/page/test_page.dart';
+import 'package:capcards/page/test/test_page.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';

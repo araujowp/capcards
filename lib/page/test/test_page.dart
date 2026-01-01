@@ -1,11 +1,11 @@
 import 'package:capcards/page/card/no_cards_page.dart';
 import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
+import 'package:capcards/page/test/flip_card.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_flip_card/flutter_flip_card.dart';
 
 class TestPage extends StatefulWidget {
   final DeckDTO deckDTO;
@@ -16,9 +16,7 @@ class TestPage extends StatefulWidget {
 }
 
 class _TestPageState extends State<TestPage> {
-  final FlipCardController controller = FlipCardController();
   late List<CardDTO> cards;
-  String message = "default";
   bool isLoading = true;
   int currentCardIndex = 0;
   CardDTO currentCard = CardDTO.empty();
@@ -110,65 +108,18 @@ class _TestPageState extends State<TestPage> {
         child: Column(
           children: [
             GestureDetector(
-              onVerticalDragEnd: (vDrag) {
-                String action = "";
-                if (vDrag.primaryVelocity! < 0) {
-                  correct();
-                  action = "cima";
-                } else if (vDrag.primaryVelocity! > 0) {
-                  action = "baixo";
-                  wrong();
-                }
-
-                if (vDrag.primaryVelocity != null) {
-                  message =
-                      "tentativas: ${stats.tries} erros: ${stats.wrongs} $action";
-                }
-              },
-              child: FlipCard(
-                rotateSide: RotateSide.left,
-                onTapFlipping: true,
-                axis: FlipAxis.vertical,
-                controller: controller,
-                frontWidget: Container(
-                  height: cardHeight,
-                  width: cardWidth,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Text(
-                      currentCard.frontDescription,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ),
-                backWidget: Container(
-                  height: cardHeight,
-                  width: cardWidth,
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Text(
-                      currentCard.backDescription,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Text(message),
+                onVerticalDragEnd: (vDrag) {
+                  if (vDrag.primaryVelocity! < 0) {
+                    correct();
+                  } else if (vDrag.primaryVelocity! > 0) {
+                    wrong();
+                  }
+                },
+                child: FlipCard(
+                    frontText: currentCard.frontDescription,
+                    backText: currentCard.backDescription,
+                    height: cardHeight,
+                    width: cardWidth)),
             const SizedBox(height: 20),
           ],
         ),
