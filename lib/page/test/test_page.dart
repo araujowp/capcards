@@ -2,6 +2,7 @@ import 'package:capcards/page/card/no_cards_page.dart';
 import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/page/test/flip_card.dart';
+import 'package:capcards/page/test/swipable_card.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
@@ -107,19 +108,13 @@ class _TestPageState extends State<TestPage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            GestureDetector(
-                onVerticalDragEnd: (vDrag) {
-                  if (vDrag.primaryVelocity! < 0) {
-                    correct();
-                  } else if (vDrag.primaryVelocity! > 0) {
-                    wrong();
-                  }
-                },
-                child: FlipCard(
-                    frontText: currentCard.frontDescription,
-                    backText: currentCard.backDescription,
-                    height: cardHeight,
-                    width: cardWidth)),
+            SwipableCard(
+              card: currentCard,
+              height: cardHeight,
+              width: cardWidth,
+              onCorrect: correct,
+              onWrong: wrong,
+            ),
             const SizedBox(height: 20),
           ],
         ),

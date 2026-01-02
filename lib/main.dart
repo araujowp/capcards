@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.green, width: 2))),
         useMaterial3: true,
       ),
-      //home: const SearchDeckPage(),
       home: const MainPage(),
       navigatorObservers: [routeObserver],
     );
