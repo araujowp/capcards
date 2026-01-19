@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class FlipCard extends StatefulWidget {
@@ -88,18 +89,19 @@ class _CustomFlipCardState extends State<FlipCard>
       height: widget.height,
       width: widget.width,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: Colors.white70,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-        child: Text(
-          widget.frontText,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-          ),
-        ),
+        child: AutoSizeText(widget.frontText,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.green,
+              fontSize: 100,
+            ),
+            minFontSize: 16,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis),
       ),
     );
   }
@@ -113,13 +115,16 @@ class _CustomFlipCardState extends State<FlipCard>
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-        child: Text(
+        child: AutoSizeText(
           widget.backText,
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 100,
           ),
+          minFontSize: 16,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );

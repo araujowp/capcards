@@ -2,7 +2,7 @@ name: capcards
 description: "an application for memorization through spaced repetition."
 publish_to: 'none' 
 
-version: 1.1.0+3
+version: 1.2.0+3
 
 environment:
   sdk: '>=3.2.2 <4.0.0'
@@ -16,6 +16,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   package_info_plus: ^5.0.1
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -23,8 +24,16 @@ dev_dependencies:
   hive_generator: ^2.0.1
   build_runner: ^2.4.8
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"  # Para Android
+  ios: false  # Mude para true se quiser iOS também
+  image_path: "assets/images/logo.png"  # Caminho da sua imagem
 
 flutter:
 
   uses-material-design: true
+  assets:
+    - assets/icon/icon.png
 

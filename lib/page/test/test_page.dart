@@ -2,7 +2,6 @@ import 'package:capcards/page/card/no_cards_page.dart';
 import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/page/test/action_card.dart';
-import 'package:capcards/page/test/flip_card.dart';
 import 'package:capcards/page/test/swipable_card.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
