@@ -29,7 +29,7 @@ class AboutPageState extends State<AboutPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Sobre o Capcards')),
       body: Center(
-        child: Text('Versão: $_version'),
+        child: Text('Versão: $_version', style: const TextStyle(fontSize: 40)),
       ),
     );
   }

@@ -34,6 +34,7 @@ class _TestPageState extends State<TestPage> {
     try {
       cards = await CardRepository.getByDeckId(widget.deckDTO.id);
       cards.shuffle();
+      cards = cards.take(15).toList();
     } catch (e) {
       cards = [];
     }

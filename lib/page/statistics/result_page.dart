@@ -6,6 +6,16 @@ class ResultPage extends StatelessWidget {
 
   const ResultPage(this.stats, {super.key});
 
+  String getMessage(double percentage) {
+    return switch (percentage) {
+      <= 20 => "Você consegue melhorar",
+      > 20 && <= 40 => "Está no caminho certo",
+      > 40 && <= 60 => "Bom progresso, continue assim!",
+      > 60 && <= 80 => "Muito bem! Quase lá!",
+      _ => "Excelente desempenho! Parabéns!",
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     final int correctAnswers = stats.tries - stats.wrongs;
@@ -23,9 +33,10 @@ class ResultPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Muito bem!!',
-                style: TextStyle(
+              Text(
+                getMessage(percentage),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Colors.green,
