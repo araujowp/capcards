@@ -71,7 +71,7 @@ class _DeckPageState extends State<DeckPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.id == 0 ? "new Deck" : "Edit deck"),
+        title: Text(widget.id == 0 ? "Nova lista" : "Edite lista"),
       ),
       body: Column(
         children: [
@@ -79,7 +79,7 @@ class _DeckPageState extends State<DeckPage> {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextField(
               controller: controllerName,
-              decoration: const InputDecoration(label: Text("new deck")),
+              decoration: const InputDecoration(label: Text("Nova lista")),
             ),
           ),
           ListTile(
@@ -92,7 +92,7 @@ class _DeckPageState extends State<DeckPage> {
               onTap: () => myAction("Excluir"),
             ),
           ListTile(
-              title: const Text("Edit cards"),
+              title: const Text("Edite Cartões"),
               onTap: () {
                 editCards(context, widget.id);
               }),

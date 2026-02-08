@@ -13,7 +13,6 @@ class MainPage extends StatefulWidget {
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
-  // Lista das páginas principais
   static const List<Widget> _pages = <Widget>[
     SearchDeckPage(),
     AboutPage(),

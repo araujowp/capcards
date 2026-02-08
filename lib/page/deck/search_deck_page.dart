@@ -79,7 +79,7 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Decks"),
+        title: const Text("Listas"),
         actions: [
           IconButton(
               icon: const Icon(Icons.add),

@@ -66,6 +66,11 @@ class ResultPage extends StatelessWidget {
                   color: Colors.blue,
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Sair"))
             ],
           ),
         ),
