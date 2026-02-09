@@ -86,16 +86,17 @@ class _DeckPageState extends State<DeckPage> {
             title: const Text("Salvar"),
             onTap: () => myAction("Save"),
           ),
-          if (widget.id != 0)
+          if (widget.id != 0) ...[
             ListTile(
               title: const Text("Excluir"),
               onTap: () => myAction("Excluir"),
             ),
-          ListTile(
-              title: const Text("Edite Cartões"),
-              onTap: () {
-                editCards(context, widget.id);
-              }),
+            ListTile(
+                title: const Text("Edite Cartões"),
+                onTap: () {
+                  editCards(context, widget.id);
+                }),
+          ]
         ],
       ),
     );

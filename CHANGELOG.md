@@ -29,6 +29,9 @@
 - Atualizar layout card.
 - Atualizar layout edição de card.
 - Passar erros apenas uma vez extra.
+ 
+# 1.3.1 - [2026-02-09]
+- Correção cadastrar cartões sem lista.
 
 # 1.3.0 - [2026-02-08]
 - Aumnetar fonte da versão.
