@@ -31,7 +31,7 @@ class _DeckPageState extends State<DeckPage> {
     switch (action) {
       case "Save":
         id = await save();
-        if (mounted) {
+        if (mounted && id > -1) {
           editCards(context, id);
         }
         break;
@@ -47,10 +47,21 @@ class _DeckPageState extends State<DeckPage> {
 
   Future<int> save() async {
     int id;
+
+    if (controllerName.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('O nome é obrigatório'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return -1;
+    }
+
     if (widget.id == 0) {
-      id = await DeckRepository.add(controllerName.text);
+      id = await DeckRepository.add(controllerName.text.trim());
     } else {
-      id = await DeckRepository.update(widget.id, controllerName.text);
+      id = await DeckRepository.update(widget.id, controllerName.text.trim());
     }
     return id;
   }

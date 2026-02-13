@@ -1,3 +1,4 @@
+import 'package:capcards/page/deck/deck_card_item.dart';
 import 'package:capcards/page/deck/deck_page.dart';
 import 'package:capcards/page/test/test_page.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
@@ -104,31 +105,15 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
                 itemCount: decks.length,
                 itemBuilder: (context, index) {
                   final deck = decks[index];
-                  return ListTile(
-                    title: Text(deck.description),
-                    trailing: !editMode
-                        ? null
-                        : Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                  icon: const Icon(Icons.delete,
-                                      color: Color.fromARGB(255, 5, 85, 8)),
-                                  onPressed: () {
-                                    delete(deck.id);
-                                  }),
-                              IconButton(
-                                  icon: const Icon(Icons.arrow_right,
-                                      color: Color.fromARGB(255, 5, 85, 8)),
-                                  onPressed: () {
-                                    saveDeck(
-                                        context, deck.id, deck.description);
-                                  })
-                            ],
-                          ),
-                    onTap: () {
-                      test(deck);
-                    },
+                  return DeckCardItem(
+                    description: deck.description,
+                    deckId: deck.id,
+                    cardCount: 25,
+                    emoji: ":)",
+                    editMode: editMode,
+                    onDelete: () => delete(deck.id),
+                    onEdit: () => saveDeck(context, deck.id, deck.description),
+                    onTap: () => test(deck),
                   );
                 },
               );
