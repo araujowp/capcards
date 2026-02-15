@@ -5,7 +5,6 @@ class DeckCardItem extends StatelessWidget {
   final String description;
   final int deckId;
   final int cardCount;
-  final String emoji;
   final bool editMode;
   final VoidCallback onDelete;
   final VoidCallback onEdit;
@@ -16,7 +15,6 @@ class DeckCardItem extends StatelessWidget {
     required this.description,
     required this.deckId,
     required this.cardCount,
-    required this.emoji,
     required this.editMode,
     required this.onDelete,
     required this.onEdit,
@@ -49,12 +47,20 @@ class DeckCardItem extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 19,
-                  backgroundColor: Colors.white.withOpacity(0.12),
-                  child: Text(
-                    emoji,
-                    style: const TextStyle(fontSize: 25),
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.12),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Image.asset(
+                      'assets/images/capbranca.png',
+                      color: Colors.white,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -62,10 +68,11 @@ class DeckCardItem extends StatelessWidget {
                   child: Text(
                     description.isEmpty ? "Nova lista" : description,
                     style: const TextStyle(
+                      fontFamily: 'Roboto',
                       color: Colors.white,
-                      fontSize: 19,
+                      fontSize: 17,
                       fontWeight: FontWeight.w500,
-                      letterSpacing: 0.2,
+                      letterSpacing: 0.5,
                     ),
                   ),
                 ),

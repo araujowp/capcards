@@ -1,5 +1,6 @@
 ## [Unreleased]
 
+- Trocar fonte dos cartões.
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
 - Indicador de Progresso
 - Add opção de exportar decks e cartoes. 
