@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/search_card_page.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:flutter/material.dart';
@@ -80,35 +81,41 @@ class _DeckPageState extends State<DeckPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CapScaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(widget.id == 0 ? "Nova lista" : "Edite lista"),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: TextField(
-              controller: controllerName,
-              decoration: const InputDecoration(label: Text("Nova lista")),
-            ),
+      body: Container(
+        color: Colors.black.withOpacity(0.1),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: TextField(
+                  controller: controllerName,
+                  decoration: const InputDecoration(label: Text("Nova lista")),
+                ),
+              ),
+              ListTile(
+                title: const Text("Salvar"),
+                onTap: () => myAction("Save"),
+              ),
+              if (widget.id != 0) ...[
+                ListTile(
+                  title: const Text("Excluir"),
+                  onTap: () => myAction("Excluir"),
+                ),
+                ListTile(
+                    title: const Text("Edite Cartões"),
+                    onTap: () {
+                      editCards(context, widget.id);
+                    }),
+              ]
+            ],
           ),
-          ListTile(
-            title: const Text("Salvar"),
-            onTap: () => myAction("Save"),
-          ),
-          if (widget.id != 0) ...[
-            ListTile(
-              title: const Text("Excluir"),
-              onTap: () => myAction("Excluir"),
-            ),
-            ListTile(
-                title: const Text("Edite Cartões"),
-                onTap: () {
-                  editCards(context, widget.id);
-                }),
-          ]
-        ],
+        ),
       ),
     );
   }
