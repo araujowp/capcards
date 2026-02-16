@@ -18,7 +18,6 @@ class MainPageState extends State<MainPage> {
   static const List<Widget> _pages = <Widget>[
     SearchDeckPage(),
     AboutPage(),
-    // Adicione mais páginas aqui se adicionar itens na nav (ex: StatisticsPage())
   ];
 
   void _onItemTapped(int index) {

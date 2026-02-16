@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
 
@@ -23,9 +24,10 @@ class ResultPage extends StatelessWidget {
     final double percentage =
         totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0.0;
 
-    return Scaffold(
+    return CapScaffold(
       appBar: AppBar(
         title: const Text("Resultado do teste"),
+        backgroundColor: Colors.transparent,
       ),
       body: Center(
         child: Padding(

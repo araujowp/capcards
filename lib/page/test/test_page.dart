@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/no_cards_page.dart';
 import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
@@ -87,6 +88,7 @@ class _TestPageState extends State<TestPage> {
     if (isLoading) {
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
           title: Text(widget.deckDTO.description),
         ),
         body: const Center(child: CircularProgressIndicator()),
@@ -101,8 +103,9 @@ class _TestPageState extends State<TestPage> {
       }
     }
 
-    return Scaffold(
+    return CapScaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(widget.deckDTO.description),
       ),
       body: Padding(
