@@ -85,9 +85,14 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
-              icon: const Icon(Icons.add),
+              icon: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
               onPressed: () => saveDeck(context, 0, "")),
-          IconButton(icon: const Icon(Icons.edit), onPressed: () => edit())
+          IconButton(
+              icon: const Icon(Icons.edit, color: Colors.white),
+              onPressed: () => edit())
         ],
       ),
       body: FutureBuilder<List<DeckDTO>>(
