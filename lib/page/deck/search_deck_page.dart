@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/deck/deck_card_item.dart';
 import 'package:capcards/page/deck/deck_page.dart';
 import 'package:capcards/page/test/test_page.dart';
@@ -78,9 +79,10 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CapScaffold(
       appBar: AppBar(
-        title: const Text("Listas"),
+        title: const Text("Listas2"),
+        backgroundColor: Colors.transparent,
         actions: [
           IconButton(
               icon: const Icon(Icons.add),
