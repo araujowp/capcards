@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/card_page.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
@@ -42,11 +43,17 @@ class _SearchCardPageState extends State<SearchCardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CapScaffold(
       appBar: AppBar(
         title: const Text("Edit cards"),
+        backgroundColor: Colors.transparent,
         actions: [
-          IconButton(icon: const Icon(Icons.add), onPressed: () => addCard())
+          IconButton(
+              icon: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              onPressed: () => addCard())
         ],
       ),
       body: FutureBuilder<List<CardDTO>>(
@@ -70,7 +77,10 @@ class _SearchCardPageState extends State<SearchCardPage> {
                   return ListTile(
                     title: Text(card.frontDescription),
                     trailing: IconButton(
-                      icon: const Icon(Icons.delete),
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      ),
                       onPressed: () {
                         delete(card.id);
                       },
