@@ -33,7 +33,8 @@ class AboutPageState extends State<AboutPage> {
         backgroundColor: Colors.transparent,
       ),
       body: Center(
-        child: Text('Versão: $_version', style: const TextStyle(fontSize: 40)),
+        child: Text('Versão: $_version',
+            style: const TextStyle(fontSize: 40, color: Colors.white)),
       ),
     );
   }

@@ -28,7 +28,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'cap-cards',
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Color(0xFF66813A)),
+        appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold),
+            color: Color(0xFF66813A)),
         scaffoldBackgroundColor: const Color(0xFF66813A),
         listTileTheme: const ListTileThemeData(tileColor: Colors.white),
         inputDecorationTheme: const InputDecorationTheme(

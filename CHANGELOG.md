@@ -1,31 +1,31 @@
 ## [Unreleased]
 
-- Trocar fonte dos cartões.
+- Padronizar cor de icones search deck page.
+- Add imagem na appbar
+- Atualizar layout edição de card.
+- Passar erros apenas uma extra.
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
 - Indicador de Progresso
 - Add opção de exportar decks e cartoes. 
-- Exportar estatisticas.
-- Adicionar son no flip
-- Adicionar son na troca de cartoes.
-- Menu para estatisticas gerais.
-- Criar listas animadas (aperecer itens em sequencia)
-- Cartoes com imagens.
 - Add data do ultimo teste, e um fator de repetição, data proximo teste.
 - Carregar teste com cards que estão mais tempo sem aparecer.
 - Tratar teste antes da curva de esquecimento.
 - Escolher um algoritimo de para repetição ex SM-2
-- Flutter Lottie Animation  entender ? 
+- Exportar estatisticas.
+- Menu para estatisticas gerais.
+- Criar listas animadas (aperecer itens em sequencia)
+- Cartoes com imagens.
+- Indicar momento de revisão de erros.
+- Adicionar funcionalidade desligar son.
 - Aprender a usar Lottie Animation
 - Aprender a criar Lottie Animation
-- Indicar momento de revisão de erros.
-- Adicionar historico de versão.
-- criar menu configurações
+- Adicionar son no flip
+- Adicionar son na troca de cartoes.
 - criar tela de configurações.
-- Adicionar funcionalidade desligar son.
-- Atualizar layout edição de card.
-- Passar erros apenas uma vez extra.
+- criar menu configurações
  
-# 1.4.0 - [2026-02-09]
+# 2.0.0 - [2026-02-09]
+- Customizar font app bar (branco)
 - Atualizar layout pagina de versão. 
 - Padronizar cores dos botões no card.
 - Customizar barra de navegação.
@@ -40,6 +40,7 @@
 # 1.3.0 - [2026-02-08]
 - Aumnetar fonte da versão.
 - Nome App com inicial maiuscula.
+- Trocar fonte dos cartões.
 - Fixar o tamanho maximo do teste em 15 cartões.
 - Tela de resultado mensagem conforme aproveitamento.
 - Tela inicial trocar deks para listas
