@@ -2,7 +2,6 @@
 
 - Padronizar cor de icones search deck page.
 - Add imagem na appbar
-- Atualizar layout edição de card.
 - Passar erros apenas uma extra.
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
 - Indicador de Progresso
@@ -25,6 +24,9 @@
 - criar menu configurações
  
 # 2.0.0 - [2026-02-09]
+- Atualizar layout edição de Cards.
+- Atualizar layout Teste sem cartões.
+- Atualizar layout edição de lista.
 - Customizar font app bar (branco)
 - Atualizar layout pagina de versão. 
 - Padronizar cores dos botões no card.

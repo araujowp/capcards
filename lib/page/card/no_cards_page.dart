@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/search_card_page.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,10 @@ class NoCardsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CapScaffold(
       appBar: AppBar(
         title: Text(deckDto.description),
+        backgroundColor: Colors.transparent,
       ),
       body: Center(
         child: Column(
