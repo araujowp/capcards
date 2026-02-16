@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -26,8 +27,11 @@ class AboutPageState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Sobre o Capcards')),
+    return CapScaffold(
+      appBar: AppBar(
+        title: const Text('Sobre o Capcards'),
+        backgroundColor: Colors.transparent,
+      ),
       body: Center(
         child: Text('Versão: $_version', style: const TextStyle(fontSize: 40)),
       ),

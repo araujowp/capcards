@@ -13,7 +13,6 @@
 - Add data do ultimo teste, e um fator de repetição, data proximo teste.
 - Carregar teste com cards que estão mais tempo sem aparecer.
 - Tratar teste antes da curva de esquecimento.
-- Nome com inicial maiuscula.
 - Escolher um algoritimo de para repetição ex SM-2
 - Flutter Lottie Animation  entender ? 
 - Aprender a usar Lottie Animation
@@ -23,15 +22,16 @@
 - criar menu configurações
 - criar tela de configurações.
 - Adicionar funcionalidade desligar son.
-- Padronizar tamanho dos botes no card. 
-- Padronizar cores dos botes no card.
-- Atualizar layout pagina de versão. 
-- Atualizar layout card.
 - Atualizar layout edição de card.
 - Passar erros apenas uma vez extra.
  
 # 1.4.0 - [2026-02-09]
+- Atualizar layout pagina de versão. 
+- Padronizar cores dos botões no card.
+- Customizar barra de navegação.
 - Atualizar layout pagina de decks.
+- Atualizar layout card.
+- Padronizar tamanho dos botões no card. 
 - Espaçamento entre cartões.
 - Separar cartões em widgets.
 - Impedir cadastro de lista sem nome.
@@ -39,6 +39,7 @@
 
 # 1.3.0 - [2026-02-08]
 - Aumnetar fonte da versão.
+- Nome App com inicial maiuscula.
 - Fixar o tamanho maximo do teste em 15 cartões.
 - Tela de resultado mensagem conforme aproveitamento.
 - Tela inicial trocar deks para listas
