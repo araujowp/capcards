@@ -25,17 +25,17 @@ class DeckCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      shadowColor: Colors.black.withOpacity(0.3),
-      color: Colors.white.withOpacity(0.08),
+      shadowColor: Colors.black.withOpacity(0.5),
+      color: Colors.white.withOpacity(0.05),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
       clipBehavior: Clip.antiAlias,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 16),
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.white.withOpacity(0.12),
+            color: Colors.white.withOpacity(0.20),
             width: 0.8,
           ),
           borderRadius: BorderRadius.circular(20),
@@ -44,7 +44,7 @@ class DeckCardItem extends StatelessWidget {
           onTap: editMode ? null : onTap,
           borderRadius: BorderRadius.circular(20),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
             child: Row(
               children: [
                 Container(
