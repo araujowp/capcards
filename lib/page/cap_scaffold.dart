@@ -30,7 +30,7 @@ class CapScaffold extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           appBarText,
-          style: const TextStyle(color: Colors.pink),
+          style: const TextStyle(color: Colors.white),
         ),
         actions: appBarActions,
         backgroundColor: Colors.transparent,

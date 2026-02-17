@@ -24,6 +24,7 @@
  
 # 2.0.0 - [2026-02-09]
 - Incorporar appbar no controle de tela customizada.
+- Atualizar layout edição do titulo da lista.
 - Atualizar layout edição de Cards.
 - Atualizar layout Teste sem cartões.
 - Padronizar cor de icones search deck page.

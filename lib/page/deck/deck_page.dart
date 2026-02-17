@@ -96,16 +96,35 @@ class _DeckPageState extends State<DeckPage> {
                 ),
               ),
               ListTile(
-                title: const Text("Salvar"),
+                title: const Text(
+                  "Salvar",
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () => myAction("Save"),
+                leading: const Icon(
+                  Icons.save,
+                  color: Colors.white,
+                ),
               ),
               if (widget.id != 0) ...[
                 ListTile(
-                  title: const Text("Excluir"),
+                  title: const Text(
+                    "Excluir",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   onTap: () => myAction("Excluir"),
+                  leading: const Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                  ),
                 ),
                 ListTile(
-                    title: const Text("Edite Cartões"),
+                    title: const Text("Edite Cartões",
+                        style: TextStyle(color: Colors.white)),
+                    leading: const Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                    ),
                     onTap: () {
                       editCards(context, widget.id);
                     }),
