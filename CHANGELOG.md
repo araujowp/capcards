@@ -1,6 +1,5 @@
 ## [Unreleased]
 
-- Padronizar cor de icones search deck page.
 - Add imagem na appbar
 - Passar erros apenas uma extra.
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
@@ -24,8 +23,10 @@
 - criar menu configurações
  
 # 2.0.0 - [2026-02-09]
+- Incorporar appbar no controle de tela customizada.
 - Atualizar layout edição de Cards.
 - Atualizar layout Teste sem cartões.
+- Padronizar cor de icones search deck page.
 - Atualizar layout edição de lista.
 - Customizar font app bar (branco)
 - Atualizar layout pagina de versão. 

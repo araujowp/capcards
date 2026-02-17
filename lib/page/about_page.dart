@@ -28,10 +28,7 @@ class AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBar: AppBar(
-        title: const Text('Sobre o Capcards'),
-        backgroundColor: Colors.transparent,
-      ),
+      appBarText: 'Sobre o Capcards',
       body: Center(
         child: Text('Versão: $_version',
             style: const TextStyle(fontSize: 40, color: Colors.white)),

@@ -18,10 +18,7 @@ class NoCardsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBar: AppBar(
-        title: Text(deckDto.description),
-        backgroundColor: Colors.transparent,
-      ),
+      appBarText: deckDto.description,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

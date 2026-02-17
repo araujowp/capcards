@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class CapScaffold extends StatelessWidget {
   final Widget body;
-  final PreferredSizeWidget? appBar;
+  final String appBarText;
+  final List<Widget>? appBarActions;
   final bool extendBodyBehindAppBar;
   final EdgeInsets? padding;
   final Widget? floatingActionButton;
@@ -13,7 +14,8 @@ class CapScaffold extends StatelessWidget {
   const CapScaffold({
     super.key,
     required this.body,
-    this.appBar,
+    required this.appBarText,
+    this.appBarActions,
     this.extendBodyBehindAppBar = true,
     this.padding,
     this.floatingActionButton,
@@ -25,16 +27,20 @@ class CapScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          appBarText,
+          style: const TextStyle(color: Colors.pink),
+        ),
+        actions: appBarActions,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+      ),
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: extendBodyBehindAppBar,
       extendBody: true,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-      appBar: appBar ??
-          AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            scrolledUnderElevation: 0,
-          ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

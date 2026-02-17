@@ -29,6 +29,7 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
+      appBarText: " ",
       body: IndexedStack(
         index: _selectedIndex, // Mantém o estado das páginas
         children: _pages,

@@ -80,21 +80,18 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBar: AppBar(
-        title: const Text("Listas2"),
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-              icon: const Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              onPressed: () => saveDeck(context, 0, "")),
-          IconButton(
-              icon: const Icon(Icons.edit, color: Colors.white),
-              onPressed: () => edit())
-        ],
-      ),
+      appBarText: "Listas",
+      appBarActions: [
+        IconButton(
+            icon: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onPressed: () => saveDeck(context, 0, "")),
+        IconButton(
+            icon: const Icon(Icons.edit, color: Colors.white),
+            onPressed: () => edit())
+      ],
       body: FutureBuilder<List<DeckDTO>>(
           future: _futureDecks,
           builder: (context, snapshot) {

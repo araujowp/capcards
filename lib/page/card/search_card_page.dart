@@ -44,18 +44,15 @@ class _SearchCardPageState extends State<SearchCardPage> {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBar: AppBar(
-        title: const Text("Edit cards"),
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-              icon: const Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              onPressed: () => addCard())
-        ],
-      ),
+      appBarText: "Edit cards",
+      appBarActions: [
+        IconButton(
+            icon: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onPressed: () => addCard())
+      ],
       body: FutureBuilder<List<CardDTO>>(
         future: _futureCards,
         builder: (context, snapshot) {

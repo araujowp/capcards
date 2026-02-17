@@ -104,10 +104,7 @@ class _TestPageState extends State<TestPage> {
     }
 
     return CapScaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(widget.deckDTO.description),
-      ),
+      appBarText: widget.deckDTO.description,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

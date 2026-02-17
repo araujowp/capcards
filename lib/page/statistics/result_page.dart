@@ -25,10 +25,7 @@ class ResultPage extends StatelessWidget {
         totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0.0;
 
     return CapScaffold(
-      appBar: AppBar(
-        title: const Text("Resultado do teste"),
-        backgroundColor: Colors.transparent,
-      ),
+      appBarText: "Resultado do teste",
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),

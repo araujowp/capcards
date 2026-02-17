@@ -82,10 +82,7 @@ class _DeckPageState extends State<DeckPage> {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(widget.id == 0 ? "Nova lista" : "Edite lista"),
-      ),
+      appBarText: widget.id == 0 ? "Nova lista" : "Edite lista",
       body: Container(
         color: Colors.black.withOpacity(0.1),
         child: SafeArea(
