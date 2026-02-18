@@ -1,4 +1,5 @@
 import 'package:capcards/page/cap_scaffold.dart';
+import 'package:capcards/page/card/card_item.dart';
 import 'package:capcards/page/card/card_page.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
@@ -71,17 +72,9 @@ class _SearchCardPageState extends State<SearchCardPage> {
                 itemCount: cards.length,
                 itemBuilder: (context, index) {
                   final card = cards[index];
-                  return ListTile(
-                    title: Text(card.frontDescription),
-                    trailing: IconButton(
-                      icon: const Icon(
-                        Icons.delete,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        delete(card.id);
-                      },
-                    ),
+                  return CardItem(
+                    description: card.frontDescription,
+                    onDelete: () => delete(card.id),
                   );
                 });
           } else {
