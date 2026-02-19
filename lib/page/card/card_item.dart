@@ -18,33 +18,26 @@ class CardItem extends StatelessWidget {
       margin: const EdgeInsets.symmetric(
           vertical: 4, horizontal: 16), // Margem reduzida para visual slim
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(
-            16), // Arredondamento ajustado para combinar com a imagem
+        borderRadius: BorderRadius.circular(16),
         child: BackdropFilter(
-          filter: ImageFilter.blur(
-              sigmaX: 12,
-              sigmaY: 12), // Blur mais forte para efeito de vidro escuro
+          filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
           child: Container(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 12, vertical: 8), // Padding mínimo
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(
-                  0.15), // Preenchimento mais escuro (ajuste se precisar de mais verde: Colors.green.withOpacity(0.25))
+              color: Colors.black.withOpacity(0.15),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: Colors.white.withOpacity(
-                    0.18), // Borda com mais destaque (opacidade e largura aumentadas)
+                color: Colors.white.withOpacity(0.18),
                 width: 1,
               ),
             ),
             child: Row(
               children: [
                 Container(
-                  width: 48, // Tamanho ajustado
-                  height: 48,
+                  width: 60,
+                  height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(
-                        0.12), // Container do ícone mais escuro para blending
+                    color: Colors.black.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
@@ -56,7 +49,7 @@ class CardItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 12), // Espaçamento reduzido
+                const SizedBox(width: 12),
                 Expanded(
                   child: Text(
                     description,

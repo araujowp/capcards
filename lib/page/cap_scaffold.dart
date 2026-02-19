@@ -47,11 +47,6 @@ class CapScaffold extends StatelessWidget {
             image: AssetImage('assets/images/backgroundapp.jpg'),
             fit: BoxFit.cover,
             alignment: Alignment.center,
-            // Descomente se quiser escurecer a imagem para melhor legibilidade do texto:
-            // colorFilter: ColorFilter.mode(
-            //   Colors.black.withOpacity(0.25),
-            //   BlendMode.darken,
-            // ),
           ),
         ),
         child: padding != null
