@@ -1,3 +1,4 @@
+import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:flutter/material.dart';
@@ -44,39 +45,43 @@ class _CardPageState extends State<CardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Edit Card"),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: TextField(
-              controller: textControllerFront,
-              decoration: const InputDecoration(
-                label: Text("Frente"),
+    return CapScaffold(
+      appBarText: "Edit Card",
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: TextField(
+                controller: textControllerFront,
+                decoration: const InputDecoration(
+                  label: Text("Frente"),
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: TextField(
-              controller: textControllerBack,
-              decoration: const InputDecoration(
-                label: Text("Verso"),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: TextField(
+                controller: textControllerBack,
+                decoration: const InputDecoration(
+                  label: Text("Verso"),
+                ),
               ),
             ),
-          ),
-          ListTile(
-            title: const Text("Salvar"),
-            onTap: save,
-          ),
-          ListTile(
-            title: const Text("Cancelar"),
-            onTap: cancel,
-          )
-        ],
+            ListTile(
+              title:
+                  const Text("Salvar", style: TextStyle(color: Colors.white)),
+              leading: const Icon(Icons.save, color: Colors.white),
+              onTap: save,
+            ),
+            ListTile(
+              title:
+                  const Text("Cancelar", style: TextStyle(color: Colors.white)),
+              leading: const Icon(Icons.cancel, color: Colors.white),
+              onTap: cancel,
+            )
+          ],
+        ),
       ),
     );
   }

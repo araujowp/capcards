@@ -1,6 +1,6 @@
 ## [Unreleased]
 
-- Atualizar layout tela adicionar card.
+- Padonizar botoes edição cards x decks.
 - Add imagem na appbar
 - Passar erros apenas uma extra.
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
@@ -24,6 +24,7 @@
 - criar menu configurações
  
 # 2.0.0 - [2026-02-09]
+- Atualizar layout tela adicionar card.
 - Padronizar layout DeckCardItem com cardItem.
 - Incorporar appbar no controle de tela customizada.
 - Atualizar layout edição do titulo da lista.
