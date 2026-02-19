@@ -35,6 +35,17 @@ class _CardPageState extends State<CardPage> {
   }
 
   save() async {
+    if (textControllerFront.text.trim().isEmpty ||
+        textControllerBack.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Frente e verso obrigatórios'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     CardDTONew card = CardDTONew(
         frontDescription: textControllerFront.text,
         backDescription: textControllerBack.text,

@@ -24,6 +24,8 @@
 - criar menu configurações
  
 # 2.0.0 - [2026-02-09]
+- Consistir cadastro de cartão sem frente ou verso.
+- Evitar cadastro de card sem descrição ou verso.
 - Atualizar layout tela adicionar card.
 - Padronizar layout DeckCardItem com cardItem.
 - Incorporar appbar no controle de tela customizada.
