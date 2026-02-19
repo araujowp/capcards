@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
@@ -37,6 +38,31 @@ class CardRepository {
 
     await box.delete(id);
     return true;
+  }
+
+  static Future<bool> deleteAllByDeckId(int deckId) async {
+    try {
+      final box = Hive.box<CardDTO>(_boxName);
+
+      final keysToDelete = <dynamic>[];
+      for (var key in box.keys) {
+        final card = box.get(key);
+        if (card != null && card.deckId == deckId) {
+          keysToDelete.add(key);
+        }
+      }
+
+      if (keysToDelete.isEmpty) {
+        return true;
+      }
+
+      await box.deleteAll(keysToDelete);
+      return true;
+    } catch (e, stackTrace) {
+      debugPrint('Erro ao deletar cartões do deck $deckId: $e');
+      debugPrintStack(stackTrace: stackTrace);
+      return false;
+    }
   }
 
   static Future<List<CardDTO>> getAll() async {

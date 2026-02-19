@@ -13,7 +13,7 @@ class CapListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, color: Colors.deepOrange),
+      leading: Icon(icon, color: Colors.white),
       title: Text(text, style: const TextStyle(color: Colors.white)),
       onTap: action,
     );

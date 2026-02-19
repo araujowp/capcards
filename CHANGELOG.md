@@ -1,6 +1,5 @@
 ## [Unreleased]
 
-- Padonizar botoes edição cards x decks.
 - Add imagem na appbar
 - Passar erros apenas uma extra.
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
@@ -24,6 +23,8 @@
 - criar menu configurações
  
 # 2.0.0 - [2026-02-09]
+- Padonizar botoes edição cards x decks.
+- Apagar lista tambem apaga cartões.
 - Consistir cadastro de cartão sem frente ou verso.
 - Evitar cadastro de card sem descrição ou verso.
 - Atualizar layout tela adicionar card.
@@ -34,7 +35,7 @@
 - Atualizar layout Teste sem cartões.
 - Padronizar cor de icones search deck page.
 - Atualizar layout edição de lista.
-- Customizar font app bar (branco)
+- Customizar cor font appbar (branco)
 - Atualizar layout pagina de versão. 
 - Padronizar cores dos botões no card.
 - Customizar barra de navegação.

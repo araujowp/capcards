@@ -1,3 +1,4 @@
+import 'package:capcards/repository/card/card_repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 
@@ -41,7 +42,11 @@ class DeckRepository {
       throw Exception("Deck $id not found!");
     }
 
+    bool resultado = await CardRepository.deleteAllByDeckId(id);
+    print("=========== resultado =========== $resultado");
+
     await box.delete(id);
+    print("=========== deletou o deck =========== ");
     return true;
   }
 }
