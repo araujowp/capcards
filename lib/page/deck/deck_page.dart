@@ -1,3 +1,4 @@
+import 'package:capcards/components/cap_list_tile.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/search_card_page.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
@@ -95,39 +96,19 @@ class _DeckPageState extends State<DeckPage> {
                   decoration: const InputDecoration(label: Text("Nova lista")),
                 ),
               ),
-              ListTile(
-                title: const Text(
-                  "Salvar",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () => myAction("Save"),
-                leading: const Icon(
-                  Icons.save,
-                  color: Colors.white,
-                ),
-              ),
+              CapListTile(
+                  icon: Icons.save,
+                  text: "Salvar",
+                  action: () => myAction("Save")),
               if (widget.id != 0) ...[
-                ListTile(
-                  title: const Text(
-                    "Excluir",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onTap: () => myAction("Excluir"),
-                  leading: const Icon(
-                    Icons.delete,
-                    color: Colors.white,
-                  ),
-                ),
-                ListTile(
-                    title: const Text("Edite Cartões",
-                        style: TextStyle(color: Colors.white)),
-                    leading: const Icon(
-                      Icons.edit,
-                      color: Colors.white,
-                    ),
-                    onTap: () {
-                      editCards(context, widget.id);
-                    }),
+                CapListTile(
+                    icon: Icons.delete,
+                    text: "Excluir",
+                    action: () => myAction("Excluir")),
+                CapListTile(
+                    icon: Icons.edit,
+                    text: "Edite Cartões",
+                    action: () => editCards(context, widget.id)),
               ]
             ],
           ),

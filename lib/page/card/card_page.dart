@@ -1,3 +1,4 @@
+import 'package:capcards/components/cap_list_tile.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
 import 'package:capcards/repository/card/card_repository.dart';
@@ -79,18 +80,16 @@ class _CardPageState extends State<CardPage> {
                 ),
               ),
             ),
-            ListTile(
-              title:
-                  const Text("Salvar", style: TextStyle(color: Colors.white)),
-              leading: const Icon(Icons.save, color: Colors.white),
-              onTap: save,
+            CapListTile(
+              text: "Salvar",
+              icon: Icons.save,
+              action: save,
             ),
-            ListTile(
-              title:
-                  const Text("Cancelar", style: TextStyle(color: Colors.white)),
-              leading: const Icon(Icons.cancel, color: Colors.white),
-              onTap: cancel,
-            )
+            CapListTile(
+              text: "Cancelar",
+              icon: Icons.cancel,
+              action: cancel,
+            ),
           ],
         ),
       ),
