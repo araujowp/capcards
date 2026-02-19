@@ -105,20 +105,23 @@ class _TestPageState extends State<TestPage> {
 
     return CapScaffold(
       appBarText: widget.deckDTO.description,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            SwipableCard(
-              card: currentCard,
-              height: cardHeight,
-              width: cardWidth,
-              onCorrect: correct,
-              onWrong: wrong,
-            ),
-            const SizedBox(height: 20),
-            ActionCard(onCorrect: correct, onWrong: wrong),
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SwipableCard(
+                card: currentCard,
+                height: cardHeight,
+                width: cardWidth,
+                onCorrect: correct,
+                onWrong: wrong,
+              ),
+              const SizedBox(height: 20),
+              ActionCard(onCorrect: correct, onWrong: wrong),
+            ],
+          ),
         ),
       ),
     );

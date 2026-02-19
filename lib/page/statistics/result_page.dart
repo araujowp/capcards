@@ -24,6 +24,9 @@ class ResultPage extends StatelessWidget {
     final double percentage =
         totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0.0;
 
+    final size = MediaQuery.of(context).size;
+    final cardWidth = size.width;
+
     return CapScaffold(
       appBarText: "Resultado do teste",
       body: Center(
@@ -36,40 +39,58 @@ class ResultPage extends StatelessWidget {
                 getMessage(percentage),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontSize: 36,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.green,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 40),
-              Text(
-                'Acertos: $correctAnswers',
-                style: const TextStyle(fontSize: 28),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Erros: ${stats.wrongs}',
-                style: const TextStyle(fontSize: 28),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Total de questões: $totalQuestions',
-                style: const TextStyle(fontSize: 24),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.18),
+                    width: 1,
+                  ),
+                ),
+                width: cardWidth,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Acertos: $correctAnswers',
+                      style: const TextStyle(fontSize: 28),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Erros: ${stats.wrongs}',
+                      style: const TextStyle(fontSize: 28),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Total de questões: $totalQuestions',
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 32),
               Text(
                 'Aproveitamento: ${percentage.toStringAsFixed(1)}%',
                 style: const TextStyle(
-                  fontSize: 32,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+                  color: Colors.white,
                 ),
               ),
               ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text("Sair"))
+                  child: const Text("OK"))
             ],
           ),
         ),

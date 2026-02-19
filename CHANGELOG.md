@@ -23,6 +23,7 @@
 - criar menu configurações
  
 # 2.0.0 - [2026-02-09]
+- Centrarlizar cards na tela de teste.
 - Padonizar botoes edição cards x decks.
 - Apagar lista tambem apaga cartões.
 - Consistir cadastro de cartão sem frente ou verso.

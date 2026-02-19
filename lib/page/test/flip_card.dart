@@ -89,19 +89,22 @@ class _CustomFlipCardState extends State<FlipCard>
       height: widget.height,
       width: widget.width,
       decoration: BoxDecoration(
-        color: Colors.white70,
+        color: Colors.white.withOpacity(0.4),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-        child: AutoSizeText(widget.frontText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.green,
-              fontSize: 100,
-            ),
-            minFontSize: 16,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: AutoSizeText(widget.frontText,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Color.fromARGB(255, 55, 85, 6),
+                fontSize: 100,
+              ),
+              minFontSize: 16,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis),
+        ),
       ),
     );
   }
@@ -111,20 +114,23 @@ class _CustomFlipCardState extends State<FlipCard>
       height: widget.height,
       width: widget.width,
       decoration: BoxDecoration(
-        color: Colors.blueGrey,
+        color: Colors.black.withOpacity(0.4),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
-        child: AutoSizeText(
-          widget.backText,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 100,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: AutoSizeText(
+            widget.backText,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 100,
+            ),
+            minFontSize: 16,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
-          minFontSize: 16,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
         ),
       ),
     );
