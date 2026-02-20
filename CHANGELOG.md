@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+- Tela edição de cartões traduzir.
+- Adicionar opção de editar cartões.
+- Atualizar icone para não ficar esticado.
+- Criar o cart GlassCard, evitando replicação de layout
+- Refatorar cartoes com GlassCard. cardItem e DeckCardItem.
 - Add imagem na appbar
 - Passar erros apenas uma extra.
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
@@ -22,7 +27,7 @@
 - criar tela de configurações.
 - criar menu configurações
  
-# 2.0.0 - [2026-02-09]
+# 2.0.0 - [2026-02-20]
 - Centrarlizar cards na tela de teste.
 - Padonizar botoes edição cards x decks.
 - Apagar lista tambem apaga cartões.
