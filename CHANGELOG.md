@@ -1,14 +1,15 @@
 ## [Unreleased]
 
-- Tela edição de cartões traduzir.
 - Adicionar opção de editar cartões.
 - Atualizar icone para não ficar esticado.
 - Criar o cart GlassCard, evitando replicação de layout
 - Refatorar cartoes com GlassCard. cardItem e DeckCardItem.
 - Add imagem na appbar
+- Add borda na barra de navegação.
 - Passar erros apenas uma extra.
-- Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
 - Indicador de Progresso
+- Demonstrar que tem mais itens quando a lista for superior a capacidade da tela.
+- Temas da Aplicação trocar de fundo.
 - Add opção de exportar decks e cartoes. 
 - Add data do ultimo teste, e um fator de repetição, data proximo teste.
 - Carregar teste com cards que estão mais tempo sem aparecer.
@@ -20,13 +21,17 @@
 - Cartoes com imagens.
 - Indicar momento de revisão de erros.
 - Adicionar funcionalidade desligar son.
-- Aprender a usar Lottie Animation
 - Aprender a criar Lottie Animation
 - Adicionar son no flip
 - Adicionar son na troca de cartoes.
 - criar tela de configurações.
 - criar menu configurações
- 
+
+# 2.0.1 - [2026-02-21]
+- Animação na barra de navegação.
+- Mais destaque no item selecionado na barra de navegação.
+- Tela edição de cartões traduzir.
+
 # 2.0.0 - [2026-02-20]
 - Centrarlizar cards na tela de teste.
 - Padonizar botoes edição cards x decks.

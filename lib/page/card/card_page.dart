@@ -58,7 +58,7 @@ class _CardPageState extends State<CardPage> {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBarText: "Edit Card",
+      appBarText: "Edite Cartões?",
       body: SafeArea(
         child: Column(
           children: [

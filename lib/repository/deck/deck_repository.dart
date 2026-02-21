@@ -42,11 +42,9 @@ class DeckRepository {
       throw Exception("Deck $id not found!");
     }
 
-    bool resultado = await CardRepository.deleteAllByDeckId(id);
-    print("=========== resultado =========== $resultado");
-
+    await CardRepository.deleteAllByDeckId(id);
     await box.delete(id);
-    print("=========== deletou o deck =========== ");
+
     return true;
   }
 }

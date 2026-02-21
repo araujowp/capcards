@@ -1,4 +1,4 @@
-import 'package:capcards/components/custom_botton_nav.dart';
+import 'package:capcards/components/botton_nav/custom_botton_nav.dart';
 import 'package:capcards/page/about_page.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:flutter/material.dart';
