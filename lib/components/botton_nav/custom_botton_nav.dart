@@ -52,18 +52,29 @@ class _CustomBottomNavState extends State<CustomBottomNav>
     final itemWidth = screenWidth / 2; // Para 2 itens
     final newPosition = itemWidth * newIndex + itemWidth / 2;
 
-    if (animate) {
-      _holePositionAnimation = Tween<double>(
-        begin: _holePosition,
-        end: newPosition,
-      ).animate(
-        CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
-      );
-      _animationController.forward(from: 0.0);
-    } else {
-      _holePosition = newPosition;
-    }
-    _previousIndex = newIndex;
+    setState(() {
+      if (animate) {
+        _holePositionAnimation = Tween<double>(
+          begin: _holePosition,
+          end: newPosition,
+        ).animate(
+          CurvedAnimation(
+              parent: _animationController, curve: Curves.easeInOut),
+        );
+        _animationController.forward(from: 0.0);
+      } else {
+        _holePosition = newPosition;
+        _holePositionAnimation = Tween<double>(
+          begin: newPosition,
+          end: newPosition,
+        ).animate(
+          CurvedAnimation(
+              parent: _animationController, curve: Curves.easeInOut),
+        );
+        // Sem animação necessária, pois begin e end são iguais
+      }
+      _previousIndex = newIndex;
+    });
   }
 
   @override
