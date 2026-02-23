@@ -1,12 +1,13 @@
 import 'package:capcards/components/cap_list_tile.dart';
 import 'package:capcards/page/cap_scaffold.dart';
+import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:flutter/material.dart';
 
 class CardPage extends StatefulWidget {
-  final int deckId;
-  const CardPage({super.key, required this.deckId});
+  final CardDTO cardDTO;
+  const CardPage({super.key, required this.cardDTO});
 
   @override
   State<CardPage> createState() => _CardPageState();
@@ -50,7 +51,7 @@ class _CardPageState extends State<CardPage> {
     CardDTONew card = CardDTONew(
         frontDescription: textControllerFront.text,
         backDescription: textControllerBack.text,
-        deckId: widget.deckId);
+        deckId: widget.cardDTO.deckId);
     CardRepository.save(card);
     cancel();
   }
@@ -58,7 +59,7 @@ class _CardPageState extends State<CardPage> {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBarText: "Edite Cartões?",
+      appBarText: "Edite Cartão",
       body: SafeArea(
         child: Column(
           children: [

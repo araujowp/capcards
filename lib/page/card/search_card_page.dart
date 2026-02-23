@@ -15,6 +15,8 @@ class SearchCardPage extends StatefulWidget {
 
 class _SearchCardPageState extends State<SearchCardPage> {
   late Future<List<CardDTO>> _futureCards;
+  CardDTO cardDTO =
+      CardDTO(backDescription: "", frontDescription: "", id: 0, deckId: 0);
 
   @override
   void initState() {
@@ -23,12 +25,12 @@ class _SearchCardPageState extends State<SearchCardPage> {
   }
 
   void addCard() async {
-    // ignore: unused_local_variable
-    final result = await Navigator.push(
+    cardDTO.deckId = widget.deckId;
+    await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => CardPage(
-                  deckId: widget.deckId,
+                  cardDTO: cardDTO,
                 )));
     setState(() {
       _futureCards = CardRepository.getByDeckId(widget.deckId);
@@ -42,10 +44,19 @@ class _SearchCardPageState extends State<SearchCardPage> {
     });
   }
 
+  update(CardDTO cardDTO) async {
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => CardPage(
+                  cardDTO: cardDTO,
+                )));
+  }
+
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBarText: "Edit cards",
+      appBarText: "Edite cartões",
       appBarActions: [
         IconButton(
             icon: const Icon(
@@ -72,6 +83,7 @@ class _SearchCardPageState extends State<SearchCardPage> {
                 itemCount: cards.length,
                 itemBuilder: (context, index) {
                   final card = cards[index];
+                  cardDTO = card;
                   return CardItem(
                     description: card.frontDescription,
                     onDelete: () => delete(card.id),
