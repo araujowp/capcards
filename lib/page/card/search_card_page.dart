@@ -15,8 +15,7 @@ class SearchCardPage extends StatefulWidget {
 
 class _SearchCardPageState extends State<SearchCardPage> {
   late Future<List<CardDTO>> _futureCards;
-  CardDTO cardDTO =
-      CardDTO(backDescription: "", frontDescription: "", id: 0, deckId: 0);
+  CardDTO cardDTO = CardDTO.build(0);
 
   @override
   void initState() {
@@ -25,12 +24,11 @@ class _SearchCardPageState extends State<SearchCardPage> {
   }
 
   void addCard() async {
-    cardDTO.deckId = widget.deckId;
     await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => CardPage(
-                  cardDTO: cardDTO,
+                  cardDTO: CardDTO.build(widget.deckId),
                 )));
     setState(() {
       _futureCards = CardRepository.getByDeckId(widget.deckId);

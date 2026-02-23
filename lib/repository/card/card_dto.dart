@@ -26,4 +26,9 @@ class CardDTO extends HiveObject {
       frontDescription: "Front empty card",
       backDescription: "back empty card",
       deckId: -1);
+
+  static CardDTO build(int deckID) {
+    return CardDTO(
+        id: 0, frontDescription: "", backDescription: "", deckId: deckID);
+  }
 }
