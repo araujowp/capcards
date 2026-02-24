@@ -21,8 +21,10 @@ class _CardPageState extends State<CardPage> {
   @override
   void initState() {
     super.initState();
-    textControllerFront = TextEditingController();
-    textControllerBack = TextEditingController();
+    textControllerFront =
+        TextEditingController(text: widget.cardDTO.frontDescription);
+    textControllerBack =
+        TextEditingController(text: widget.cardDTO.backDescription);
   }
 
   @override
@@ -48,11 +50,20 @@ class _CardPageState extends State<CardPage> {
       return;
     }
 
-    CardDTONew card = CardDTONew(
-        frontDescription: textControllerFront.text,
-        backDescription: textControllerBack.text,
-        deckId: widget.cardDTO.deckId);
-    CardRepository.save(card);
+    if (widget.cardDTO.id == 0) {
+      CardDTONew card = CardDTONew(
+          frontDescription: textControllerFront.text,
+          backDescription: textControllerBack.text,
+          deckId: widget.cardDTO.deckId);
+      CardRepository.save(card);
+    } else {
+      CardDTO card = CardDTO(
+          id: widget.cardDTO.id,
+          frontDescription: textControllerFront.text,
+          backDescription: textControllerBack.text,
+          deckId: widget.cardDTO.deckId);
+      CardRepository.update(card);
+    }
     cancel();
   }
 

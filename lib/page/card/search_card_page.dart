@@ -83,8 +83,9 @@ class _SearchCardPageState extends State<SearchCardPage> {
                   final card = cards[index];
                   cardDTO = card;
                   return CardItem(
-                    description: card.frontDescription,
+                    card: card,
                     onDelete: () => delete(card.id),
+                    onUpdate: () => update(card),
                   );
                 });
           } else {

@@ -1,22 +1,24 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:capcards/repository/card/card_dto.dart';
 
 class CardItem extends StatelessWidget {
-  final String description;
+  final CardDTO card;
   final VoidCallback onDelete;
+  final VoidCallback onUpdate;
 
   const CardItem({
     super.key,
-    required this.description,
+    required this.card,
     required this.onDelete,
+    required this.onUpdate,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-          vertical: 4, horizontal: 16), // Margem reduzida para visual slim
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: BackdropFilter(
@@ -52,9 +54,8 @@ class CardItem extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    description,
+                    card.frontDescription,
                     style: const TextStyle(
-                      fontFamily: 'Roboto',
                       color: Colors.white,
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -64,9 +65,13 @@ class CardItem extends StatelessWidget {
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete_outline,
-                      color: Colors.white70,
-                      size: 24), // Ícone de delete ajustado
+                      color: Colors.white70, size: 24),
                   onPressed: onDelete,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.edit_outlined,
+                      color: Colors.white70, size: 24),
+                  onPressed: onUpdate,
                 ),
               ],
             ),
