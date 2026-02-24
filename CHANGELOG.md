@@ -27,6 +27,7 @@
 - criar menu configurações
 
 # 2.1.0 - [2026-02-23]
+- Trocar imagem de fundo com mais definição.
 - Adicionar opção de editar cartões.
 - Animação na barra de navegação.
 - Mais destaque no item selecionado na barra de navegação.
