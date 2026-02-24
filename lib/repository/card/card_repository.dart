@@ -12,6 +12,19 @@ class CardRepository {
     return allCards.where((card) => card.deckId == deckId).toList();
   }
 
+  static Future<int> countByDeckId(int deckId) async {
+    final box = Hive.box<CardDTO>(_boxName);
+
+    int count = 0;
+    for (final card in box.values) {
+      if (card.deckId == deckId) {
+        count++;
+      }
+    }
+
+    return count;
+  }
+
   static Future<void> save(CardDTONew cardNew) async {
     final box = Hive.box<CardDTO>(_boxName);
 

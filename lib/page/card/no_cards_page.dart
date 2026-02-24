@@ -1,12 +1,12 @@
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/search_card_page.dart';
-import 'package:capcards/repository/deck/deck_dto.dart';
+import 'package:capcards/service/Deck.dart';
 import 'package:flutter/material.dart';
 
 class NoCardsPage extends StatelessWidget {
-  final DeckDTO deckDto;
+  final Deck deck;
 
-  const NoCardsPage(this.deckDto, {super.key});
+  const NoCardsPage(this.deck, {super.key});
 
   editCards(BuildContext context, int deckId) async {
     Navigator.push(
@@ -18,7 +18,7 @@ class NoCardsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CapScaffold(
-      appBarText: deckDto.description,
+      appBarText: deck.description,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -31,7 +31,7 @@ class NoCardsPage extends StatelessWidget {
               height: 24,
             ),
             ElevatedButton.icon(
-              onPressed: () => editCards(context, deckDto.id),
+              onPressed: () => editCards(context, deck.id),
               icon: const Icon(Icons.add), // Ou Icons.edit se preferir
               label: const Text('Adicionar cartões'),
               style: ElevatedButton.styleFrom(

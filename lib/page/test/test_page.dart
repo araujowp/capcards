@@ -6,12 +6,12 @@ import 'package:capcards/page/test/action_card.dart';
 import 'package:capcards/page/test/swipable_card.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
-import 'package:capcards/repository/deck/deck_dto.dart';
+import 'package:capcards/service/Deck.dart';
 import 'package:flutter/material.dart';
 
 class TestPage extends StatefulWidget {
-  final DeckDTO deckDTO;
-  const TestPage({super.key, required this.deckDTO});
+  final Deck deck;
+  const TestPage({super.key, required this.deck});
 
   @override
   State<TestPage> createState() => _TestPageState();
@@ -33,7 +33,7 @@ class _TestPageState extends State<TestPage> {
 
   Future<void> _loadShuffleCards() async {
     try {
-      cards = await CardRepository.getByDeckId(widget.deckDTO.id);
+      cards = await CardRepository.getByDeckId(widget.deck.id);
       cards.shuffle();
       cards = cards.take(15).toList();
     } catch (e) {
@@ -89,7 +89,7 @@ class _TestPageState extends State<TestPage> {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text(widget.deckDTO.description),
+          title: Text(widget.deck.description),
         ),
         body: const Center(child: CircularProgressIndicator()),
       );
@@ -99,12 +99,12 @@ class _TestPageState extends State<TestPage> {
       if (startedTest) {
         return ResultPage(stats);
       } else {
-        return NoCardsPage(widget.deckDTO);
+        return NoCardsPage(widget.deck);
       }
     }
 
     return CapScaffold(
-      appBarText: widget.deckDTO.description,
+      appBarText: widget.deck.description,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

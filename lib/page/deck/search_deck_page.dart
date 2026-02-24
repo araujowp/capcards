@@ -2,8 +2,9 @@ import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/deck/deck_card_item.dart';
 import 'package:capcards/page/deck/deck_page.dart';
 import 'package:capcards/page/test/test_page.dart';
-import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
+import 'package:capcards/service/Deck.dart';
+import 'package:capcards/service/deck_service.dart';
 import 'package:flutter/material.dart';
 
 final RouteObserver<PageRoute<dynamic>> routeObserver =
@@ -17,13 +18,13 @@ class SearchDeckPage extends StatefulWidget {
 }
 
 class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
-  late Future<List<DeckDTO>> _futureDecks;
+  late Future<List<Deck>> _futureDecks;
   bool editMode = false;
 
   @override
   void initState() {
     super.initState();
-    _futureDecks = DeckRepository.getAll();
+    _futureDecks = DeckService.getAll();
   }
 
   @override
@@ -42,13 +43,12 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   @override
   void didPopNext() {
     setState(() {
-      _futureDecks = DeckRepository.getAll();
+      _futureDecks = DeckService.getAll();
     });
   }
 
   saveDeck(BuildContext context, int id, String description) async {
-    // ignore: unused_local_variable
-    final result = await Navigator.push(
+    await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => DeckPage(
@@ -60,7 +60,7 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   delete(int deckId) async {
     await DeckRepository.delete(deckId);
     setState(() {
-      _futureDecks = DeckRepository.getAll();
+      _futureDecks = DeckService.getAll();
     });
   }
 
@@ -70,10 +70,10 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
     });
   }
 
-  test(DeckDTO deck) {
+  test(Deck deck) {
     if (!editMode) {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => TestPage(deckDTO: deck)));
+          MaterialPageRoute(builder: (context) => TestPage(deck: deck)));
     }
   }
 
@@ -92,7 +92,7 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
             icon: const Icon(Icons.edit, color: Colors.white),
             onPressed: () => edit())
       ],
-      body: FutureBuilder<List<DeckDTO>>(
+      body: FutureBuilder<List<Deck>>(
           future: _futureDecks,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -109,10 +109,11 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
                 itemCount: decks.length,
                 itemBuilder: (context, index) {
                   final deck = decks[index];
+
                   return DeckCardItem(
                     description: deck.description,
                     deckId: deck.id,
-                    cardCount: 25,
+                    cardCount: deck.countCards,
                     editMode: editMode,
                     onDelete: () => delete(deck.id),
                     onEdit: () => saveDeck(context, deck.id, deck.description),

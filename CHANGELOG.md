@@ -26,7 +26,8 @@
 - criar tela de configurações.
 - criar menu configurações
 
-# 2.1.0 - [2026-02-23]
+# 2.1.0 - [2026-02-24]
+- Retirar hardcode numero de cartões (tela inicial).
 - Trocar imagem de fundo com mais definição.
 - Adicionar opção de editar cartões.
 - Animação na barra de navegação.
