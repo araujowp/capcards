@@ -29,6 +29,7 @@
 - Revisar versões de dependencias.
 
 # 2.1.0 - [2026-02-24]
+- Editar cartão atualiza lista de Cartões.
 - Atualizar versão do flutter 3.2.2 > 3.11.0 (fsrs: ^2.0.1 algoritimo)
 - Retirar hardcode numero de cartões (tela inicial).
 - Trocar imagem de fundo com mais definição.

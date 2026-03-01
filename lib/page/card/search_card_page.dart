@@ -25,30 +25,31 @@ class _SearchCardPageState extends State<SearchCardPage> {
 
   void addCard() async {
     await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => CardPage(
-                  cardDTO: CardDTO.build(widget.deckId),
-                )));
-    setState(() {
-      _futureCards = CardRepository.getByDeckId(widget.deckId);
-    });
+      context,
+      MaterialPageRoute(
+        builder: (context) => CardPage(cardDTO: CardDTO.build(widget.deckId)),
+      ),
+    );
+    updateList();
   }
 
   delete(int cardId) {
     CardRepository.delete(cardId);
-    setState(() {
-      _futureCards = CardRepository.getByDeckId(widget.deckId);
-    });
+    updateList();
   }
 
   update(CardDTO cardDTO) async {
     await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => CardPage(
-                  cardDTO: cardDTO,
-                )));
+      context,
+      MaterialPageRoute(builder: (context) => CardPage(cardDTO: cardDTO)),
+    );
+    updateList();
+  }
+
+  void updateList() {
+    setState(() {
+      _futureCards = CardRepository.getByDeckId(widget.deckId);
+    });
   }
 
   @override
@@ -57,11 +58,9 @@ class _SearchCardPageState extends State<SearchCardPage> {
       appBarText: "Edite cartões",
       appBarActions: [
         IconButton(
-            icon: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            onPressed: () => addCard())
+          icon: const Icon(Icons.add, color: Colors.white),
+          onPressed: () => addCard(),
+        ),
       ],
       body: FutureBuilder<List<CardDTO>>(
         future: _futureCards,
@@ -72,26 +71,26 @@ class _SearchCardPageState extends State<SearchCardPage> {
 
           if (snapshot.hasError) {
             return Center(
-                child: Text("Erro ao carregar dados ${snapshot.error}"));
+              child: Text("Erro ao carregar dados ${snapshot.error}"),
+            );
           }
 
           if (snapshot.hasData) {
             final cards = snapshot.data!;
             return ListView.builder(
-                itemCount: cards.length,
-                itemBuilder: (context, index) {
-                  final card = cards[index];
-                  cardDTO = card;
-                  return CardItem(
-                    card: card,
-                    onDelete: () => delete(card.id),
-                    onUpdate: () => update(card),
-                  );
-                });
-          } else {
-            return const Center(
-              child: Text("0 card"),
+              itemCount: cards.length,
+              itemBuilder: (context, index) {
+                final card = cards[index];
+                cardDTO = card;
+                return CardItem(
+                  card: card,
+                  onDelete: () => delete(card.id),
+                  onUpdate: () => update(card),
+                );
+              },
             );
+          } else {
+            return const Center(child: Text("0 card"));
           }
         },
       ),
