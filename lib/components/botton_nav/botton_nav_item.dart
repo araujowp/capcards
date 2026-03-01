@@ -30,9 +30,9 @@ class BottomNavItem extends StatelessWidget {
               shape: BoxShape.circle,
               color: isSelected
                   ? Colors.transparent
-                  : Colors.white.withOpacity(0.06),
+                  : Colors.white.withValues(alpha: 0.06),
               border: Border.all(
-                color: Colors.white.withOpacity(isSelected ? 0.50 : 0.12),
+                color: Colors.white.withValues(alpha: isSelected ? 0.50 : 0.12),
                 width: 0.8,
               ),
             ),
@@ -40,14 +40,12 @@ class BottomNavItem extends StatelessWidget {
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOut,
               tween: ColorTween(
-                end: isSelected ? Colors.white : Colors.white.withOpacity(0.9),
+                end: isSelected
+                    ? Colors.white
+                    : Colors.white.withValues(alpha: 0.9),
               ),
               builder: (context, color, child) {
-                return Icon(
-                  icon,
-                  color: color,
-                  size: 24,
-                );
+                return Icon(icon, color: color, size: 24);
               },
             ),
           ),
@@ -56,7 +54,9 @@ class BottomNavItem extends StatelessWidget {
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
             style: TextStyle(
-              color: isSelected ? Colors.white : Colors.white.withOpacity(0.9),
+              color: isSelected
+                  ? Colors.white
+                  : Colors.white.withValues(alpha: 0.9),
               fontSize: 12,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             ),

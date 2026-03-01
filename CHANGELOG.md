@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+- spaced_repetition: ^0.1.0 analisar referencias para usar algoritimo
+- Implementar pagina de licencas.
 - Atualizar icone para não ficar esticado.
 - Criar o cart GlassCard, evitando replicação de layout
 - Refatorar cartoes com GlassCard. cardItem e DeckCardItem.
@@ -13,7 +15,6 @@
 - Add data do ultimo teste, e um fator de repetição, data proximo teste.
 - Carregar teste com cards que estão mais tempo sem aparecer.
 - Tratar teste antes da curva de esquecimento.
-- Escolher um algoritimo de para repetição ex SM-2
 - Exportar estatisticas.
 - Menu para estatisticas gerais.
 - Criar listas animadas (aperecer itens em sequencia)
@@ -25,8 +26,10 @@
 - Adicionar son na troca de cartoes.
 - criar tela de configurações.
 - criar menu configurações
+- Revisar versões de dependencias.
 
 # 2.1.0 - [2026-02-24]
+- Atualizar versão do flutter 3.2.2 > 3.11.0 (fsrs: ^2.0.1 algoritimo)
 - Retirar hardcode numero de cartões (tela inicial).
 - Trocar imagem de fundo com mais definição.
 - Adicionar opção de editar cartões.

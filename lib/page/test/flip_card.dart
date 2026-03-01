@@ -33,8 +33,10 @@ class _CustomFlipCardState extends State<FlipCard>
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-    _animation =
-        Tween<double>(begin: 0, end: math.pi).animate(_animationController);
+    _animation = Tween<double>(
+      begin: 0,
+      end: math.pi,
+    ).animate(_animationController);
   }
 
   @override
@@ -89,21 +91,23 @@ class _CustomFlipCardState extends State<FlipCard>
       height: widget.height,
       width: widget.width,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.4),
+        color: Colors.white.withValues(alpha: 0.4),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: AutoSizeText(widget.frontText,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Color.fromARGB(255, 55, 85, 6),
-                fontSize: 100,
-              ),
-              minFontSize: 16,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis),
+          child: AutoSizeText(
+            widget.frontText,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color.fromARGB(255, 55, 85, 6),
+              fontSize: 100,
+            ),
+            minFontSize: 16,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ),
     );
@@ -114,7 +118,7 @@ class _CustomFlipCardState extends State<FlipCard>
       height: widget.height,
       width: widget.width,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.4),
+        color: Colors.black.withValues(alpha: 0.4),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
@@ -123,10 +127,7 @@ class _CustomFlipCardState extends State<FlipCard>
           child: AutoSizeText(
             widget.backText,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 100,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 100),
             minFontSize: 16,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

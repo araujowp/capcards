@@ -29,19 +29,23 @@ class MyApp extends StatelessWidget {
       title: 'cap-cards',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-            titleTextStyle: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.bold),
-            color: Color(0xFF66813A)),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20.0,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.bold,
+          ),
+          backgroundColor: Color(0xFF66813A),
+        ),
         scaffoldBackgroundColor: const Color(0xFF66813A),
         listTileTheme: const ListTileThemeData(tileColor: Colors.white),
         inputDecorationTheme: const InputDecorationTheme(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.green, width: 2))),
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green, width: 2),
+          ),
+        ),
         useMaterial3: true,
       ),
       home: const MainPage(),

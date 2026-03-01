@@ -75,9 +75,9 @@ class _DeckPageState extends State<DeckPage> {
 
   editCards(BuildContext context, int deckId) async {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => SearchCardPage(deckId: deckId)));
+      context,
+      MaterialPageRoute(builder: (context) => SearchCardPage(deckId: deckId)),
+    );
   }
 
   @override
@@ -85,7 +85,7 @@ class _DeckPageState extends State<DeckPage> {
     return CapScaffold(
       appBarText: widget.id == 0 ? "Nova lista" : "Edite lista",
       body: Container(
-        color: Colors.black.withOpacity(0.1),
+        color: Colors.black.withValues(alpha: 0.1),
         child: SafeArea(
           child: Column(
             children: [
@@ -97,19 +97,22 @@ class _DeckPageState extends State<DeckPage> {
                 ),
               ),
               CapListTile(
-                  icon: Icons.save,
-                  text: "Salvar",
-                  action: () => myAction("Save")),
+                icon: Icons.save,
+                text: "Salvar",
+                action: () => myAction("Save"),
+              ),
               if (widget.id != 0) ...[
                 CapListTile(
-                    icon: Icons.delete,
-                    text: "Excluir",
-                    action: () => myAction("Excluir")),
+                  icon: Icons.delete,
+                  text: "Excluir",
+                  action: () => myAction("Excluir"),
+                ),
                 CapListTile(
-                    icon: Icons.edit,
-                    text: "Edite Cartões",
-                    action: () => editCards(context, widget.id)),
-              ]
+                  icon: Icons.edit,
+                  text: "Edite Cartões",
+                  action: () => editCards(context, widget.id),
+                ),
+              ],
             ],
           ),
         ),

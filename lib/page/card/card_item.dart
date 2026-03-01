@@ -26,10 +26,10 @@ class CardItem extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.15),
+              color: Colors.black.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: Colors.white.withOpacity(0.18),
+                color: Colors.white.withValues(alpha: 0.18),
                 width: 1,
               ),
             ),
@@ -39,7 +39,7 @@ class CardItem extends StatelessWidget {
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.12),
+                    color: Colors.black.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
@@ -64,13 +64,19 @@ class CardItem extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.delete_outline,
-                      color: Colors.white70, size: 24),
+                  icon: const Icon(
+                    Icons.delete_outline,
+                    color: Colors.white70,
+                    size: 24,
+                  ),
                   onPressed: onDelete,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.edit_outlined,
-                      color: Colors.white70, size: 24),
+                  icon: const Icon(
+                    Icons.edit_outlined,
+                    color: Colors.white70,
+                    size: 24,
+                  ),
                   onPressed: onUpdate,
                 ),
               ],

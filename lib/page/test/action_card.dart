@@ -4,11 +4,7 @@ class ActionCard extends StatelessWidget {
   final VoidCallback onCorrect;
   final VoidCallback onWrong;
 
-  const ActionCard({
-    super.key,
-    required this.onCorrect,
-    required this.onWrong,
-  });
+  const ActionCard({super.key, required this.onCorrect, required this.onWrong});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +15,7 @@ class ActionCard extends StatelessWidget {
             label: "ACERTEI",
             icon: Icons.check,
             gradient: const LinearGradient(
-              colors: [
-                Color(0xFF4CAF50),
-                Color(0xFF2E7D32),
-              ],
+              colors: [Color(0xFF4CAF50), Color(0xFF2E7D32)],
             ),
             onTap: onCorrect,
           ),
@@ -33,10 +26,7 @@ class ActionCard extends StatelessWidget {
             label: "ERREI",
             icon: Icons.close,
             gradient: const LinearGradient(
-              colors: [
-                Color(0xFFEF5350),
-                Color(0xFFC62828),
-              ],
+              colors: [Color(0xFFEF5350), Color(0xFFC62828)],
             ),
             onTap: onWrong,
           ),
@@ -60,7 +50,7 @@ class ActionCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha: 0.25),
               blurRadius: 12,
               offset: const Offset(0, 6),
             ),

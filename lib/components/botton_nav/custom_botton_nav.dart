@@ -62,23 +62,23 @@ class _CustomBottomNavState extends State<CustomBottomNav>
 
     setState(() {
       if (animate) {
-        _holePositionAnimation = Tween<double>(
-          begin: _holePosition,
-          end: newPosition,
-        ).animate(
-          CurvedAnimation(
-              parent: _animationController, curve: Curves.easeInOut),
-        );
+        _holePositionAnimation =
+            Tween<double>(begin: _holePosition, end: newPosition).animate(
+              CurvedAnimation(
+                parent: _animationController,
+                curve: Curves.easeInOut,
+              ),
+            );
         _animationController.forward(from: 0.0);
       } else {
         _holePosition = newPosition;
-        _holePositionAnimation = Tween<double>(
-          begin: newPosition,
-          end: newPosition,
-        ).animate(
-          CurvedAnimation(
-              parent: _animationController, curve: Curves.easeInOut),
-        );
+        _holePositionAnimation =
+            Tween<double>(begin: newPosition, end: newPosition).animate(
+              CurvedAnimation(
+                parent: _animationController,
+                curve: Curves.easeInOut,
+              ),
+            );
       }
     });
   }
@@ -107,7 +107,7 @@ class _CustomBottomNavState extends State<CustomBottomNav>
                 ),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.08),
+                    color: Colors.white.withValues(alpha: 0.08),
                   ),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),

@@ -21,8 +21,9 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final int correctAnswers = stats.tries - stats.wrongs;
     final int totalQuestions = stats.tries;
-    final double percentage =
-        totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0.0;
+    final double percentage = totalQuestions > 0
+        ? (correctAnswers / totalQuestions) * 100
+        : 0.0;
 
     final size = MediaQuery.of(context).size;
     final cardWidth = size.width;
@@ -46,13 +47,15 @@ class ResultPage extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.18),
+                    color: Colors.white.withValues(alpha: 0.18),
                     width: 1,
                   ),
                 ),
@@ -87,10 +90,11 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text("OK"))
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("OK"),
+              ),
             ],
           ),
         ),
