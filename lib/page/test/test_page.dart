@@ -63,6 +63,7 @@ class _TestPageState extends State<TestPage> {
     cards[currentCardIndex].revisionDate = await ReviewRepository.nextDate(
       cards[currentCardIndex].id,
     );
+    CardRepository.update(cards[currentCardIndex]);
   }
 
   void correct() async {
