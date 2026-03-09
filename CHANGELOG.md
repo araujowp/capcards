@@ -1,6 +1,5 @@
 ## [Unreleased]
 
-- spaced_repetition: ^0.1.0 analisar referencias para usar algoritimo
 - Implementar pagina de licencas.
 - Atualizar icone para não ficar esticado.
 - Criar o cart GlassCard, evitando replicação de layout
@@ -28,7 +27,8 @@
 - criar menu configurações
 - Revisar versões de dependencias.
 
-# 2.1.0 - [2026-02-24]
+# 2.1.0 - [2026-03-03]
+- Calcular proxima data usando FSRS (algoritimo).
 - Editar cartão atualiza lista de Cartões.
 - Atualizar versão do flutter 3.2.2 > 3.11.0 (fsrs: ^2.0.1 algoritimo)
 - Retirar hardcode numero de cartões (tela inicial).

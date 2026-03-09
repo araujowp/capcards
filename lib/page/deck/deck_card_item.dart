@@ -78,7 +78,7 @@ class DeckCardItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 8),
                       child: Text(
-                        '($cardCount)',
+                        '(1/$cardCount)',
                         style: TextStyle(
                           color: Colors.white.withValues(alpha: 0.9),
                           fontSize: 17,

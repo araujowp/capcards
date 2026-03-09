@@ -1,5 +1,6 @@
 import 'package:capcards/page/deck/search_deck_page.dart';
 import 'package:capcards/page/main_page.dart';
+import 'package:capcards/repository/card/card_dto_adapter.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';

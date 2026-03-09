@@ -37,6 +37,7 @@ class CardRepository {
       frontDescription: cardNew.frontDescription,
       backDescription: cardNew.backDescription,
       deckId: cardNew.deckId,
+      revisionDate: CardDTO.defaultDate,
     );
 
     await box.put(newId, card);

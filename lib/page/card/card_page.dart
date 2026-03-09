@@ -21,10 +21,12 @@ class _CardPageState extends State<CardPage> {
   @override
   void initState() {
     super.initState();
-    textControllerFront =
-        TextEditingController(text: widget.cardDTO.frontDescription);
-    textControllerBack =
-        TextEditingController(text: widget.cardDTO.backDescription);
+    textControllerFront = TextEditingController(
+      text: widget.cardDTO.frontDescription,
+    );
+    textControllerBack = TextEditingController(
+      text: widget.cardDTO.backDescription,
+    );
   }
 
   @override
@@ -52,16 +54,19 @@ class _CardPageState extends State<CardPage> {
 
     if (widget.cardDTO.id == 0) {
       CardDTONew card = CardDTONew(
-          frontDescription: textControllerFront.text,
-          backDescription: textControllerBack.text,
-          deckId: widget.cardDTO.deckId);
+        frontDescription: textControllerFront.text,
+        backDescription: textControllerBack.text,
+        deckId: widget.cardDTO.deckId,
+      );
       CardRepository.save(card);
     } else {
       CardDTO card = CardDTO(
-          id: widget.cardDTO.id,
-          frontDescription: textControllerFront.text,
-          backDescription: textControllerBack.text,
-          deckId: widget.cardDTO.deckId);
+        id: widget.cardDTO.id,
+        frontDescription: textControllerFront.text,
+        backDescription: textControllerBack.text,
+        deckId: widget.cardDTO.deckId,
+        revisionDate: widget.cardDTO.revisionDate,
+      );
       CardRepository.update(card);
     }
     cancel();
@@ -78,30 +83,18 @@ class _CardPageState extends State<CardPage> {
               padding: const EdgeInsets.only(bottom: 10),
               child: TextField(
                 controller: textControllerFront,
-                decoration: const InputDecoration(
-                  label: Text("Frente"),
-                ),
+                decoration: const InputDecoration(label: Text("Frente")),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: TextField(
                 controller: textControllerBack,
-                decoration: const InputDecoration(
-                  label: Text("Verso"),
-                ),
+                decoration: const InputDecoration(label: Text("Verso")),
               ),
             ),
-            CapListTile(
-              text: "Salvar",
-              icon: Icons.save,
-              action: save,
-            ),
-            CapListTile(
-              text: "Cancelar",
-              icon: Icons.cancel,
-              action: cancel,
-            ),
+            CapListTile(text: "Salvar", icon: Icons.save, action: save),
+            CapListTile(text: "Cancelar", icon: Icons.cancel, action: cancel),
           ],
         ),
       ),

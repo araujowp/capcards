@@ -1,7 +1,5 @@
 import 'package:hive/hive.dart';
 
-part 'card_dto.g.dart';
-
 @HiveType(typeId: 0)
 class CardDTO extends HiveObject {
   @HiveField(0)
@@ -15,20 +13,35 @@ class CardDTO extends HiveObject {
 
   @HiveField(3)
   int deckId;
-  CardDTO(
-      {required this.id,
-      required this.frontDescription,
-      required this.backDescription,
-      required this.deckId});
+
+  @HiveField(4)
+  DateTime revisionDate;
+
+  static DateTime defaultDate = DateTime(2015, 9, 14, 0, 0, 0);
+
+  CardDTO({
+    required this.id,
+    required this.frontDescription,
+    required this.backDescription,
+    required this.deckId,
+    required this.revisionDate,
+  });
 
   factory CardDTO.empty() => CardDTO(
-      id: -1,
-      frontDescription: "Front empty card",
-      backDescription: "back empty card",
-      deckId: -1);
+    id: -1,
+    frontDescription: "Front empty card",
+    backDescription: "back empty card",
+    deckId: -1,
+    revisionDate: defaultDate,
+  );
 
   static CardDTO build(int deckID) {
     return CardDTO(
-        id: 0, frontDescription: "", backDescription: "", deckId: deckID);
+      id: 0,
+      frontDescription: "",
+      backDescription: "",
+      deckId: deckID,
+      revisionDate: defaultDate,
+    );
   }
 }
