@@ -6,6 +6,7 @@ import 'package:capcards/page/test/action_card.dart';
 import 'package:capcards/page/test/swipable_card.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
+import 'package:capcards/repository/review/review_repository.dart';
 import 'package:capcards/service/Deck.dart';
 import 'package:flutter/material.dart';
 
@@ -57,18 +58,29 @@ class _TestPageState extends State<TestPage> {
     return cards[currentCardIndex];
   }
 
-  void correct() {
+  Future<void> updateStatistic(bool correct) async {
+    await ReviewRepository.record(cards[currentCardIndex].id, correct);
+    cards[currentCardIndex].revisionDate = await ReviewRepository.nextDate(
+      cards[currentCardIndex].id,
+    );
+  }
+
+  void correct() async {
     startedTest = true;
     stats.correct();
+    await updateStatistic(true);
+
     setState(() {
       cards.removeAt(currentCardIndex);
       currentCard = getNext();
     });
   }
 
-  void wrong() {
+  void wrong() async {
     startedTest = true;
     stats.fail();
+
+    await updateStatistic(false);
 
     final card = cards[currentCardIndex];
     cards.removeAt(currentCardIndex);

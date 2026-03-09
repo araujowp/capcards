@@ -1,15 +1,20 @@
 ## [Unreleased]
 
+- Gerar teste com os cards com data de revisão mais antiga.
+- Mostar quantidade de cards a revisar por lista.
 - Implementar pagina de licencas.
 - Atualizar icone para não ficar esticado.
 - Criar o cart GlassCard, evitando replicação de layout
 - Refatorar cartoes com GlassCard. cardItem e DeckCardItem.
 - Add imagem na appbar
 - Add borda na barra de navegação.
-- Passar erros apenas uma extra.
+- Passar erros apenas uma vez extra.
+- No final da revisão adicionar opção de refazer a revisão atual.
+- No final da revisao adicionar opção fazer uma nova revisao desta lista.
 - Indicador de Progresso
 - Demonstrar que tem mais itens quando a lista for superior a capacidade da tela?.
 - Temas da Aplicação trocar imagem de fundo.
+- Criar imagens personalisadas com o tema capcards. 
 - Add opção de exportar decks e cartoes. 
 - Add data do ultimo teste, e um fator de repetição, data proximo teste.
 - Carregar teste com cards que estão mais tempo sem aparecer.
@@ -27,7 +32,7 @@
 - criar menu configurações
 - Revisar versões de dependencias.
 
-# 2.1.0 - [2026-03-03]
+# 2.1.0 - [2026-03-09]
 - Calcular proxima data usando FSRS (algoritimo).
 - Editar cartão atualiza lista de Cartões.
 - Atualizar versão do flutter 3.2.2 > 3.11.0 (fsrs: ^2.0.1 algoritimo)
