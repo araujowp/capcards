@@ -86,9 +86,9 @@ class DeckCardItem extends StatelessWidget {
                             child: Text(
                               'revisar ($cardsReview/$cardCount)',
                               style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.9),
+                                color: Colors.yellow.withValues(alpha: 0.9),
                                 fontSize: 13,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),

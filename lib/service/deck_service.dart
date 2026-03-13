@@ -9,12 +9,19 @@ class DeckService {
     final List<Deck> decks = [];
 
     for (final dto in deckDTOs) {
-      final count = await CardRepository.countByDeckId(dto.id);
-      decks.add(Deck(
-        id: dto.id,
-        description: dto.description,
-        countCards: count,
-      ));
+      var cards = await CardRepository.getByDeckId(dto.id);
+      final count = cards.length;
+      int cardsReview = cards
+          .where((card) => card.revisionDate.isBefore(DateTime.now().toUtc()))
+          .length;
+      decks.add(
+        Deck(
+          id: dto.id,
+          description: dto.description,
+          countCards: count,
+          cardsReview: cardsReview,
+        ),
+      );
     }
     return decks;
   }

@@ -1,11 +1,13 @@
 ## [Unreleased]
+- Diminuir Quantidade de itens do teste para 12 cartões.
+- Passar erros apenas uma vez extra.
+- Calibrar tempo de revisao tempo de revisão.
 - Implementar pagina de licencas.
 - Atualizar icone para não ficar esticado.
 - Criar o cart GlassCard, evitando replicação de layout
 - Refatorar cartoes com GlassCard. cardItem e DeckCardItem.
 - Add imagem na appbar
 - Add borda na barra de navegação.
-- Passar erros apenas uma vez extra.
 - No final da revisão adicionar opção de refazer a revisão atual.
 - No final da revisao adicionar opção fazer uma nova revisao desta lista.
 - Indicador de Progresso
@@ -30,7 +32,7 @@
 - Revisar versões de dependencias.
 
 # 2.1.0 - [2026-03-09]
-- [] Mostar quantidade de cards a revisar por lista.
+- Mostar quantidade de cards a revisar por lista.
 - Pagina inicial mostra o layout informações de review em nova linha.
 - Gerar teste com os cards com data de revisão mais antiga.
 - Calcular proxima data usando FSRS (algoritimo).

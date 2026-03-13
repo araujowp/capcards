@@ -117,7 +117,7 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
                   description: deck.description,
                   deckId: deck.id,
                   cardCount: deck.countCards,
-                  cardsReview: 2,
+                  cardsReview: deck.cardsReview,
                   editMode: editMode,
                   onDelete: () => delete(deck.id),
                   onEdit: () => saveDeck(context, deck.id, deck.description),
