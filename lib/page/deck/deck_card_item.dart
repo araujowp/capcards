@@ -6,6 +6,7 @@ class DeckCardItem extends StatelessWidget {
   final String description;
   final int deckId;
   final int cardCount;
+  final int cardsReview;
   final bool editMode;
   final VoidCallback onDelete;
   final VoidCallback onEdit;
@@ -16,6 +17,7 @@ class DeckCardItem extends StatelessWidget {
     required this.description,
     required this.deckId,
     required this.cardCount,
+    required this.cardsReview,
     required this.editMode,
     required this.onDelete,
     required this.onEdit,
@@ -63,30 +65,37 @@ class DeckCardItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text(
-                      description.isEmpty ? "Nova lista" : description,
-                      style: const TextStyle(
-                        fontFamily: 'Roboto',
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0.5,
-                      ),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            description.isEmpty ? "Nova lista" : description,
+                            style: const TextStyle(
+                              fontFamily: 'Roboto',
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ),
+                        if (!editMode)
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              'revisar ($cardsReview/$cardCount)',
+                              style: TextStyle(
+                                color: Colors.white.withValues(alpha: 0.9),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                  if (!editMode)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Text(
-                        '(1/$cardCount)',
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.9),
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    )
-                  else
+                  if (editMode)
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [

@@ -31,7 +31,9 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   void didChangeDependencies() {
     super.didChangeDependencies();
     routeObserver.subscribe(
-        this, ModalRoute.of(context)! as PageRoute<dynamic>);
+      this,
+      ModalRoute.of(context)! as PageRoute<dynamic>,
+    );
   }
 
   @override
@@ -49,12 +51,11 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
 
   saveDeck(BuildContext context, int id, String description) async {
     await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => DeckPage(
-                  id: id,
-                  description: description,
-                )));
+      context,
+      MaterialPageRoute(
+        builder: (context) => DeckPage(id: id, description: description),
+      ),
+    );
   }
 
   delete(int deckId) async {
@@ -72,8 +73,10 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
 
   test(Deck deck) {
     if (!editMode) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => TestPage(deck: deck)));
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TestPage(deck: deck)),
+      );
     }
   }
 
@@ -83,48 +86,50 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
       appBarText: "Listas",
       appBarActions: [
         IconButton(
-            icon: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            onPressed: () => saveDeck(context, 0, "")),
+          icon: const Icon(Icons.add, color: Colors.white),
+          onPressed: () => saveDeck(context, 0, ""),
+        ),
         IconButton(
-            icon: const Icon(Icons.edit, color: Colors.white),
-            onPressed: () => edit())
+          icon: const Icon(Icons.edit, color: Colors.white),
+          onPressed: () => edit(),
+        ),
       ],
       body: FutureBuilder<List<Deck>>(
-          future: _futureDecks,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
+        future: _futureDecks,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-            if (snapshot.hasError) {
-              return Center(
-                  child: Text('Erro ao carregar os cards: ${snapshot.error}'));
-            }
-            if (snapshot.hasData) {
-              final decks = snapshot.data!;
-              return ListView.builder(
-                itemCount: decks.length,
-                itemBuilder: (context, index) {
-                  final deck = decks[index];
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Erro ao carregar os cards: ${snapshot.error}'),
+            );
+          }
+          if (snapshot.hasData) {
+            final decks = snapshot.data!;
+            return ListView.builder(
+              itemCount: decks.length,
+              itemBuilder: (context, index) {
+                final deck = decks[index];
 
-                  return DeckCardItem(
-                    description: deck.description,
-                    deckId: deck.id,
-                    cardCount: deck.countCards,
-                    editMode: editMode,
-                    onDelete: () => delete(deck.id),
-                    onEdit: () => saveDeck(context, deck.id, deck.description),
-                    onTap: () => test(deck),
-                  );
-                },
-              );
-            } else {
-              return const Center(child: Text('Nenhum deck encontrado.'));
-            }
-          }),
+                return DeckCardItem(
+                  description: deck.description,
+                  deckId: deck.id,
+                  cardCount: deck.countCards,
+                  cardsReview: 2,
+                  editMode: editMode,
+                  onDelete: () => delete(deck.id),
+                  onEdit: () => saveDeck(context, deck.id, deck.description),
+                  onTap: () => test(deck),
+                );
+              },
+            );
+          } else {
+            return const Center(child: Text('Nenhum deck encontrado.'));
+          }
+        },
+      ),
     );
   }
 }

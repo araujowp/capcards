@@ -36,8 +36,8 @@ class _TestPageState extends State<TestPage> {
     try {
       cards = await CardRepository.getByDeckId(widget.deck.id);
       cards.sort((a, b) => a.revisionDate.compareTo(b.revisionDate));
-      cards.shuffle();
       cards = cards.take(15).toList();
+      cards.shuffle();
     } catch (e) {
       cards = [];
     }

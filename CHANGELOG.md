@@ -1,7 +1,4 @@
 ## [Unreleased]
-
-- Gerar teste com os cards com data de revisão mais antiga.
-- Mostar quantidade de cards a revisar por lista.
 - Implementar pagina de licencas.
 - Atualizar icone para não ficar esticado.
 - Criar o cart GlassCard, evitando replicação de layout
@@ -33,6 +30,9 @@
 - Revisar versões de dependencias.
 
 # 2.1.0 - [2026-03-09]
+- [] Mostar quantidade de cards a revisar por lista.
+- Pagina inicial mostra o layout informações de review em nova linha.
+- Gerar teste com os cards com data de revisão mais antiga.
 - Calcular proxima data usando FSRS (algoritimo).
 - Editar cartão atualiza lista de Cartões.
 - Atualizar versão do flutter 3.2.2 > 3.11.0 (fsrs: ^2.0.1 algoritimo)
