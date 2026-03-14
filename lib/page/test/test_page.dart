@@ -20,11 +20,13 @@ class TestPage extends StatefulWidget {
 
 class _TestPageState extends State<TestPage> {
   late List<CardDTO> cards;
+  List<CardDTO> secondCards = [];
   bool isLoading = true;
   int currentCardIndex = 0;
   CardDTO currentCard = CardDTO.empty();
   TestStats stats = TestStats();
   bool startedTest = false;
+  bool secondChance = false;
 
   @override
   void initState() {
@@ -36,7 +38,7 @@ class _TestPageState extends State<TestPage> {
     try {
       cards = await CardRepository.getByDeckId(widget.deck.id);
       cards.sort((a, b) => a.revisionDate.compareTo(b.revisionDate));
-      cards = cards.take(12).toList();
+      cards = cards.take(2).toList();
       cards.shuffle();
     } catch (e) {
       cards = [];
@@ -48,18 +50,26 @@ class _TestPageState extends State<TestPage> {
   }
 
   CardDTO getNext() {
-    if (cards.isEmpty) return CardDTO.empty();
+    if (cards.isEmpty && secondChance) return CardDTO.empty();
 
-    if (cards.length >= currentCardIndex - 1) {
-      return cards[0];
-    } else {
-      currentCardIndex++;
+    if (cards.isEmpty) {
+      cards = secondCards;
+      secondCards = [];
+      currentCardIndex = -1;
+      secondChance = true;
     }
+    currentCardIndex++;
 
     return cards[currentCardIndex];
   }
 
   Future<void> updateStatistic(bool correct) async {
+    if (correct) {
+      stats.correct();
+    } else {
+      stats.fail();
+    }
+
     await ReviewRepository.record(cards[currentCardIndex].id, correct);
     cards[currentCardIndex].revisionDate = await ReviewRepository.nextDate(
       cards[currentCardIndex].id,
@@ -69,24 +79,30 @@ class _TestPageState extends State<TestPage> {
 
   void correct() async {
     startedTest = true;
-    stats.correct();
-    await updateStatistic(true);
+
+    if (!secondChance) {
+      await updateStatistic(true);
+      secondCards.add(cards[currentCardIndex]);
+    }
+
+    cards.removeAt(currentCardIndex);
+    currentCardIndex--;
 
     setState(() {
-      cards.removeAt(currentCardIndex);
       currentCard = getNext();
     });
   }
 
   void wrong() async {
     startedTest = true;
-    stats.fail();
 
-    await updateStatistic(false);
+    if (!secondChance) {
+      await updateStatistic(true);
+      secondCards.add(cards[currentCardIndex]);
+    }
 
-    final card = cards[currentCardIndex];
     cards.removeAt(currentCardIndex);
-    cards.add(card);
+    currentCardIndex--;
 
     setState(() {
       currentCard = getNext();

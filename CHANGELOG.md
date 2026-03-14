@@ -1,27 +1,26 @@
 ## [Unreleased]
-- Passar erros apenas uma vez extra.
+- Indicar momento de revisão de erros.
+- Sugerir data da proxima revisão.(menor data de revisão entre os cards testados)
 - Calibrar tempo de revisao tempo de revisão.
 - Implementar pagina de licencas.
-- Atualizar icone para não ficar esticado.
 - Criar o cart GlassCard, evitando replicação de layout
 - Refatorar cartoes com GlassCard. cardItem e DeckCardItem.
+- No final da revisão adicionar opção de refazer a revisão atual.
+- Atualizar icone para não ficar esticado.
+- No final da revisao adicionar opção fazer uma nova revisao desta lista.
 - Add imagem na appbar
 - Add borda na barra de navegação.
-- No final da revisão adicionar opção de refazer a revisão atual.
-- No final da revisao adicionar opção fazer uma nova revisao desta lista.
 - Indicador de Progresso
-- Demonstrar que tem mais itens quando a lista for superior a capacidade da tela?.
 - Temas da Aplicação trocar imagem de fundo.
 - Criar imagens personalisadas com o tema capcards. 
+- Demonstrar que tem mais itens quando a lista for superior a capacidade da tela?.
 - Add opção de exportar decks e cartoes. 
 - Add data do ultimo teste, e um fator de repetição, data proximo teste.
-- Carregar teste com cards que estão mais tempo sem aparecer.
 - Tratar teste antes da curva de esquecimento.
 - Exportar estatisticas.
 - Menu para estatisticas gerais.
 - Criar listas animadas (aperecer itens em sequencia)
 - Cartoes com imagens.
-- Indicar momento de revisão de erros.
 - Adicionar funcionalidade desligar son.
 - Aprender a criar Lottie Animation
 - Adicionar son no flip
@@ -31,6 +30,7 @@
 - Revisar versões de dependencias.
 
 # 2.1.0 - [2026-03-09]
+- Passar erros apenas uma vez extra.
 - Diminuir Quantidade de itens do teste para 12 cartões.
 - Mostar quantidade de cards a revisar por lista.
 - Pagina inicial mostra o layout informações de review em nova linha.
