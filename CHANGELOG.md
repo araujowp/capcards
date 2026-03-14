@@ -1,5 +1,4 @@
 ## [Unreleased]
-- Diminuir Quantidade de itens do teste para 12 cartões.
 - Passar erros apenas uma vez extra.
 - Calibrar tempo de revisao tempo de revisão.
 - Implementar pagina de licencas.
@@ -32,6 +31,7 @@
 - Revisar versões de dependencias.
 
 # 2.1.0 - [2026-03-09]
+- Diminuir Quantidade de itens do teste para 12 cartões.
 - Mostar quantidade de cards a revisar por lista.
 - Pagina inicial mostra o layout informações de review em nova linha.
 - Gerar teste com os cards com data de revisão mais antiga.
