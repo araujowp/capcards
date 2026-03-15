@@ -50,7 +50,7 @@ class _TestPageState extends State<TestPage> {
   }
 
   CardDTO getNext() {
-    if (cards.isEmpty && secondChance) return CardDTO.empty();
+    if (cards.isEmpty && secondCards.isEmpty) return CardDTO.empty();
 
     if (cards.isEmpty) {
       cards = secondCards;
@@ -74,6 +74,7 @@ class _TestPageState extends State<TestPage> {
     cards[currentCardIndex].revisionDate = await ReviewRepository.nextDate(
       cards[currentCardIndex].id,
     );
+    print("----------------------${cards[currentCardIndex].revisionDate}");
     CardRepository.update(cards[currentCardIndex]);
   }
 
@@ -82,7 +83,6 @@ class _TestPageState extends State<TestPage> {
 
     if (!secondChance) {
       await updateStatistic(true);
-      secondCards.add(cards[currentCardIndex]);
     }
 
     cards.removeAt(currentCardIndex);
@@ -97,8 +97,8 @@ class _TestPageState extends State<TestPage> {
     startedTest = true;
 
     if (!secondChance) {
-      await updateStatistic(true);
-      secondCards.add(cards[currentCardIndex]);
+      await updateStatistic(false);
+      if (!secondChance) secondCards.add(cards[currentCardIndex]);
     }
 
     cards.removeAt(currentCardIndex);
