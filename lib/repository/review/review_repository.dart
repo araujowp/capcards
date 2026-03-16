@@ -31,7 +31,6 @@ class ReviewRepository {
     await _ensureInitialized();
 
     final card = await _loadOrCreateFsrsCard(cardId);
-    final now = DateTime.now().toUtc();
 
     final rating = correct ? Rating.good : Rating.again;
 
@@ -73,7 +72,6 @@ class ReviewRepository {
       }
     }
 
-    // Novo cartão se não existir ou falhar
     final newCard = Card(cardId: cardId);
     await _saveFsrsCard(cardId, newCard);
     return newCard;

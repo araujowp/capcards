@@ -74,7 +74,6 @@ class _TestPageState extends State<TestPage> {
     cards[currentCardIndex].revisionDate = await ReviewRepository.nextDate(
       cards[currentCardIndex].id,
     );
-    print("----------------------${cards[currentCardIndex].revisionDate}");
     CardRepository.update(cards[currentCardIndex]);
   }
 

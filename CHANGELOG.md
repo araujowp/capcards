@@ -1,7 +1,6 @@
 ## [Unreleased]
 - Indicar momento de revisão de erros.
 - Sugerir data da proxima revisão.(menor data de revisão entre os cards testados)
-- Calibrar tempo de revisao tempo de revisão.
 - Implementar pagina de licencas.
 - Criar o cart GlassCard, evitando replicação de layout
 - Refatorar cartoes com GlassCard. cardItem e DeckCardItem.
@@ -30,6 +29,7 @@
 - Revisar versões de dependencias.
 
 # 2.1.0 - [2026-03-09]
+- Validar tempo de revisao tempo de revisão.
 - Passar erros apenas uma vez extra.
 - Diminuir Quantidade de itens do teste para 12 cartões.
 - Mostar quantidade de cards a revisar por lista.
