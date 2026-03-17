@@ -3,6 +3,7 @@ import 'package:capcards/page/card/no_cards_page.dart';
 import 'package:capcards/page/statistics/result_page.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/page/test/action_card.dart';
+import 'package:capcards/page/test/second_chance_widget.dart';
 import 'package:capcards/page/test/swipable_card.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
@@ -27,6 +28,7 @@ class _TestPageState extends State<TestPage> {
   TestStats stats = TestStats();
   bool startedTest = false;
   bool secondChance = false;
+  bool showOnlyErrosTime = false;
 
   @override
   void initState() {
@@ -57,6 +59,7 @@ class _TestPageState extends State<TestPage> {
       secondCards = [];
       currentCardIndex = -1;
       secondChance = true;
+      showOnlyErrosTime = true;
     }
     currentCardIndex++;
 
@@ -75,6 +78,12 @@ class _TestPageState extends State<TestPage> {
       cards[currentCardIndex].id,
     );
     CardRepository.update(cards[currentCardIndex]);
+  }
+
+  void fixErros() {
+    setState(() {
+      showOnlyErrosTime = false;
+    });
   }
 
   void correct() async {
@@ -137,20 +146,22 @@ class _TestPageState extends State<TestPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SwipableCard(
-                card: currentCard,
-                height: cardHeight,
-                width: cardWidth,
-                onCorrect: correct,
-                onWrong: wrong,
-              ),
-              const SizedBox(height: 20),
-              ActionCard(onCorrect: correct, onWrong: wrong),
-            ],
-          ),
+          child: showOnlyErrosTime
+              ? SecondChanceWidget(onReviewPressed: fixErros)
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SwipableCard(
+                      card: currentCard,
+                      height: cardHeight,
+                      width: cardWidth,
+                      onCorrect: correct,
+                      onWrong: wrong,
+                    ),
+                    const SizedBox(height: 20),
+                    ActionCard(onCorrect: correct, onWrong: wrong),
+                  ],
+                ),
         ),
       ),
     );
