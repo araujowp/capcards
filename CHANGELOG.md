@@ -9,6 +9,7 @@
 - No final da revisao adicionar opção fazer uma nova revisao desta lista.
 - Indicar que edição de decks foi precionado.
 - Atualizar icone para não ficar esticado.
+- Adicionar internacionalização i18n.
 - Add imagem na appbar
 - Add borda na barra de navegação.
 - Indicador de Progresso
