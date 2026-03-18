@@ -1,3 +1,4 @@
+import 'package:capcards/components/cap_icon.dart';
 import 'package:flutter/material.dart';
 
 class ActionCard extends StatelessWidget {
@@ -59,7 +60,7 @@ class ActionCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: Colors.white, size: 26),
+            const CapIcon(size: 50, imageColor: Colors.white),
             const SizedBox(width: 10),
             Text(
               label,
