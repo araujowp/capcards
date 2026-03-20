@@ -9,17 +9,17 @@ class GlassContainer extends StatelessWidget {
   final double? width;
   final double borderRadius;
   final double blur;
+  final double alpha;
 
   const GlassContainer({
     super.key,
     required this.child,
-    this.color = const Color(
-      0x33000000,
-    ), // preto com ~20% de transparência (padrão perfeito)
+    this.color = Colors.black,
     this.height,
     this.width,
     this.borderRadius = 16,
     this.blur = 12,
+    this.alpha = 0.18,
   });
 
   @override
@@ -33,11 +33,11 @@ class GlassContainer extends StatelessWidget {
           height: height,
           width: width,
           decoration: BoxDecoration(
-            color: color,
+            color: color.withValues(alpha: alpha),
             borderRadius: BorderRadius.circular(borderRadius),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.18),
-              width: 1.1,
+              color: color.withValues(alpha: alpha),
+              width: 1.0,
             ),
           ),
           child: child,

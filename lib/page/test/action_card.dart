@@ -1,4 +1,5 @@
 import 'package:capcards/components/cap_icon.dart';
+import 'package:capcards/components/glass_container.dart';
 import 'package:flutter/material.dart';
 
 class ActionCard extends StatelessWidget {
@@ -15,9 +16,7 @@ class ActionCard extends StatelessWidget {
           child: _buildButton(
             label: "ACERTEI",
             icon: Icons.check,
-            gradient: const LinearGradient(
-              colors: [Color(0xFF4CAF50), Color(0xFF2E7D32)],
-            ),
+            color: Colors.green,
             onTap: onCorrect,
           ),
         ),
@@ -26,9 +25,7 @@ class ActionCard extends StatelessWidget {
           child: _buildButton(
             label: "ERREI",
             icon: Icons.close,
-            gradient: const LinearGradient(
-              colors: [Color(0xFFEF5350), Color(0xFFC62828)],
-            ),
+            color: Colors.red,
             onTap: onWrong,
           ),
         ),
@@ -39,28 +36,19 @@ class ActionCard extends StatelessWidget {
   Widget _buildButton({
     required String label,
     required IconData icon,
-    required LinearGradient gradient,
+    required Color color,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: GlassContainer(
+        color: color,
+        alpha: 0.5,
         height: 64,
-        decoration: BoxDecoration(
-          gradient: gradient,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.25),
-              blurRadius: 12,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const CapIcon(size: 50, imageColor: Colors.white),
+            CapIcon(size: 50, imageColor: color),
             const SizedBox(width: 10),
             Text(
               label,
