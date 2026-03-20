@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:capcards/components/cap_icon.dart';
+import 'package:capcards/components/glass_container.dart';
 import 'package:flutter/material.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 
@@ -23,34 +25,10 @@ class CardItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.18),
-                width: 1,
-              ),
-            ),
+          child: GlassContainer(
             child: Row(
               children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/capbranca.png',
-                      color: Colors.white,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
+                const CapIcon(),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(

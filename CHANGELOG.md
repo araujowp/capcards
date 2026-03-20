@@ -1,5 +1,4 @@
 ## [Unreleased]
-- GlassContainer padronizar projeto.
 - Sugerir data da proxima revisão.(menor data de revisão entre os cards testados)
 - Implementar pagina de licencas.
 - No final da revisão adicionar opção de refazer a revisão atual.
@@ -29,6 +28,7 @@
 - Revisar versões de dependencias.
 
 # 3.0.0 - [2026-03-17]
+- GlassContainer padronizar projeto.
 - Estilizar botões de acerto e erro.
 - Criar capIcon e padronizar projeto (opções cor, e tamanho).
 - Refatorar cartoes com GlassContainer. DeckCardItem.
