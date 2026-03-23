@@ -1,10 +1,11 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart'; // ← NÃO ESQUEÇA dessa importação!
+import 'package:flutter/material.dart';
 
 class GlassContainer extends StatelessWidget {
   final Widget child;
   final Color color;
+  final Color borderColor;
   final double? height;
   final double? width;
   final double borderRadius;
@@ -15,6 +16,7 @@ class GlassContainer extends StatelessWidget {
     super.key,
     required this.child,
     this.color = Colors.black,
+    this.borderColor = Colors.white,
     this.height,
     this.width,
     this.borderRadius = 16,
@@ -36,7 +38,7 @@ class GlassContainer extends StatelessWidget {
             color: color.withValues(alpha: alpha),
             borderRadius: BorderRadius.circular(borderRadius),
             border: Border.all(
-              color: color.withValues(alpha: alpha),
+              color: borderColor.withValues(alpha: alpha),
               width: 1.0,
             ),
           ),

@@ -17,6 +17,7 @@ class ActionCard extends StatelessWidget {
             label: "ACERTEI",
             icon: Icons.check,
             color: Colors.green,
+            borderColor: Colors.green,
             onTap: onCorrect,
           ),
         ),
@@ -26,6 +27,7 @@ class ActionCard extends StatelessWidget {
             label: "ERREI",
             icon: Icons.close,
             color: Colors.red,
+            borderColor: Colors.red,
             onTap: onWrong,
           ),
         ),
@@ -37,12 +39,14 @@ class ActionCard extends StatelessWidget {
     required String label,
     required IconData icon,
     required Color color,
+    required Color borderColor,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
       onTap: onTap,
       child: GlassContainer(
         color: color,
+        borderColor: borderColor,
         alpha: 0.5,
         height: 64,
         child: Row(

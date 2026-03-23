@@ -1,30 +1,24 @@
 ## [Unreleased]
-- Sugerir data da proxima revisão.(menor data de revisão entre os cards testados)
-- Implementar pagina de licencas.
-- No final da revisão adicionar opção de refazer a revisão atual.
-- No final da revisao adicionar opção fazer uma nova revisao desta lista.
-- Indicar que edição de decks foi precionado.
 - Atualizar icone para não ficar esticado.
+- criar menu configurações
+- criar tela de configurações.
+- Temas da Aplicação trocar imagem de fundo.
+- Criar imagens personalisadas com o tema capcards. 
+- Indicar que edição de decks foi precionado.
+- Adicionar son no flip
+- Adicionar son na troca de cartoes.
+- Adicionar funcionalidade desligar son.
 - Adicionar internacionalização i18n.
+- Implementar pagina de licencas.
 - Add imagem na appbar
 - Add borda na barra de navegação.
 - Indicador de Progresso
-- Temas da Aplicação trocar imagem de fundo.
-- Criar imagens personalisadas com o tema capcards. 
-- Demonstrar que tem mais itens quando a lista for superior a capacidade da tela?.
 - Add opção de exportar decks e cartoes. 
-- Add data do ultimo teste, e um fator de repetição, data proximo teste.
-- Tratar teste antes da curva de esquecimento.
 - Exportar estatisticas.
 - Menu para estatisticas gerais.
 - Criar listas animadas (aperecer itens em sequencia)
 - Cartoes com imagens.
-- Adicionar funcionalidade desligar son.
 - Aprender a criar Lottie Animation
-- Adicionar son no flip
-- Adicionar son na troca de cartoes.
-- criar tela de configurações.
-- criar menu configurações
 - Revisar versões de dependencias.
 
 # 3.0.0 - [2026-03-17]
@@ -35,7 +29,6 @@
 - Adicionar quebra de linha para cartões com frases longas.
 - Indicar momento de revisão de erros.
 - Validar tempo de revisao tempo de revisão.
-- Passar erros apenas uma vez extra.
 - Diminuir Quantidade de itens do teste para 12 cartões.
 - Mostar quantidade de cards a revisar por lista.
 - Pagina inicial mostra o layout informações de review em nova linha.
