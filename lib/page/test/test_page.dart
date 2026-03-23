@@ -62,6 +62,7 @@ class _TestPageState extends State<TestPage> {
       showOnlyErrosTime = true;
     }
     currentCardIndex++;
+    if (currentCardIndex > cards.length - 1) currentCardIndex = 0;
 
     return cards[currentCardIndex];
   }
@@ -106,11 +107,10 @@ class _TestPageState extends State<TestPage> {
 
     if (!secondChance) {
       await updateStatistic(false);
-      if (!secondChance) secondCards.add(cards[currentCardIndex]);
+      secondCards.add(cards[currentCardIndex]);
+      cards.removeAt(currentCardIndex);
+      currentCardIndex--;
     }
-
-    cards.removeAt(currentCardIndex);
-    currentCardIndex--;
 
     setState(() {
       currentCard = getNext();
