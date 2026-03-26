@@ -15,10 +15,7 @@ class MainPage extends StatefulWidget {
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = <Widget>[
-    SearchDeckPage(),
-    AboutPage(),
-  ];
+  static const List<Widget> _pages = <Widget>[SearchDeckPage(), AboutPage()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -30,9 +27,11 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return CapScaffold(
       appBarText: " ",
-      body: IndexedStack(
-        index: _selectedIndex, // Mantém o estado das páginas
-        children: _pages,
+      body: SafeArea(
+        child: IndexedStack(
+          index: _selectedIndex, // Mantém o estado das páginas
+          children: _pages,
+        ),
       ),
       bottomNavigationBar: CustomBottomNav(
         currentIndex: _selectedIndex,

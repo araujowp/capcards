@@ -1,5 +1,5 @@
 ## [Unreleased]
-- Atualizar icone para não ficar esticado.
+- Adicionar navegação da edição de cartoes para home.
 - criar menu configurações
 - criar tela de configurações.
 - Temas da Aplicação trocar imagem de fundo.
@@ -21,7 +21,11 @@
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
 
+# 3.0.1 - [2026-03-24]
+- Corrigir erro de barra de navegação coberta.
+
 # 3.0.0 - [2026-03-17]
+- Atualizar icone para não ficar esticado.
 - GlassContainer padronizar projeto.
 - Estilizar botões de acerto e erro.
 - Criar capIcon e padronizar projeto (opções cor, e tamanho).

@@ -4,12 +4,15 @@ import 'package:capcards/repository/card/card_dto_adapter.dart';
 import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/review/review_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.edgeToEdge, // ← Isso é o mais importante
+  );
   await Hive.initFlutter();
 
   Hive.registerAdapter(CardDTOAdapter());
