@@ -21,7 +21,7 @@
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
 
-# 3.0.1 - [2026-03-24]
+# 3.0.1 - [2026-03-26]
 - Corrigir erro de barra de navegação coberta.
 
 # 3.0.0 - [2026-03-17]
