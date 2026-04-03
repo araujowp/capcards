@@ -1,5 +1,6 @@
 import 'package:capcards/components/botton_nav/custom_botton_nav.dart';
 import 'package:capcards/page/about_page.dart';
+import 'package:capcards/page/cap_page.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,16 @@ class MainPage extends StatefulWidget {
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = <Widget>[SearchDeckPage(), AboutPage()];
+  final GlobalKey<SearchDeckPageState> _searchDeckKey =
+      GlobalKey<SearchDeckPageState>();
+
+  late final List<CapPage> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [SearchDeckPage(stateKey: _searchDeckKey), const AboutPage()];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -25,13 +35,13 @@ class MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final currentPage = _pages[_selectedIndex];
+
     return CapScaffold(
-      appBarText: " ",
+      appBarText: currentPage.title,
+      appBarActions: currentPage.titleActions,
       body: SafeArea(
-        child: IndexedStack(
-          index: _selectedIndex, // Mantém o estado das páginas
-          children: _pages,
-        ),
+        child: IndexedStack(index: _selectedIndex, children: _pages),
       ),
       bottomNavigationBar: CustomBottomNav(
         currentIndex: _selectedIndex,

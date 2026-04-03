@@ -1,4 +1,4 @@
-import 'package:capcards/page/cap_scaffold.dart';
+import 'package:capcards/page/cap_page.dart';
 import 'package:capcards/page/deck/deck_card_item.dart';
 import 'package:capcards/page/deck/deck_page.dart';
 import 'package:capcards/page/test/test_page.dart';
@@ -10,14 +10,39 @@ import 'package:flutter/material.dart';
 final RouteObserver<PageRoute<dynamic>> routeObserver =
     RouteObserver<PageRoute<dynamic>>();
 
-class SearchDeckPage extends StatefulWidget {
-  const SearchDeckPage({super.key});
+class SearchDeckPage extends CapPage {
+  final GlobalKey<SearchDeckPageState> stateKey;
+  SearchDeckPage({required this.stateKey}) : super(key: stateKey);
 
   @override
-  State<SearchDeckPage> createState() => _SearchDeckPageState();
+  String get title => 'Listas!';
+
+  @override
+  List<Widget> get titleActions => [
+    Builder(
+      builder: (context) => IconButton(
+        icon: const Icon(Icons.add, color: Colors.white),
+        onPressed: () {
+          stateKey.currentState?.saveDeck(context, 0, "");
+        },
+      ),
+    ),
+    Builder(
+      builder: (context) => IconButton(
+        icon: const Icon(Icons.edit, color: Colors.white),
+        onPressed: () {
+          stateKey.currentState?.edit();
+        },
+      ),
+    ),
+  ];
+
+  @override
+  State<SearchDeckPage> createState() => SearchDeckPageState(); // ← mudou aqui
 }
 
-class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
+// ==================== STATE PÚBLICO ====================
+class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   late Future<List<Deck>> _futureDecks;
   bool editMode = false;
 
@@ -82,54 +107,40 @@ class _SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    return CapScaffold(
-      appBarText: "Listas",
-      appBarActions: [
-        IconButton(
-          icon: const Icon(Icons.add, color: Colors.white),
-          onPressed: () => saveDeck(context, 0, ""),
-        ),
-        IconButton(
-          icon: const Icon(Icons.edit, color: Colors.white),
-          onPressed: () => edit(),
-        ),
-      ],
-      body: FutureBuilder<List<Deck>>(
-        future: _futureDecks,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
+    return FutureBuilder<List<Deck>>(
+      future: _futureDecks,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Erro ao carregar os cards: ${snapshot.error}'),
-            );
-          }
-          if (snapshot.hasData) {
-            final decks = snapshot.data!;
-            return ListView.builder(
-              itemCount: decks.length,
-              itemBuilder: (context, index) {
-                final deck = decks[index];
-
-                return DeckCardItem(
-                  description: deck.description,
-                  deckId: deck.id,
-                  cardCount: deck.countCards,
-                  cardsReview: deck.cardsReview,
-                  editMode: editMode,
-                  onDelete: () => delete(deck.id),
-                  onEdit: () => saveDeck(context, deck.id, deck.description),
-                  onTap: () => test(deck),
-                );
-              },
-            );
-          } else {
-            return const Center(child: Text('Nenhum deck encontrado.'));
-          }
-        },
-      ),
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('Erro ao carregar os cards: ${snapshot.error}'),
+          );
+        }
+        if (snapshot.hasData) {
+          final decks = snapshot.data!;
+          return ListView.builder(
+            itemCount: decks.length,
+            itemBuilder: (context, index) {
+              final deck = decks[index];
+              return DeckCardItem(
+                description: deck.description,
+                deckId: deck.id,
+                cardCount: deck.countCards,
+                cardsReview: deck.cardsReview,
+                editMode: editMode,
+                onDelete: () => delete(deck.id),
+                onEdit: () => saveDeck(context, deck.id, deck.description),
+                onTap: () => test(deck),
+              );
+            },
+          );
+        } else {
+          return const Center(child: Text('Nenhum deck encontrado.'));
+        }
+      },
     );
   }
 }
