@@ -12,7 +12,9 @@ final RouteObserver<PageRoute<dynamic>> routeObserver =
 
 class SearchDeckPage extends CapPage {
   final GlobalKey<SearchDeckPageState> stateKey;
-  SearchDeckPage({required this.stateKey}) : super(key: stateKey);
+  final ValueNotifier<bool> editModeNotifier;
+  SearchDeckPage({required this.stateKey, required this.editModeNotifier})
+    : super(key: stateKey);
 
   @override
   String get title => 'Listas!';
@@ -31,20 +33,18 @@ class SearchDeckPage extends CapPage {
       builder: (context) => IconButton(
         icon: const Icon(Icons.edit, color: Colors.white),
         onPressed: () {
-          stateKey.currentState?.edit();
+          editModeNotifier.value = !editModeNotifier.value;
         },
       ),
     ),
   ];
 
   @override
-  State<SearchDeckPage> createState() => SearchDeckPageState(); // ← mudou aqui
+  State<SearchDeckPage> createState() => SearchDeckPageState();
 }
 
-// ==================== STATE PÚBLICO ====================
 class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   late Future<List<Deck>> _futureDecks;
-  bool editMode = false;
 
   @override
   void initState() {
@@ -90,14 +90,8 @@ class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
     });
   }
 
-  edit() {
-    setState(() {
-      editMode = !editMode;
-    });
-  }
-
   test(Deck deck) {
-    if (!editMode) {
+    if (!widget.editModeNotifier.value) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => TestPage(deck: deck)),
@@ -107,39 +101,44 @@ class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Deck>>(
-      future: _futureDecks,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
+    return ValueListenableBuilder<bool>(
+      valueListenable: widget.editModeNotifier,
+      builder: (context, editMode, _) {
+        return FutureBuilder<List<Deck>>(
+          future: _futureDecks,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-        if (snapshot.hasError) {
-          return Center(
-            child: Text('Erro ao carregar os cards: ${snapshot.error}'),
-          );
-        }
-        if (snapshot.hasData) {
-          final decks = snapshot.data!;
-          return ListView.builder(
-            itemCount: decks.length,
-            itemBuilder: (context, index) {
-              final deck = decks[index];
-              return DeckCardItem(
-                description: deck.description,
-                deckId: deck.id,
-                cardCount: deck.countCards,
-                cardsReview: deck.cardsReview,
-                editMode: editMode,
-                onDelete: () => delete(deck.id),
-                onEdit: () => saveDeck(context, deck.id, deck.description),
-                onTap: () => test(deck),
+            if (snapshot.hasError) {
+              return Center(
+                child: Text('Erro ao carregar os cards: ${snapshot.error}'),
               );
-            },
-          );
-        } else {
-          return const Center(child: Text('Nenhum deck encontrado.'));
-        }
+            }
+            if (snapshot.hasData) {
+              final decks = snapshot.data!;
+              return ListView.builder(
+                itemCount: decks.length,
+                itemBuilder: (context, index) {
+                  final deck = decks[index];
+                  return DeckCardItem(
+                    description: deck.description,
+                    deckId: deck.id,
+                    cardCount: deck.countCards,
+                    cardsReview: deck.cardsReview,
+                    editMode: editMode,
+                    onDelete: () => delete(deck.id),
+                    onEdit: () => saveDeck(context, deck.id, deck.description),
+                    onTap: () => test(deck),
+                  );
+                },
+              );
+            } else {
+              return const Center(child: Text('Nenhum deck encontrado.'));
+            }
+          },
+        );
       },
     );
   }

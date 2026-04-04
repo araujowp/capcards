@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'deck/search_deck_page.dart';
 
+final ValueNotifier<bool> _editModeNotifier = ValueNotifier(false);
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -24,7 +26,13 @@ class MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    _pages = [SearchDeckPage(stateKey: _searchDeckKey), const AboutPage()];
+    _pages = [
+      SearchDeckPage(
+        stateKey: _searchDeckKey,
+        editModeNotifier: _editModeNotifier,
+      ),
+      const AboutPage(),
+    ];
   }
 
   void _onItemTapped(int index) {
