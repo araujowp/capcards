@@ -13,7 +13,11 @@ final RouteObserver<PageRoute<dynamic>> routeObserver =
 class SearchDeckPage extends CapPage {
   final ValueNotifier<bool> editModeNotifier;
   final SearchDeckActions actions;
-  SearchDeckPage({required this.editModeNotifier, required this.actions});
+  const SearchDeckPage({
+    super.key,
+    required this.editModeNotifier,
+    required this.actions,
+  });
 
   @override
   String get title => 'Listas';

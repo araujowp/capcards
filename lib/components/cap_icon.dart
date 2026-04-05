@@ -18,7 +18,7 @@ class CapIcon extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(opacity ?? 0.12),
+        color: Colors.black.withValues(alpha: opacity ?? 0.12),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(

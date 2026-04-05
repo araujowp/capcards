@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:fsrs/fsrs.dart';
+import 'package:flutter/foundation.dart';
 
 class ReviewRepository {
   static const String _fsrsBoxName = 'fsrs_cards';
@@ -66,9 +67,7 @@ class ReviewRepository {
       try {
         return Card.fromMap(map);
       } catch (e) {
-        print("Erro ao restaurar Card do map: $e");
-        // Opcional: deletar entrada corrompida
-        // await _fsrsBox!.delete(key);
+        debugPrint("Erro ao restaurar Card do map: $e");
       }
     }
 
