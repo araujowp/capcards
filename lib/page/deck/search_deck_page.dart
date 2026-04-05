@@ -1,6 +1,6 @@
 import 'package:capcards/page/cap_page.dart';
 import 'package:capcards/page/deck/deck_card_item.dart';
-import 'package:capcards/page/deck/deck_page.dart';
+import 'package:capcards/page/deck/search_deck_actions.dart';
 import 'package:capcards/page/test/test_page.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:capcards/service/Deck.dart';
@@ -11,13 +11,12 @@ final RouteObserver<PageRoute<dynamic>> routeObserver =
     RouteObserver<PageRoute<dynamic>>();
 
 class SearchDeckPage extends CapPage {
-  final GlobalKey<SearchDeckPageState> stateKey;
   final ValueNotifier<bool> editModeNotifier;
-  SearchDeckPage({required this.stateKey, required this.editModeNotifier})
-    : super(key: stateKey);
+  final SearchDeckActions actions;
+  SearchDeckPage({required this.editModeNotifier, required this.actions});
 
   @override
-  String get title => 'Listas!';
+  String get title => 'Listas';
 
   @override
   List<Widget> get titleActions => [
@@ -25,7 +24,7 @@ class SearchDeckPage extends CapPage {
       builder: (context) => IconButton(
         icon: const Icon(Icons.add, color: Colors.white),
         onPressed: () {
-          stateKey.currentState?.saveDeck(context, 0, "");
+          actions.onAdd();
         },
       ),
     ),
@@ -74,15 +73,6 @@ class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
     });
   }
 
-  saveDeck(BuildContext context, int id, String description) async {
-    await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DeckPage(id: id, description: description),
-      ),
-    );
-  }
-
   delete(int deckId) async {
     await DeckRepository.delete(deckId);
     setState(() {
@@ -129,7 +119,8 @@ class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
                     cardsReview: deck.cardsReview,
                     editMode: editMode,
                     onDelete: () => delete(deck.id),
-                    onEdit: () => saveDeck(context, deck.id, deck.description),
+                    onEdit: () =>
+                        widget.actions.onEdit(deck.id, deck.description),
                     onTap: () => test(deck),
                   );
                 },
