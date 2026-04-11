@@ -22,6 +22,7 @@
 - Revisar versões de dependencias.
 
 # 3.0.1 - [2026-03-26]
+- Apenas nova lista navega automaticamente para edição de cartões.
 - Corrigir visualização da home com quebra na imagem.
 - Corrigir erro de barra de navegação coberta.
 

@@ -32,8 +32,9 @@ class _DeckPageState extends State<DeckPage> {
     int id = 0;
     switch (action) {
       case "Save":
+        bool newDeck = widget.id == 0;
         id = await save();
-        if (mounted && id > -1) {
+        if (mounted && id > -1 && newDeck) {
           editCards(context, id);
         }
         break;
