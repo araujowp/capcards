@@ -23,6 +23,7 @@
 
 # 3.0.2 - [2026-04-11]
 - Adicionar navegação da edição de cartoes para home.
+- Estilização botoes da edição de listas.
 - Apenas nova lista navega automaticamente para edição de cartões.
 
 # 3.0.1 - [2026-03-26]

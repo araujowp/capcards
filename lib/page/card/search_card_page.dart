@@ -33,6 +33,13 @@ class _SearchCardPageState extends State<SearchCardPage> {
     updateList();
   }
 
+  void goHome() async {
+    Navigator.of(
+      context,
+      rootNavigator: true,
+    ).popUntil((route) => route.isFirst);
+  }
+
   delete(int cardId) {
     CardRepository.delete(cardId);
     updateList();
@@ -57,6 +64,10 @@ class _SearchCardPageState extends State<SearchCardPage> {
     return CapScaffold(
       appBarText: "Edite cartões",
       appBarActions: [
+        IconButton(
+          icon: const Icon(Icons.home, color: Colors.white),
+          onPressed: () => goHome(),
+        ),
         IconButton(
           icon: const Icon(Icons.add, color: Colors.white),
           onPressed: () => addCard(),
