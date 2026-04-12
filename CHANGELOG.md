@@ -1,5 +1,5 @@
 ## [Unreleased]
-- Adicionar navegação da edição de cartoes para home.
+- Salvar deck animar para mostrar que a ação foi feita.
 - criar menu configurações
 - criar tela de configurações.
 - Temas da Aplicação trocar imagem de fundo.
@@ -21,8 +21,11 @@
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
 
-# 3.0.1 - [2026-03-26]
+# 3.0.2 - [2026-04-11]
+- Adicionar navegação da edição de cartoes para home.
 - Apenas nova lista navega automaticamente para edição de cartões.
+
+# 3.0.1 - [2026-03-26]
 - Corrigir visualização da home com quebra na imagem.
 - Corrigir erro de barra de navegação coberta.
 

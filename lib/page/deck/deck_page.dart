@@ -1,4 +1,4 @@
-import 'package:capcards/components/cap_list_tile.dart';
+import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/search_card_page.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
@@ -86,6 +86,7 @@ class _DeckPageState extends State<DeckPage> {
     return CapScaffold(
       appBarText: widget.id == 0 ? "Nova lista" : "Edite lista",
       body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         color: Colors.black.withValues(alpha: 0.1),
         child: SafeArea(
           child: Column(
@@ -97,21 +98,27 @@ class _DeckPageState extends State<DeckPage> {
                   decoration: const InputDecoration(label: Text("Nova lista")),
                 ),
               ),
-              CapListTile(
+              CapButton(
+                label: "Salvar",
                 icon: Icons.save,
-                text: "Salvar",
-                action: () => myAction("Save"),
+                color: Colors.black,
+                borderColor: Colors.white,
+                onTap: () => myAction("Save"),
               ),
               if (widget.id != 0) ...[
-                CapListTile(
+                CapButton(
+                  label: "Excluir",
                   icon: Icons.delete,
-                  text: "Excluir",
-                  action: () => myAction("Excluir"),
+                  color: Colors.black,
+                  borderColor: Colors.white,
+                  onTap: () => myAction("Excluir"),
                 ),
-                CapListTile(
+                CapButton(
                   icon: Icons.edit,
-                  text: "Edite Cartões",
-                  action: () => editCards(context, widget.id),
+                  label: "Edite Cartões",
+                  color: Colors.black,
+                  borderColor: Colors.white,
+                  onTap: () => editCards(context, widget.id),
                 ),
               ],
             ],
