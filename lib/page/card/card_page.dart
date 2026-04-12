@@ -1,3 +1,4 @@
+import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/components/cap_list_tile.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/repository/card/card_dto.dart';
@@ -93,8 +94,8 @@ class _CardPageState extends State<CardPage> {
                 decoration: const InputDecoration(label: Text("Verso")),
               ),
             ),
-            CapListTile(text: "Salvar", icon: Icons.save, action: save),
-            CapListTile(text: "Cancelar", icon: Icons.cancel, action: cancel),
+            CapButton(label: "Salvar", icon: Icons.save, onTap: save),
+            CapButton(label: "Cancelar", icon: Icons.cancel, onTap: cancel),
           ],
         ),
       ),

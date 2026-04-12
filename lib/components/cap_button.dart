@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CapButton extends StatelessWidget {
   final String label;
   final IconData icon;
-  final Color color;
+  final Color? color;
   final Color? borderColor;
   final VoidCallback onTap;
 
@@ -12,7 +12,7 @@ class CapButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.icon,
-    required this.color,
+    this.color,
     this.borderColor,
     required this.onTap,
   });
@@ -24,8 +24,8 @@ class CapButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: GlassContainer(
-          color: color,
-          borderColor: borderColor ?? color,
+          color: color ?? Colors.black,
+          borderColor: borderColor ?? Colors.white,
           alpha: 0.15,
           height: 55,
           child: Row(

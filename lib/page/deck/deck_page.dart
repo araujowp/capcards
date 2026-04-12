@@ -101,16 +101,12 @@ class _DeckPageState extends State<DeckPage> {
               CapButton(
                 label: "Salvar",
                 icon: Icons.save,
-                color: Colors.black,
-                borderColor: Colors.white,
                 onTap: () => myAction("Save"),
               ),
               if (widget.id != 0) ...[
                 CapButton(
                   label: "Excluir",
                   icon: Icons.delete,
-                  color: Colors.black,
-                  borderColor: Colors.white,
                   onTap: () => myAction("Excluir"),
                 ),
                 CapButton(
