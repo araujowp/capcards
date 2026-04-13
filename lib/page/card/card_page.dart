@@ -1,5 +1,4 @@
 import 'package:capcards/components/cap_button.dart';
-import 'package:capcards/components/cap_list_tile.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
