@@ -17,11 +17,11 @@
 - Exportar estatisticas.
 - Menu para estatisticas gerais.
 - Criar listas animadas (aperecer itens em sequencia)
-- Cartoes com imagens.
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
 
-# 3.0.2 - [2026-04-11]
+# 3.1.0 - [2026-04-11]
+- Cartões com imagens
 - Estilização botoes da edição de cards.
 - Adicionar navegação da edição de cartoes para home.
 - Estilização botoes da edição de listas.
