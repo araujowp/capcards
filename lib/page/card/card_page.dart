@@ -33,6 +33,8 @@ class _CardPageState extends State<CardPage> {
     textControllerBack = TextEditingController(
       text: widget.cardDTO.backDescription,
     );
+    frontImageBase64 = widget.cardDTO.frontImage;
+    backImageBase64 = widget.cardDTO.backImage;
   }
 
   @override
@@ -63,6 +65,8 @@ class _CardPageState extends State<CardPage> {
         frontDescription: textControllerFront.text,
         backDescription: textControllerBack.text,
         deckId: widget.cardDTO.deckId,
+        frontImage: frontImageBase64,
+        backImage: backImageBase64,
       );
       CardRepository.save(card);
     } else {
@@ -72,6 +76,8 @@ class _CardPageState extends State<CardPage> {
         backDescription: textControllerBack.text,
         deckId: widget.cardDTO.deckId,
         revisionDate: widget.cardDTO.revisionDate,
+        frontImage: frontImageBase64,
+        backImage: backImageBase64,
       );
       CardRepository.update(card);
     }

@@ -38,6 +38,8 @@ class CardRepository {
       backDescription: cardNew.backDescription,
       deckId: cardNew.deckId,
       revisionDate: CardDTO.defaultDate,
+      frontImage: cardNew.frontImage,
+      backImage: cardNew.backImage,
     );
 
     await box.put(newId, card);

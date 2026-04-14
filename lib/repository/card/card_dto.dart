@@ -17,6 +17,12 @@ class CardDTO extends HiveObject {
   @HiveField(4)
   DateTime revisionDate;
 
+  @HiveField(5)
+  String? frontImage;
+
+  @HiveField(6)
+  String? backImage;
+
   static DateTime defaultDate = DateTime(2015, 9, 14, 0, 0, 0);
 
   CardDTO({
@@ -25,6 +31,8 @@ class CardDTO extends HiveObject {
     required this.backDescription,
     required this.deckId,
     required this.revisionDate,
+    required this.frontImage,
+    required this.backImage,
   });
 
   factory CardDTO.empty() => CardDTO(
@@ -33,6 +41,8 @@ class CardDTO extends HiveObject {
     backDescription: "back empty card",
     deckId: -1,
     revisionDate: defaultDate,
+    frontImage: "",
+    backImage: "",
   );
 
   static CardDTO build(int deckID) {
@@ -42,6 +52,8 @@ class CardDTO extends HiveObject {
       backDescription: "",
       deckId: deckID,
       revisionDate: defaultDate,
+      frontImage: "",
+      backImage: "",
     );
   }
 }
