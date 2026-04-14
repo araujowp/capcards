@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/page/cap_scaffold.dart';
+import 'package:capcards/page/card/components/image_place_holder.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
 import 'package:capcards/repository/card/card_repository.dart';
@@ -178,29 +179,11 @@ class _CardPageState extends State<CardPage> {
                   base64Decode(base64Image),
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) =>
-                      _placeholder(label),
+                      ImagePlaceHolder(label),
                 ),
               )
-            : _placeholder(label),
+            : ImagePlaceHolder(label),
       ),
-    );
-  }
-
-  Widget _placeholder(String label) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.add_a_photo, size: 48, color: Colors.grey),
-        const SizedBox(height: 8),
-        Text(
-          'Adicionar imagem - $label',
-          style: const TextStyle(color: Colors.grey),
-        ),
-        const Text(
-          'Toque para tirar foto ou escolher',
-          style: TextStyle(fontSize: 12, color: Colors.grey),
-        ),
-      ],
     );
   }
 
