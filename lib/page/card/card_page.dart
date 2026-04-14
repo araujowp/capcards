@@ -192,27 +192,30 @@ class _CardPageState extends State<CardPage> {
     return CapScaffold(
       appBarText: "Edite Cartão",
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: TextField(
-                controller: textControllerFront,
-                decoration: const InputDecoration(label: Text("Frente")),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: TextField(
+                  controller: textControllerFront,
+                  decoration: const InputDecoration(label: Text("Frente")),
+                ),
               ),
-            ),
-            _buildImagePreview(frontImageBase64, "Frente", true),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: TextField(
-                controller: textControllerBack,
-                decoration: const InputDecoration(label: Text("Verso")),
+              _buildImagePreview(frontImageBase64, "Frente", true),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: TextField(
+                  controller: textControllerBack,
+                  decoration: const InputDecoration(label: Text("Verso")),
+                ),
               ),
-            ),
-            _buildImagePreview(backImageBase64, "verso", false),
-            CapButton(label: "Salvar", icon: Icons.save, onTap: save),
-            CapButton(label: "Cancelar", icon: Icons.cancel, onTap: cancel),
-          ],
+              _buildImagePreview(backImageBase64, "verso", false),
+              CapButton(label: "Salvar", icon: Icons.save, onTap: save),
+              CapButton(label: "Cancelar", icon: Icons.cancel, onTap: cancel),
+            ],
+          ),
         ),
       ),
     );
