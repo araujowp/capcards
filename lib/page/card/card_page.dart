@@ -106,6 +106,7 @@ class _CardPageState extends State<CardPage> {
         }
       });
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text('Erro ao capturar imagem: $e')));
@@ -142,10 +143,11 @@ class _CardPageState extends State<CardPage> {
                 onTap: () {
                   Navigator.pop(context);
                   setState(() {
-                    if (isFront)
+                    if (isFront) {
                       frontImageBase64 = null;
-                    else
+                    } else {
                       backImageBase64 = null;
+                    }
                   });
                 },
               ),

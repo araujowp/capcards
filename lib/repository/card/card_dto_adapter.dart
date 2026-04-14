@@ -4,6 +4,7 @@ import 'card_dto.dart'; // ajuste o path se necessário
 class CardDTOAdapter extends TypeAdapter<CardDTO> {
   @override
   final int typeId = 0;
+  @override
   CardDTO read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
@@ -20,6 +21,7 @@ class CardDTOAdapter extends TypeAdapter<CardDTO> {
     );
   }
 
+  @override
   void write(BinaryWriter writer, CardDTO obj) {
     writer
       ..writeByte(7) // número de campos
