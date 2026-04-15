@@ -9,15 +9,16 @@ class ImagePlaceHolder extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.add_a_photo, size: 48, color: Colors.grey),
-        const SizedBox(height: 8),
-        Text(
-          'Adicionar imagem - $label',
-          style: const TextStyle(color: Colors.grey),
-        ),
-        const Text(
-          'Toque para tirar foto ou escolher',
-          style: TextStyle(fontSize: 12, color: Colors.grey),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.add_a_photo, size: 48, color: Colors.grey),
+            const SizedBox(width: 24),
+            Text(
+              'Adicionar imagem - $label',
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ],
         ),
       ],
     );

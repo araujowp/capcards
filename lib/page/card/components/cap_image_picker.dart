@@ -108,7 +108,7 @@ class _CapImagePickerState extends State<CapImagePicker> {
     return GestureDetector(
       onTap: _showOptions,
       child: Container(
-        height: 180,
+        height: 90,
         width: double.infinity,
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
