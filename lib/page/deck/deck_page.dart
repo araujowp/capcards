@@ -1,4 +1,5 @@
 import 'package:capcards/components/cap_button.dart';
+import 'package:capcards/components/cap_text_field.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/search_card_page.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
@@ -91,13 +92,7 @@ class _DeckPageState extends State<DeckPage> {
         child: SafeArea(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: TextField(
-                  controller: controllerName,
-                  decoration: const InputDecoration(label: Text("Nova lista")),
-                ),
-              ),
+              CapTextField(label: "Nova lista!", controller: controllerName),
               CapButton(
                 label: "Salvar",
                 icon: Icons.save,
