@@ -7,6 +7,8 @@
 - Temas da Aplicação trocar imagem de fundo.
 - Criar imagens personalisadas com o tema capcards. 
 - Indicar que edição de decks foi precionado.
+- Criar opção de revisão geral.
+- Criar um tutorial.
 - Adicionar son no flip
 - Adicionar son na troca de cartoes.
 - Adicionar funcionalidade desligar son.

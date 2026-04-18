@@ -28,10 +28,7 @@ class CapScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          appBarText,
-          style: const TextStyle(color: Colors.white),
-        ),
+        title: Text(appBarText, style: const TextStyle(color: Colors.white)),
         actions: appBarActions,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -49,12 +46,7 @@ class CapScaffold extends StatelessWidget {
             alignment: Alignment.center,
           ),
         ),
-        child: padding != null
-            ? Padding(
-                padding: padding!,
-                child: body,
-              )
-            : body,
+        child: padding != null ? Padding(padding: padding!, child: body) : body,
       ),
       floatingActionButton: floatingActionButton,
       floatingActionButtonLocation: floatingActionButtonLocation,

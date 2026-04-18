@@ -1,15 +1,11 @@
-import 'dart:convert';
-
 import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/components/cap_text_field.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:capcards/page/card/components/cap_image_picker.dart';
-import 'package:capcards/page/card/components/image_place_holder.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_dto_new.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class CardPage extends StatefulWidget {
   final CardDTO cardDTO;
@@ -24,8 +20,6 @@ class _CardPageState extends State<CardPage> {
   late TextEditingController textControllerBack;
   String? frontImageBase64;
   String? backImageBase64;
-
-  final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
@@ -99,6 +93,7 @@ class _CardPageState extends State<CardPage> {
   Widget build(BuildContext context) {
     return CapScaffold(
       appBarText: "Edite Cartão",
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
