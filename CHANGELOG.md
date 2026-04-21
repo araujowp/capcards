@@ -1,7 +1,11 @@
 ## [Unreleased]
-- Tratamento estouro de teclado virtual na edição de cartões.
-- Exibir imagem do cartão no teste.
+- Redesenhar tela de edição de cartoes.
+- Teste geral com cartões de todas as listas. 
 - Salvar deck animar para mostrar que a ação foi feita.
+- Notificar que a exclusao de deck e permanete e perde os cartoes.
+- Remover font redimensionavel.
+- Inserir quebra de linha na criação de cartões
+- Ajustar fonte na criação de cartões
 - criar menu configurações
 - criar tela de configurações.
 - Temas da Aplicação trocar imagem de fundo.
@@ -24,8 +28,10 @@
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
 
-# 3.1.0 - [2026-04-14]
-- Cartões com imagens
+# 4.0.0 - [2026-04-21]
+- Exibir imagem do cartão no teste.
+- Tratamento estouro de teclado virtual na edição de cartões.
+- Edição de Cartões salvar imagem.
 - Estilização botoes da edição de cards.
 - Adicionar navegação da edição de cartoes para home.
 - Estilização botoes da edição de listas.

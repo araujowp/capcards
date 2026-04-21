@@ -38,7 +38,9 @@ class SwipableCard extends StatelessWidget {
       background: Container(color: Colors.transparent),
       child: FlipCard(
         frontText: card.frontDescription,
+        frontImageBase64: card.frontImage,
         backText: card.backDescription,
+        backImageBase64: card.backImage,
         height: height,
         width: width,
       ),

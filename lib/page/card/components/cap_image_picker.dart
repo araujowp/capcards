@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:capcards/page/card/components/image_place_holder.dart';
+import 'package:capcards/components/cap_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -33,7 +33,7 @@ class _CapImagePickerState extends State<CapImagePicker> {
     try {
       final XFile? pickedFile = await _picker.pickImage(
         source: source,
-        imageQuality: 70,
+        imageQuality: 50,
         maxWidth: 800,
         maxHeight: 800,
       );
@@ -43,10 +43,7 @@ class _CapImagePickerState extends State<CapImagePicker> {
       final bytes = await pickedFile.readAsBytes();
       final base64String = base64Encode(bytes);
 
-      setState(() {
-        _currentImageBase64 = base64String;
-      });
-
+      setState(() => _currentImageBase64 = base64String);
       widget.onImageSelected(base64String);
     } catch (e) {
       if (!mounted) return;
@@ -57,9 +54,7 @@ class _CapImagePickerState extends State<CapImagePicker> {
   }
 
   void _removeImage() {
-    setState(() {
-      _currentImageBase64 = null;
-    });
+    setState(() => _currentImageBase64 = null);
     widget.onImageSelected(null);
   }
 
@@ -102,31 +97,12 @@ class _CapImagePickerState extends State<CapImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final hasImage =
-        _currentImageBase64 != null && _currentImageBase64!.isNotEmpty;
-
     return GestureDetector(
       onTap: _showOptions,
-      child: Container(
+      child: CapImageViewer(
+        imageBase64: _currentImageBase64,
+        label: widget.label,
         height: 90,
-        width: double.infinity,
-        margin: const EdgeInsets.only(bottom: 12),
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey.shade400),
-        ),
-        child: hasImage
-            ? ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.memory(
-                  base64Decode(_currentImageBase64!),
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) =>
-                      ImagePlaceHolder(widget.label),
-                ),
-              )
-            : ImagePlaceHolder(widget.label),
       ),
     );
   }

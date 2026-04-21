@@ -1,17 +1,22 @@
 import 'dart:math' as math;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:capcards/components/cap_image_viewer.dart';
 import 'package:flutter/material.dart';
 
 class FlipCard extends StatefulWidget {
   final String frontText;
+  final String? frontImageBase64;
   final String backText;
+  final String? backImageBase64;
   final double height;
   final double width;
 
   const FlipCard({
     super.key,
     required this.frontText,
+    this.frontImageBase64,
     required this.backText,
+    this.backImageBase64,
     required this.height,
     required this.width,
   });
@@ -97,16 +102,29 @@ class _CustomFlipCardState extends State<FlipCard>
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: AutoSizeText(
-            widget.frontText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Color.fromARGB(255, 55, 85, 6),
-              fontSize: 100,
-            ),
-            minFontSize: 16,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
+          child: Column(
+            mainAxisAlignment: .center,
+            children: [
+              AutoSizeText(
+                widget.frontText,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 55, 85, 6),
+                  fontSize: 100,
+                ),
+                minFontSize: 16,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+              if (widget.frontImageBase64 != null &&
+                  widget.frontImageBase64!.isNotEmpty)
+                CapImageViewer(
+                  imageBase64: widget.frontImageBase64,
+                  label: widget.frontText,
+                )
+              else
+                const Text("não tem imagem"),
+            ],
           ),
         ),
       ),
@@ -124,13 +142,26 @@ class _CustomFlipCardState extends State<FlipCard>
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: AutoSizeText(
-            widget.backText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white, fontSize: 100),
-            minFontSize: 16,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
+          child: Column(
+            mainAxisAlignment: .center,
+            children: [
+              AutoSizeText(
+                widget.backText,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white, fontSize: 100),
+                minFontSize: 16,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+              if (widget.backImageBase64 != null &&
+                  widget.backImageBase64!.isNotEmpty)
+                CapImageViewer(
+                  imageBase64: widget.backImageBase64,
+                  label: widget.backText,
+                )
+              else
+                const Text("não tem imagem"),
+            ],
           ),
         ),
       ),
