@@ -92,73 +92,55 @@ class _CustomFlipCardState extends State<FlipCard>
   }
 
   Widget _buildFront() {
-    return Container(
-      height: widget.height,
-      width: widget.width,
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: .center,
-            children: [
-              AutoSizeText(
-                widget.frontText,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 55, 85, 6),
-                  fontSize: 100,
-                ),
-                minFontSize: 16,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-              ),
-              if (widget.frontImageBase64 != null &&
-                  widget.frontImageBase64!.isNotEmpty)
-                CapImageViewer(
-                  imageBase64: widget.frontImageBase64,
-                  label: widget.frontText,
-                )
-              else
-                const Text("não tem imagem"),
-            ],
-          ),
-        ),
+    return _buildCardSide(
+      text: widget.frontText,
+      imageBase64: widget.frontImageBase64,
+      backgroundColor: Colors.white.withValues(alpha: 0.4),
+      textStyle: const TextStyle(
+        color: Color.fromARGB(255, 55, 85, 6),
+        fontSize: 100,
       ),
     );
   }
 
   Widget _buildBack() {
+    return _buildCardSide(
+      text: widget.backText,
+      imageBase64: widget.backImageBase64,
+      backgroundColor: Colors.black.withValues(alpha: 0.4),
+      textStyle: const TextStyle(color: Colors.white, fontSize: 100),
+    );
+  }
+
+  Widget _buildCardSide({
+    required String text,
+    required String? imageBase64,
+    required Color backgroundColor,
+    required TextStyle textStyle,
+  }) {
     return Container(
       height: widget.height,
       width: widget.width,
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.4),
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: .center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
-                widget.backText,
+                text,
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.white, fontSize: 100),
+                style: textStyle,
                 minFontSize: 16,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
-              if (widget.backImageBase64 != null &&
-                  widget.backImageBase64!.isNotEmpty)
-                CapImageViewer(
-                  imageBase64: widget.backImageBase64,
-                  label: widget.backText,
-                )
+              if (imageBase64 != null && imageBase64.isNotEmpty)
+                CapImageViewer(imageBase64: imageBase64, label: text)
               else
                 const Text("não tem imagem"),
             ],
