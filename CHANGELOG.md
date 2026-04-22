@@ -1,4 +1,5 @@
 ## [Unreleased]
+- Voltar para frente do cartão apos feedback.
 - Redesenhar tela de edição de cartoes.
 - Teste geral com cartões de todas as listas. 
 - Salvar deck animar para mostrar que a ação foi feita.
@@ -11,7 +12,6 @@
 - Temas da Aplicação trocar imagem de fundo.
 - Criar imagens personalisadas com o tema capcards. 
 - Indicar que edição de decks foi precionado.
-- Criar opção de revisão geral.
 - Criar um tutorial.
 - Adicionar son no flip
 - Adicionar son na troca de cartoes.
@@ -27,6 +27,9 @@
 - Criar listas animadas (aperecer itens em sequencia)
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
+
+# 4.1.0 - [2026-04-22]
+- Criar opção de revisão geral.
 
 # 4.0.0 - [2026-04-21]
 - Exibir imagem do cartão no teste.
