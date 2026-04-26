@@ -47,13 +47,15 @@ class _CustomFlipCardState extends State<FlipCard>
   @override
   void didUpdateWidget(covariant FlipCard oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.frontText != widget.frontText ||
-        oldWidget.backText != widget.backText) {
-      if (!_isFront) {
-        _animationController.value = 0;
-        _isFront = true;
-      }
+    _resetToFront();
+  }
+
+  void _resetToFront() {
+    if (_animationController.isAnimating) {
+      _animationController.stop();
     }
+    _animationController.value = 0.0;
+    _isFront = true;
   }
 
   void _flip() {
@@ -140,9 +142,7 @@ class _CustomFlipCardState extends State<FlipCard>
                 overflow: TextOverflow.ellipsis,
               ),
               if (imageBase64 != null && imageBase64.isNotEmpty)
-                CapImageViewer(imageBase64: imageBase64, label: text)
-              else
-                const Text("não tem imagem"),
+                CapImageViewer(imageBase64: imageBase64, label: text),
             ],
           ),
         ),
