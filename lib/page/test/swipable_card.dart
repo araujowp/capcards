@@ -30,9 +30,9 @@ class SwipableCard extends StatelessWidget {
       movementDuration: const Duration(milliseconds: 300),
       onDismissed: (direction) {
         if (direction == DismissDirection.up) {
-          onWrong();
-        } else if (direction == DismissDirection.down) {
           onCorrect();
+        } else if (direction == DismissDirection.down) {
+          onWrong();
         }
       },
       background: Container(color: Colors.transparent),

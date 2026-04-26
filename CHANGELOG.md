@@ -30,8 +30,9 @@
 - Revisar versões de dependencias.
 
 # 4.1.1 - [2026-04-26]
+[] Correção de exibição de imagem no teste.
 [] Voltar para frente do cartão apos feedback.
-[] Correção de bug ao sinalizar erro por gesto.
+- Correção de bug ao sinalizar erro por gesto.
 - Requerer texto ou imagem para cadastro de cartões.
 
 # 4.1.0 - [2026-04-22]
