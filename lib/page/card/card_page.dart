@@ -46,8 +46,10 @@ class _CardPageState extends State<CardPage> {
   }
 
   save() async {
-    if (textControllerFront.text.trim().isEmpty ||
-        textControllerBack.text.trim().isEmpty) {
+    if ((textControllerFront.text.trim().isEmpty &&
+            (frontImageBase64?.isEmpty ?? true)) ||
+        (textControllerBack.text.trim().isEmpty &&
+            (backImageBase64?.isEmpty ?? true))) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Frente e verso obrigatórios'),

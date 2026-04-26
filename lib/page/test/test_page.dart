@@ -38,7 +38,11 @@ class _TestPageState extends State<TestPage> {
 
   Future<void> _loadShuffleCards() async {
     try {
-      cards = await CardRepository.getByDeckId(widget.deck.id);
+      if (widget.deck.id != 0) {
+        cards = await CardRepository.getByDeckId(widget.deck.id);
+      } else {
+        cards = await CardRepository.getAll();
+      }
       cards.sort((a, b) => a.revisionDate.compareTo(b.revisionDate));
       cards = cards.take(12).toList();
       cards.shuffle();
