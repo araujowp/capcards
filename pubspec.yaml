@@ -2,7 +2,7 @@ name: capcards
 description: "an application for memorization through spaced repetition."
 publish_to: 'none' 
 
-version: 4.1.1+10
+version: 4.1.2+10
 
 environment:
   sdk: '>=3.11.0 <4.0.0'

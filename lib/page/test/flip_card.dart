@@ -131,15 +131,22 @@ class _CustomFlipCardState extends State<FlipCard>
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AutoSizeText(
-                text,
-                textAlign: TextAlign.center,
-                style: textStyle,
-                minFontSize: 16,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
+              Expanded(
+                child: AutoSizeText(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: textStyle,
+                  minFontSize: 16,
+                  maxLines: 3,
+                  maxFontSize: 110,
+                  overflow: TextOverflow.ellipsis,
+                  stepGranularity: 1,
+                  wrapWords: false,
+                  softWrap: true,
+                ),
               ),
               if (imageBase64 != null && imageBase64.isNotEmpty)
                 CapImageViewer(imageBase64: imageBase64, label: text),

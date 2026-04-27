@@ -29,6 +29,9 @@
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
 
+# 4.1.2 - [2026-04-26]
+- Correção de exibição quebra de linhas desnecessarias no teste.
+
 # 4.1.1 - [2026-04-26]
 - Correção de exibição de imagem no teste.
 - Voltar para frente do cartão após feedback.
