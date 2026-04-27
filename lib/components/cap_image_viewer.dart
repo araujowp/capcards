@@ -14,9 +14,9 @@ class CapImageViewer extends StatelessWidget {
     super.key,
     required this.imageBase64,
     required this.label,
-    this.height = 200,
+    this.height = 300,
     this.width = double.infinity,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.contain,
     this.onTap,
   });
 
