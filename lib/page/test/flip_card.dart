@@ -101,6 +101,7 @@ class _CustomFlipCardState extends State<FlipCard>
       textStyle: const TextStyle(
         color: Color.fromARGB(255, 55, 85, 6),
         fontSize: 100,
+        height: 0.9,
       ),
     );
   }
@@ -110,7 +111,11 @@ class _CustomFlipCardState extends State<FlipCard>
       text: widget.backText,
       imageBase64: widget.backImageBase64,
       backgroundColor: Colors.black.withValues(alpha: 0.4),
-      textStyle: const TextStyle(color: Colors.white, fontSize: 100),
+      textStyle: const TextStyle(
+        color: Colors.white,
+        fontSize: 100,
+        height: 0.9,
+      ),
     );
   }
 
