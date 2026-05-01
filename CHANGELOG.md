@@ -7,6 +7,7 @@
 - Remover font redimensionavel.
 - Inserir quebra de linha na criação de cartões
 - Ajustar fonte na criação de cartões
+- Mostrar nome lista filha no teste da lista geral
 - criar menu configurações
 - criar tela de configurações.
 - Temas da Aplicação trocar imagem de fundo.
@@ -31,10 +32,9 @@
 # 4.1.4 - [2026-?]
 [] zoom na imagem da edição de cartões.
 [] Estilizar botão do relatorio de teste.
-[] Centralizar imagem quando for unica no teste.
 [] Diminir espaçamento entre linhas no teste.
 [] Adicionar Miniaturas de imagens no cadastro de cartões.
-[] Pagina de teste considerar cartão sem texto.
+- Centralizar imagem quando for unica no teste.
 - Centralizar texto quando tive apeas uma palavra no teste.
 
 # 4.1.3 - [2026-04-29]

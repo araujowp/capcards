@@ -134,24 +134,27 @@ class _CustomFlipCardState extends State<FlipCard>
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Center(
-                  child: AutoSizeText(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: textStyle,
-                    minFontSize: 16,
-                    maxLines: 3,
-                    maxFontSize: 110,
-                    overflow: TextOverflow.ellipsis,
-                    stepGranularity: 1,
-                    wrapWords: false,
-                    softWrap: true,
+              if (text.isNotEmpty)
+                Expanded(
+                  child: Center(
+                    child: AutoSizeText(
+                      text,
+                      textAlign: TextAlign.center,
+                      style: textStyle,
+                      minFontSize: 16,
+                      maxLines: 3,
+                      maxFontSize: 110,
+                      overflow: TextOverflow.ellipsis,
+                      stepGranularity: 1,
+                      wrapWords: false,
+                      softWrap: true,
+                    ),
                   ),
                 ),
-              ),
               if (imageBase64 != null && imageBase64.isNotEmpty)
-                CapImageViewer(imageBase64: imageBase64, label: text),
+                Center(
+                  child: CapImageViewer(imageBase64: imageBase64, label: text),
+                ),
             ],
           ),
         ),
