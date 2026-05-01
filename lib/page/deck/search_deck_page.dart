@@ -78,7 +78,7 @@ class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
   }
 
   delete(int deckId) async {
-    await DeckRepository.delete(deckId);
+    await DeckService.delete(deckId);
     setState(() {
       _futureDecks = DeckService.getAll();
     });

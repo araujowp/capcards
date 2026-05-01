@@ -1,6 +1,5 @@
 ## [Unreleased]
-- Travar edição da lista geral
-- Apresentação visual lista não editavel
+- ?Apresentação visual lista não editavel
 - Redesenhar tela de edição de cartoes.
 - Teste geral com cartões de todas as listas. 
 - Salvar deck animar para mostrar que a ação foi feita.
@@ -28,6 +27,18 @@
 - Criar listas animadas (aperecer itens em sequencia)
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
+
+# 4.1.4 - [2026-?]
+[] zoom na imagem da edição de cartões.
+[] Estilizar botão do relatorio de teste.
+[] Centralizar imagem quando for unica no teste.
+[] Diminir espaçamento entre linhas no teste.
+[] Adicionar Miniaturas de imagens no cadastro de cartões.
+[] Pagina de teste considerar cartão sem texto.
+- Centralizar texto quando tive apeas uma palavra no teste.
+
+# 4.1.3 - [2026-04-29]
+- Excluir lista geral exclui cartões orfãos.
 
 # 4.1.2 - [2026-04-26]
 - Correção de exibição quebra de linhas desnecessarias no teste.

@@ -1,4 +1,6 @@
+import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
+import 'package:capcards/repository/deck/deck_dto.dart';
 import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:capcards/service/Deck.dart';
 
@@ -37,5 +39,27 @@ class DeckService {
       );
     }
     return decks;
+  }
+
+  static Future<bool> delete(int id) async {
+    if (id != 0) {
+      return await DeckRepository.delete(id);
+    } else {
+      List<DeckDTO> decks = await DeckRepository.getAll();
+
+      Set<int> validDeckIds = decks.map((deck) => deck.id).toSet();
+
+      List<CardDTO> cards = await CardRepository.getAll();
+
+      for (var card in cards) {
+        if (!validDeckIds.contains(card.deckId)) {
+          bool deleted = await CardRepository.delete(card.id);
+          if (!deleted) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
   }
 }
