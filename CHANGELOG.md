@@ -1,4 +1,5 @@
 ## [Unreleased]
+- Adicionar Miniaturas de imagens no cadastro de cartões.
 - ?Apresentação visual lista não editavel
 - Redesenhar tela de edição de cartoes.
 - Teste geral com cartões de todas as listas. 
@@ -28,10 +29,13 @@
 - Criar listas animadas (aperecer itens em sequencia)
 - Aprender a criar Lottie Animation
 - Revisar versões de dependencias.
+- ? Voltar para inicio sai da edição.
+- ? Criar tela para manutenção com exclusao de cartões filhos.
+- ? Criar tela para manutenção listas menos utilizadas.
+- ? Compartilhar cartões.
 
 # 4.1.4 - [2026-?]
-[] Adicionar Miniaturas de imagens no cadastro de cartões.
-[] Estilizar botão do relatorio de teste.
+- Estilizar botão do relatorio de teste.
 - Edição de cartões distribuir o espaço para as imagens.
 - Diminir espaçamento entre linhas no teste.
 - Centralizar imagem quando for unica no teste.

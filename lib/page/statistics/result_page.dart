@@ -1,3 +1,4 @@
+import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/page/cap_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:capcards/page/statistics/test_stats.dart';
@@ -65,17 +66,17 @@ class ResultPage extends StatelessWidget {
                   children: [
                     Text(
                       'Acertos: $correctAnswers',
-                      style: const TextStyle(fontSize: 28),
+                      style: const TextStyle(fontSize: 28, color: Colors.white),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       'Erros: ${stats.wrongs}',
-                      style: const TextStyle(fontSize: 28),
+                      style: const TextStyle(fontSize: 28, color: Colors.white),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       'Total de questões: $totalQuestions',
-                      style: const TextStyle(fontSize: 24),
+                      style: const TextStyle(fontSize: 24, color: Colors.white),
                     ),
                   ],
                 ),
@@ -89,11 +90,14 @@ class ResultPage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
+              CapButton(
+                label: "Voltar",
+                icon: Icons.home,
+                color: Colors.green,
+                borderColor: Colors.green,
+                onTap: () {
                   Navigator.pop(context);
                 },
-                child: const Text("OK"),
               ),
             ],
           ),
