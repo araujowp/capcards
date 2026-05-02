@@ -102,16 +102,20 @@ class _CardPageState extends State<CardPage> {
           child: Column(
             children: [
               CapTextField(label: "Frente", controller: textControllerFront),
-              CapImagePicker(
-                initialImageBase64: frontImageBase64,
-                label: "Frente",
-                onImageSelected: _onFrontImageChanged,
+              Expanded(
+                child: CapImagePicker(
+                  initialImageBase64: frontImageBase64,
+                  label: "Frente",
+                  onImageSelected: _onFrontImageChanged,
+                ),
               ),
               CapTextField(label: "Verso", controller: textControllerBack),
-              CapImagePicker(
-                initialImageBase64: backImageBase64,
-                label: "Verso",
-                onImageSelected: _onBackImageChanged,
+              Expanded(
+                child: CapImagePicker(
+                  initialImageBase64: backImageBase64,
+                  label: "Verso",
+                  onImageSelected: _onBackImageChanged,
+                ),
               ),
               CapButton(label: "Salvar", icon: Icons.save, onTap: save),
               CapButton(label: "Cancelar", icon: Icons.cancel, onTap: cancel),

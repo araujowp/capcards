@@ -102,7 +102,8 @@ class _CapImagePickerState extends State<CapImagePicker> {
       child: CapImageViewer(
         imageBase64: _currentImageBase64,
         label: widget.label,
-        height: 90,
+        height: double.infinity,
+        width: double.infinity,
       ),
     );
   }

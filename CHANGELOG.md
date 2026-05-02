@@ -30,10 +30,10 @@
 - Revisar versões de dependencias.
 
 # 4.1.4 - [2026-?]
-[] zoom na imagem da edição de cartões.
-[] Estilizar botão do relatorio de teste.
-[] Diminir espaçamento entre linhas no teste.
 [] Adicionar Miniaturas de imagens no cadastro de cartões.
+[] Estilizar botão do relatorio de teste.
+- Edição de cartões distribuir o espaço para as imagens.
+- Diminir espaçamento entre linhas no teste.
 - Centralizar imagem quando for unica no teste.
 - Centralizar texto quando tive apeas uma palavra no teste.
 
