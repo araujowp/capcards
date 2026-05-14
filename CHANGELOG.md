@@ -1,19 +1,24 @@
 ## [Unreleased]
 - Adicionar Miniaturas de imagens no cadastro de cartões.
+- Tratar sobreposição na lista de cartões.
 - ?Apresentação visual lista não editavel
 - Redesenhar tela de edição de cartoes.
 - Teste geral com cartões de todas as listas. 
-- Salvar deck animar para mostrar que a ação foi feita.
 - Notificar que a exclusao de deck e permanete e perde os cartoes.
 - Remover font redimensionavel.
+- Indicar que edição de decks foi precionado.
 - Inserir quebra de linha na criação de cartões
 - Ajustar fonte na criação de cartões
+- Configurações no cartão de teste.
+- Configurações no cartão de teste - excluir.
+- Configurações no cartão de teste - editar.
 - Mostrar nome lista filha no teste da lista geral
 - criar menu configurações
+- Configurar nivel de revisão.
 - criar tela de configurações.
+- Configurar tamanho de fonte.
 - Temas da Aplicação trocar imagem de fundo.
 - Criar imagens personalisadas com o tema capcards. 
-- Indicar que edição de decks foi precionado.
 - Criar um tutorial.
 - Adicionar son no flip
 - Adicionar son na troca de cartoes.
@@ -34,7 +39,8 @@
 - ? Criar tela para manutenção listas menos utilizadas.
 - ? Compartilhar cartões.
 
-# 4.1.4 - [2026-?]
+# 4.1.4 - [2026-05-12]
+- Salvar deck animar para mostrar que a ação foi feita.
 - Estilizar botão do relatorio de teste.
 - Edição de cartões distribuir o espaço para as imagens.
 - Diminir espaçamento entre linhas no teste.
