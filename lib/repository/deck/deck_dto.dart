@@ -10,4 +10,9 @@ class DeckDTO extends HiveObject {
   String description;
 
   DeckDTO({required this.id, required this.description});
+
+  factory DeckDTO.fromJson(Map<String, dynamic> json) =>
+      DeckDTO(id: json['id'], description: json['description']);
+
+  Map<String, dynamic> toJson() => {'id': id, 'description': description};
 }

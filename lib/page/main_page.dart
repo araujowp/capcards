@@ -1,6 +1,7 @@
 import 'package:capcards/components/botton_nav/custom_botton_nav.dart';
 import 'package:capcards/page/about_page.dart';
 import 'package:capcards/page/cap_scaffold.dart';
+import 'package:capcards/page/config/config_page.dart';
 import 'package:capcards/page/deck/deck_page.dart';
 import 'package:capcards/page/deck/search_deck_actions.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ class MainPageState extends State<MainPage> {
         ),
       ),
       const AboutPage(),
+      const ConfigPage(),
     ];
 
     final currentPage = pages[_selectedIndex];

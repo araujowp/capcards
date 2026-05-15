@@ -57,8 +57,8 @@ class _CustomBottomNavState extends State<CustomBottomNav>
 
   void _updateHolePosition(int newIndex, {required bool animate}) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final itemWidth = screenWidth / 2; // Para 2 itens
-    final newPosition = itemWidth * newIndex + itemWidth / 2;
+    final itemWidth = screenWidth / 3; // Para 2 itens
+    final newPosition = itemWidth * newIndex + itemWidth / 3;
 
     setState(() {
       if (animate) {
@@ -131,6 +131,12 @@ class _CustomBottomNavState extends State<CustomBottomNav>
                 label: 'Sobre',
                 isSelected: widget.currentIndex == 1,
                 onTap: () => widget.onTap(1),
+              ),
+              BottomNavItem(
+                icon: Icons.info_outline,
+                label: 'Configurações',
+                isSelected: widget.currentIndex == 2,
+                onTap: () => widget.onTap(2),
               ),
             ],
           ),

@@ -56,4 +56,24 @@ class CardDTO extends HiveObject {
       backImage: "",
     );
   }
+
+  factory CardDTO.fromJson(Map<String, dynamic> json) => CardDTO(
+    id: json['id'],
+    frontDescription: json['frontDescription'],
+    backDescription: json['backDescription'],
+    deckId: json['deckId'],
+    revisionDate: DateTime.parse(json['revisionDate']),
+    frontImage: json['frontImage'],
+    backImage: json['backImage'],
+  );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'frontDescription': frontDescription,
+    'backDescription': backDescription,
+    'deckId': deckId,
+    'revisionDate': revisionDate.toIso8601String(),
+    'frontImage': frontImage,
+    'backImage': backImage,
+  };
 }
