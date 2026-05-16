@@ -13,9 +13,7 @@
 - Configurações no cartão de teste - excluir.
 - Configurações no cartão de teste - editar.
 - Mostrar nome lista filha no teste da lista geral
-- criar menu configurações
 - Configurar nivel de revisão.
-- criar tela de configurações.
 - Configurar tamanho de fonte.
 - Temas da Aplicação trocar imagem de fundo.
 - Criar imagens personalisadas com o tema capcards. 
@@ -37,7 +35,11 @@
 - ? Voltar para inicio sai da edição.
 - ? Criar tela para manutenção com exclusao de cartões filhos.
 - ? Criar tela para manutenção listas menos utilizadas.
-- ? Compartilhar cartões.
+- Compartilhar Estatisticas.
+
+# 4.2.0 - [2026-05-15]
+- criar menu configurações
+- criar tela de configurações.
 
 # 4.1.4 - [2026-05-12]
 - Salvar deck animar para mostrar que a ação foi feita.

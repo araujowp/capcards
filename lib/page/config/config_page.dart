@@ -1,3 +1,4 @@
+import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/page/cap_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,27 @@ class ConfigPage extends CapPage {
 }
 
 class ConfigPageState extends State<ConfigPage> {
+  void myAction(String value) {
+    print(value);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("ola sou o state"));
+    return Center(
+      child: Column(
+        children: [
+          CapButton(
+            label: "Importar",
+            icon: Icons.download,
+            onTap: () => myAction("importar"),
+          ),
+          CapButton(
+            label: "Exportar",
+            icon: Icons.upload,
+            onTap: () => myAction("exportar"),
+          ),
+        ],
+      ),
+    );
   }
 }
