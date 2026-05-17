@@ -93,4 +93,22 @@ class CardRepository {
     }
     await box.put(updatedCard.id, updatedCard);
   }
+
+  static Future<void> deleteAll() async {
+    final box = Hive.box<CardDTO>(_boxName);
+    await box.clear();
+  }
+
+  static Future<void> insertAll(List<CardDTO> cards) async {
+    if (cards.isEmpty) return;
+
+    final box = Hive.box<CardDTO>(_boxName);
+    final Map<int, CardDTO> mapToPut = {};
+
+    for (final card in cards) {
+      mapToPut[card.id] = card;
+    }
+
+    await box.putAll(mapToPut);
+  }
 }

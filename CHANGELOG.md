@@ -36,7 +36,8 @@
 - ? Criar tela para manutenção listas menos utilizadas.
 - Compartilhar Estatisticas.
 
-# 4.2.0 - [2026-05-16]
+# 4.2.0 - [2026-05-17]
+- Add opção de importar decks e cartoes. 
 - Add opção de exportar decks e cartoes. 
 - criar menu configurações
 - criar tela de configurações.

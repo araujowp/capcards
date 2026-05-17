@@ -22,6 +22,19 @@ class DeckRepository {
     return newId;
   }
 
+  static Future<void> insertAll(List<DeckDTO> decks) async {
+    if (decks.isEmpty) return;
+
+    final box = Hive.box<DeckDTO>(_boxName);
+
+    final Map<int, DeckDTO> mapToPut = {};
+    for (final deck in decks) {
+      mapToPut[deck.id] = deck;
+    }
+
+    await box.putAll(mapToPut);
+  }
+
   static Future<int> update(int id, String description) async {
     final box = Hive.box<DeckDTO>(_boxName);
 
@@ -46,5 +59,17 @@ class DeckRepository {
     await box.delete(id);
 
     return true;
+  }
+
+  static Future<void> deleteAll() async {
+    final box = Hive.box<DeckDTO>(_boxName);
+
+    final List<int> deckIds = box.keys.cast<int>().toList();
+
+    for (final id in deckIds) {
+      await CardRepository.deleteAllByDeckId(id);
+    }
+
+    await box.clear();
   }
 }
