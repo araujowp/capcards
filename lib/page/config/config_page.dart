@@ -1,5 +1,6 @@
 import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/page/cap_page.dart';
+import 'package:capcards/service/backup_service.dart';
 import 'package:flutter/material.dart';
 
 class ConfigPage extends CapPage {
@@ -16,8 +17,16 @@ class ConfigPage extends CapPage {
 }
 
 class ConfigPageState extends State<ConfigPage> {
-  void myAction(String value) {
-    print(value);
+  final BackupService _backupService = BackupService();
+
+  void import() async {
+    print("in construction");
+  }
+
+  void export() async {
+    print("antes do export");
+    await _backupService.exportBackup();
+    print("depois do export");
   }
 
   @override
@@ -28,12 +37,12 @@ class ConfigPageState extends State<ConfigPage> {
           CapButton(
             label: "Importar",
             icon: Icons.download,
-            onTap: () => myAction("importar"),
+            onTap: () => import(),
           ),
           CapButton(
             label: "Exportar",
             icon: Icons.upload,
-            onTap: () => myAction("exportar"),
+            onTap: () => export(),
           ),
         ],
       ),

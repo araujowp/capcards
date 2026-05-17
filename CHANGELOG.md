@@ -26,7 +26,6 @@
 - Add imagem na appbar
 - Add borda na barra de navegação.
 - Indicador de Progresso
-- Add opção de exportar decks e cartoes. 
 - Exportar estatisticas.
 - Menu para estatisticas gerais.
 - Criar listas animadas (aperecer itens em sequencia)
@@ -37,7 +36,8 @@
 - ? Criar tela para manutenção listas menos utilizadas.
 - Compartilhar Estatisticas.
 
-# 4.2.0 - [2026-05-15]
+# 4.2.0 - [2026-05-16]
+- Add opção de exportar decks e cartoes. 
 - criar menu configurações
 - criar tela de configurações.
 

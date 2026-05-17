@@ -14,11 +14,14 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   cupertino_icons: ^1.0.2
-  package_info_plus: ^5.0.1
   auto_size_text: ^3.0.0
   path_provider: ^2.1.5
   fsrs: ^2.0.1
   image_picker: ^1.1.2
+  
+  share_plus: ^9.0.0
+  package_info_plus: ^9.0.1
+  file_picker: ^8.0.7     # versão mais compatível
 
 dev_dependencies:
   flutter_test:
@@ -28,18 +31,17 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.13.1
 
+# Override para resolver conflito no Windows
 dependency_overrides:
-  win32: ^5.15.0
+  win32: ^5.5.0
 
 flutter_launcher_icons:
-  android: "launcher_icon"  # Para Android
-  ios: false  # Mude para true se quiser iOS também
-  image_path: "assets/images/logo.png"  # Caminho da sua imagem
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/images/logo.png"
 
 flutter:
-
   uses-material-design: true
   assets:
     - assets/icon/icon.png
     - assets/images/
-
