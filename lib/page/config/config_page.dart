@@ -23,17 +23,13 @@ class ConfigPageState extends State<ConfigPage> {
   void import() async {
     try {
       final result = await FilePicker.platform.pickFiles(
-        type: FileType.any,
-        allowedExtensions: [
-          'json',
-          'bak',
-          'backup',
-        ], // ajuste conforme seu formato
+        type: FileType.custom, // ← Alterado para custom
+        allowedExtensions: ['json', 'bak', 'backup', 'txt'],
         allowMultiple: false,
       );
 
       if (result == null || result.files.isEmpty) {
-        _showMessage('Importação cancelada');
+        _showMessage('Importação cancelada pelo usuário');
         return;
       }
 
@@ -42,9 +38,9 @@ class ConfigPageState extends State<ConfigPage> {
       final success = await _backupService.importBackup(file);
 
       if (success) {
-        _showMessage('Backup importado com sucesso!');
+        _showMessage('✅ Backup importado com sucesso!');
       } else {
-        _showMessage('Falha ao importar o backup');
+        _showMessage('❌ Falha ao importar o backup');
       }
     } catch (e) {
       _showMessage('Erro ao importar: $e');
