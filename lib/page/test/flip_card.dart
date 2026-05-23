@@ -125,6 +125,9 @@ class _CustomFlipCardState extends State<FlipCard>
     required Color backgroundColor,
     required TextStyle textStyle,
   }) {
+    final hasText = text.isNotEmpty;
+    final hasImage = imageBase64 != null && imageBase64.isNotEmpty;
+
     return Container(
       height: widget.height,
       width: widget.width,
@@ -132,36 +135,48 @@ class _CustomFlipCardState extends State<FlipCard>
         color: backgroundColor,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (text.isNotEmpty)
-                Expanded(
-                  child: Center(
-                    child: AutoSizeText(
-                      text,
-                      textAlign: TextAlign.center,
-                      style: textStyle,
-                      minFontSize: 16,
-                      maxLines: 3,
-                      maxFontSize: 110,
-                      overflow: TextOverflow.ellipsis,
-                      stepGranularity: 1,
-                      wrapWords: false,
-                      softWrap: true,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 12), // padding reduzido
+        child: Column(
+          children: [
+            // TEXTO
+            if (hasText)
+              Flexible(
+                flex: 2, // mantendo como você testou
+                child: Center(
+                  child: AutoSizeText(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: textStyle,
+                    minFontSize: 22,
+                    maxLines: 3,
+                    maxFontSize: 130,
+                    overflow: TextOverflow.ellipsis,
+                    stepGranularity: 1,
+                  ),
+                ),
+              ),
+
+            // Espaçamento mínimo entre texto e imagem
+            if (hasText && hasImage) const SizedBox(height: 8), // bem menor
+            // IMAGEM - Aproveita o máximo possível da tela
+            if (hasImage)
+              Expanded(
+                flex: 8,
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: SizedBox.expand(
+                      // ← Força ocupar todo espaço disponível
+                      child: CapImageViewer(
+                        imageBase64: imageBase64,
+                        label: text,
+                      ),
                     ),
                   ),
                 ),
-              if (imageBase64 != null && imageBase64.isNotEmpty)
-                Center(
-                  child: CapImageViewer(imageBase64: imageBase64, label: text),
-                ),
-            ],
-          ),
+              ),
+          ],
         ),
       ),
     );

@@ -35,9 +35,9 @@
 - ? Criar tela para manutenção com exclusao de cartões filhos.
 - ? Criar tela para manutenção listas menos utilizadas.
 - Compartilhar Estatisticas.
-
-# 4.x - [2026-05-17]
 - Corrigir importação com quantidade de revisoes diferentes
+
+# 4.2.1 - [2026-05-23]
 - Dar mais espaço para a imagem nos cartões.
 - Corrigir mascara da barra de navegação.
 
