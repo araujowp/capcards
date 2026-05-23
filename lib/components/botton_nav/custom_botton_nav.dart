@@ -1,4 +1,4 @@
-import 'dart:ui'; // Para o BackdropFilter e ImageFilter
+import 'dart:ui';
 import 'package:capcards/components/botton_nav/botton_nav_item.dart';
 import 'package:capcards/components/botton_nav/hole_clipper.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +23,9 @@ class _CustomBottomNavState extends State<CustomBottomNav>
   late Animation<double> _holePositionAnimation;
   double _holePosition = 0.0;
 
+  // GlobalKeys para pegar posição real dos itens
+  final List<GlobalKey> _itemKeys = List.generate(3, (_) => GlobalKey());
+
   @override
   void initState() {
     super.initState();
@@ -33,14 +36,6 @@ class _CustomBottomNavState extends State<CustomBottomNav>
     _holePositionAnimation = Tween<double>(begin: 0.0, end: 0.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
-
-    _animationController.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        setState(() {
-          _holePosition = _holePositionAnimation.value;
-        });
-      }
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _updateHolePosition(widget.currentIndex, animate: false);
@@ -56,36 +51,42 @@ class _CustomBottomNavState extends State<CustomBottomNav>
   }
 
   void _updateHolePosition(int newIndex, {required bool animate}) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final itemWidth = screenWidth / 3; // Para 2 itens
-    final newPosition = itemWidth * newIndex + itemWidth / 3;
+    // Espera o layout ser renderizado
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final RenderBox? box =
+          _itemKeys[newIndex].currentContext?.findRenderObject() as RenderBox?;
 
-    setState(() {
-      if (animate) {
-        _holePositionAnimation =
-            Tween<double>(begin: _holePosition, end: newPosition).animate(
-              CurvedAnimation(
-                parent: _animationController,
-                curve: Curves.easeInOut,
-              ),
-            );
-        _animationController.forward(from: 0.0);
-      } else {
-        _holePosition = newPosition;
-        _holePositionAnimation =
-            Tween<double>(begin: newPosition, end: newPosition).animate(
-              CurvedAnimation(
-                parent: _animationController,
-                curve: Curves.easeInOut,
-              ),
-            );
+      if (box != null) {
+        final Offset globalPosition = box.localToGlobal(Offset.zero);
+        final double centerX = globalPosition.dx + (box.size.width / 2);
+
+        setState(() {
+          if (animate) {
+            _holePositionAnimation =
+                Tween<double>(begin: _holePosition, end: centerX).animate(
+                  CurvedAnimation(
+                    parent: _animationController,
+                    curve: Curves.easeInOut,
+                  ),
+                );
+            _animationController.forward(from: 0.0);
+          } else {
+            _holePosition = centerX;
+            _holePositionAnimation = Tween<double>(begin: centerX, end: centerX)
+                .animate(
+                  CurvedAnimation(
+                    parent: _animationController,
+                    curve: Curves.easeInOut,
+                  ),
+                );
+          }
+        });
       }
     });
   }
 
   @override
   void dispose() {
-    _animationController.removeStatusListener((status) {});
     _animationController.dispose();
     super.dispose();
   }
@@ -96,6 +97,7 @@ class _CustomBottomNavState extends State<CustomBottomNav>
       height: 70,
       child: Stack(
         children: [
+          // Camada com o furo
           AnimatedBuilder(
             animation: _animationController,
             builder: (context, child) {
@@ -117,22 +119,28 @@ class _CustomBottomNavState extends State<CustomBottomNav>
               );
             },
           ),
+
+          // Itens da navegação
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment:
+                MainAxisAlignment.spaceAround, // pode voltar para spaceAround
             children: [
               BottomNavItem(
+                key: _itemKeys[0],
                 icon: Icons.home,
                 label: 'Início',
                 isSelected: widget.currentIndex == 0,
                 onTap: () => widget.onTap(0),
               ),
               BottomNavItem(
+                key: _itemKeys[1],
                 icon: Icons.info_outline,
                 label: 'Sobre',
                 isSelected: widget.currentIndex == 1,
                 onTap: () => widget.onTap(1),
               ),
               BottomNavItem(
+                key: _itemKeys[2],
                 icon: Icons.info_outline,
                 label: 'Configurações',
                 isSelected: widget.currentIndex == 2,

@@ -36,7 +36,12 @@
 - ? Criar tela para manutenção listas menos utilizadas.
 - Compartilhar Estatisticas.
 
-# 4.2.0 - [2026-05-17]
+# 4.x - [2026-05-17]
+- Corrigir importação com quantidade de revisoes diferentes
+- Dar mais espaço para a imagem nos cartões.
+- Corrigir mascara da barra de navegação.
+
+# 4.2.0 - [2026-05-18]
 - Add opção de importar decks e cartoes. 
 - Add opção de exportar decks e cartoes. 
 - criar menu configurações
