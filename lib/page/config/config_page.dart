@@ -1,3 +1,5 @@
+import 'package:capcards/components/app_image.dart';
+import 'package:capcards/components/app_service.dart';
 import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/page/cap_page.dart';
 import 'package:capcards/service/backup_service.dart';
@@ -23,7 +25,7 @@ class ConfigPageState extends State<ConfigPage> {
   void import() async {
     try {
       final result = await FilePicker.platform.pickFiles(
-        type: FileType.custom, // ← Alterado para custom
+        type: FileType.custom,
         allowedExtensions: ['json', 'bak', 'backup', 'txt'],
         allowMultiple: false,
       );
@@ -59,6 +61,19 @@ class ConfigPageState extends State<ConfigPage> {
     await _backupService.exportBackup();
   }
 
+  Future<void> changeBackground(AppImage image) async {
+    //await _configService.saveBackground(image.path);
+    //AppSettings.backgroundImage = image.path;
+    AppSettings.backgroundImage.value = image.path;
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Plano de fundo alterado')));
+
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -73,6 +88,17 @@ class ConfigPageState extends State<ConfigPage> {
             label: "Exportar",
             icon: Icons.upload,
             onTap: () => export(),
+          ),
+          DropdownButton<AppImage>(
+            hint: const Text('Escolha o fundo'),
+            items: AppImage.values.map((image) {
+              return DropdownMenuItem(value: image, child: Text(image.name));
+            }).toList(),
+            onChanged: (image) {
+              if (image != null) {
+                changeBackground(image);
+              }
+            },
           ),
         ],
       ),

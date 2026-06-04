@@ -1,3 +1,4 @@
+import 'package:capcards/components/app_service.dart';
 import 'package:flutter/material.dart';
 
 class CapScaffold extends StatelessWidget {
@@ -38,15 +39,22 @@ class CapScaffold extends StatelessWidget {
       extendBodyBehindAppBar: extendBodyBehindAppBar,
       extendBody: true,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/backgroundapp.jpg'),
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-          ),
-        ),
-        child: padding != null ? Padding(padding: padding!, child: body) : body,
+      body: ValueListenableBuilder<String>(
+        valueListenable: AppSettings.backgroundImage,
+        builder: (context, background, child) {
+          return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(background),
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+              ),
+            ),
+            child: padding != null
+                ? Padding(padding: padding!, child: body)
+                : body,
+          );
+        },
       ),
       floatingActionButton: floatingActionButton,
       floatingActionButtonLocation: floatingActionButtonLocation,
