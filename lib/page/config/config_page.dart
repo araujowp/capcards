@@ -4,6 +4,7 @@ import 'package:capcards/components/cap_button.dart';
 import 'package:capcards/components/cap_text.dart';
 import 'package:capcards/page/cap_page.dart';
 import 'package:capcards/service/backup_service.dart';
+import 'package:capcards/service/settings_service.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class ConfigPage extends CapPage {
 
 class ConfigPageState extends State<ConfigPage> {
   final BackupService _backupService = BackupService();
+  final SettingsService _settingsService = SettingsService();
 
   void import() async {
     try {
@@ -63,7 +65,7 @@ class ConfigPageState extends State<ConfigPage> {
   }
 
   Future<void> changeBackground(AppImage image) async {
-    //await _configService.saveBackground(image.path);
+    await _settingsService.setBackground(image.path);
     AppSettings.backgroundImage.value = image.path;
     if (!mounted) return;
 

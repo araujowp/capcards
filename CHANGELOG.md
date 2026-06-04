@@ -35,6 +35,7 @@
 - Corrigir importação com quantidade de revisoes diferentes
 
 # 4.2.2 - [2026-06-04]
+- Salvar imagem de fundo escolhida.
 - Criar imagens personalisadas com o tema capcards. 
 - Temas da Aplicação trocar imagem de fundo.
 - Adicionar Miniaturas de imagens no cadastro de cartões.
