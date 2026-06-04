@@ -1,5 +1,4 @@
 ## [Unreleased]
-- Adicionar Miniaturas de imagens no cadastro de cartões.
 - Tratar sobreposição na lista de cartões.
 - ?Apresentação visual lista não editavel
 - Redesenhar tela de edição de cartoes.
@@ -36,6 +35,9 @@
 - ? Criar tela para manutenção listas menos utilizadas.
 - Compartilhar Estatisticas.
 - Corrigir importação com quantidade de revisoes diferentes
+
+# 4.2.2 - [2026-06-04]
+- Adicionar Miniaturas de imagens no cadastro de cartões.
 
 # 4.2.1 - [2026-05-23]
 - Dar mais espaço para a imagem nos cartões.

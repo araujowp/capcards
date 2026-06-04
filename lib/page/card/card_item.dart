@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:capcards/components/cap_icon.dart';
+import 'package:capcards/components/cap_image_viewer.dart';
 import 'package:capcards/components/glass_container.dart';
 import 'package:flutter/material.dart';
 import 'package:capcards/repository/card/card_dto.dart';
@@ -19,6 +20,7 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasImage = card.frontImage != null && card.frontImage!.isNotEmpty;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       child: ClipRRect(
@@ -28,7 +30,17 @@ class CardItem extends StatelessWidget {
           child: GlassContainer(
             child: Row(
               children: [
-                const CapIcon(),
+                hasImage
+                    ? CapImageViewer(
+                        imageBase64: card.frontImage,
+                        label: card.frontDescription.isNotEmpty
+                            ? card.frontDescription[0]
+                            : '?',
+                        height: 56,
+                        width: 56,
+                        fit: BoxFit.cover,
+                      )
+                    : const CapIcon(),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
