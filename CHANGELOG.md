@@ -14,8 +14,6 @@
 - Mostrar nome lista filha no teste da lista geral
 - Configurar nivel de revisão.
 - Configurar tamanho de fonte.
-- Temas da Aplicação trocar imagem de fundo.
-- Criar imagens personalisadas com o tema capcards. 
 - Criar um tutorial.
 - Adicionar son no flip
 - Adicionar son na troca de cartoes.
@@ -37,6 +35,8 @@
 - Corrigir importação com quantidade de revisoes diferentes
 
 # 4.2.2 - [2026-06-04]
+- Criar imagens personalisadas com o tema capcards. 
+- Temas da Aplicação trocar imagem de fundo.
 - Adicionar Miniaturas de imagens no cadastro de cartões.
 
 # 4.2.1 - [2026-05-23]

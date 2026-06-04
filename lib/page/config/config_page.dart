@@ -1,6 +1,7 @@
 import 'package:capcards/components/app_image.dart';
 import 'package:capcards/components/app_service.dart';
 import 'package:capcards/components/cap_button.dart';
+import 'package:capcards/components/cap_text.dart';
 import 'package:capcards/page/cap_page.dart';
 import 'package:capcards/service/backup_service.dart';
 import 'package:file_picker/file_picker.dart';
@@ -63,7 +64,6 @@ class ConfigPageState extends State<ConfigPage> {
 
   Future<void> changeBackground(AppImage image) async {
     //await _configService.saveBackground(image.path);
-    //AppSettings.backgroundImage = image.path;
     AppSettings.backgroundImage.value = image.path;
     if (!mounted) return;
 
@@ -89,16 +89,28 @@ class ConfigPageState extends State<ConfigPage> {
             icon: Icons.upload,
             onTap: () => export(),
           ),
-          DropdownButton<AppImage>(
-            hint: const Text('Escolha o fundo'),
-            items: AppImage.values.map((image) {
-              return DropdownMenuItem(value: image, child: Text(image.name));
-            }).toList(),
-            onChanged: (image) {
-              if (image != null) {
-                changeBackground(image);
-              }
-            },
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                const CapText("Fundo"),
+                const SizedBox(width: 8),
+                DropdownButton<AppImage>(
+                  value: AppImage.fromPath(AppSettings.backgroundImage.value),
+                  items: AppImage.values.map((image) {
+                    return DropdownMenuItem(
+                      value: image,
+                      child: CapText(image.name, color: Colors.yellow),
+                    );
+                  }).toList(),
+                  onChanged: (image) {
+                    if (image != null) {
+                      changeBackground(image);
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),

@@ -7,6 +7,13 @@ enum AppImage {
 
   String get path => 'assets/images/$fileName';
 
+  static AppImage fromPath(String path) {
+    return AppImage.values.firstWhere(
+      (e) => e.path == path,
+      orElse: () => AppImage.noite,
+    );
+  }
+
   String get fileName {
     switch (this) {
       case AppImage.floresta:
