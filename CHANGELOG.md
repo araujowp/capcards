@@ -1,5 +1,4 @@
 ## [Unreleased]
-- ?Apresentação visual lista não editavel
 - Redesenhar tela de edição de cartoes.
 - Notificar que a exclusao de deck e permanete e perde os cartoes.
 - Inserir quebra de linha na criação de cartões
@@ -7,7 +6,6 @@
 - Configurações no cartão de teste.
 - Configurações no cartão de teste - excluir.
 - Configurações no cartão de teste - editar.
-- Mostrar nome lista filha no teste da lista geral
 - Configurar nivel de revisão.
 - Configurar tamanho de fonte.
 - Criar um tutorial.
@@ -30,6 +28,8 @@
 - Corrigir importação com quantidade de revisoes diferentes
 
 # 4.2.3 - [2026-06-06]
+-[] Mostrar nome lista filha no teste da lista geral
+- Apresentação visual lista não editavel
 - Trocar cor de icone dos decks em modo de edição.
 - Todas as listas - criar imagem exclusiva.
 - Indicar que edição de decks foi precionado.
