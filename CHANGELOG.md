@@ -30,6 +30,8 @@
 - Corrigir importação com quantidade de revisoes diferentes
 
 # 4.2.3 - [2026-06-06]
+- Trocar cor de icone dos decks em modo de edição.
+- Todas as listas - criar imagem exclusiva.
 - Indicar que edição de decks foi precionado.
 - Tratar sobreposição na lista de cartões.
 

@@ -28,6 +28,7 @@ class DeckCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color iconColor = editMode ? Colors.yellow : Colors.white;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       child: ClipRRect(
@@ -40,7 +41,9 @@ class DeckCardItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               child: Row(
                 children: [
-                  const CapIcon(size: 60, imageColor: Colors.white),
+                  deckId == 0
+                      ? CapIcon(icon: Icons.star, imageColor: iconColor)
+                      : CapIcon(imageColor: iconColor),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(

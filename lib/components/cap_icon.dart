@@ -4,12 +4,14 @@ class CapIcon extends StatelessWidget {
   final double size;
   final Color imageColor;
   final double? opacity;
+  final IconData? icon;
 
   const CapIcon({
     super.key,
     this.size = 60.0,
     this.imageColor = Colors.white,
     this.opacity = 0.12,
+    this.icon,
   });
 
   @override
@@ -21,14 +23,13 @@ class CapIcon extends StatelessWidget {
         color: Colors.black.withValues(alpha: opacity ?? 0.12),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Image.asset(
-          'assets/images/capbranca.png',
-          color: imageColor,
-          fit: BoxFit.contain,
-        ),
-      ),
+      child: icon != null
+          ? Icon(icon, color: imageColor, size: size)
+          : Image.asset(
+              'assets/images/capbranca.png',
+              color: imageColor,
+              fit: BoxFit.contain,
+            ),
     );
   }
 }
