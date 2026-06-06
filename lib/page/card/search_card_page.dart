@@ -15,7 +15,6 @@ class SearchCardPage extends StatefulWidget {
 
 class _SearchCardPageState extends State<SearchCardPage> {
   late Future<List<CardDTO>> _futureCards;
-  CardDTO cardDTO = CardDTO.build(0);
 
   @override
   void initState() {
@@ -33,19 +32,19 @@ class _SearchCardPageState extends State<SearchCardPage> {
     updateList();
   }
 
-  void goHome() async {
+  void goHome() {
     Navigator.of(
       context,
       rootNavigator: true,
     ).popUntil((route) => route.isFirst);
   }
 
-  delete(int cardId) {
+  void delete(int cardId) {
     CardRepository.delete(cardId);
     updateList();
   }
 
-  update(CardDTO cardDTO) async {
+  void update(CardDTO cardDTO) async {
     await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => CardPage(cardDTO: cardDTO)),
@@ -60,39 +59,48 @@ class _SearchCardPageState extends State<SearchCardPage> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
     return CapScaffold(
       appBarText: "Edite cartões",
+      extendBodyBehindAppBar: true, // ← Voltar para true
+      resizeToAvoidBottomInset: true,
+
       appBarActions: [
         IconButton(
           icon: const Icon(Icons.home, color: Colors.white),
-          onPressed: () => goHome(),
+          onPressed: goHome,
         ),
         IconButton(
           icon: const Icon(Icons.add, color: Colors.white),
-          onPressed: () => addCard(),
+          onPressed: addCard,
         ),
       ],
-      body: FutureBuilder<List<CardDTO>>(
-        future: _futureCards,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
 
-          if (snapshot.hasError) {
-            return Center(
-              child: Text("Erro ao carregar dados ${snapshot.error}"),
-            );
-          }
+      body: SafeArea(
+        top: true,
+        child: FutureBuilder<List<CardDTO>>(
+          future: _futureCards,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          if (snapshot.hasData) {
-            final cards = snapshot.data!;
+            if (snapshot.hasError) {
+              return Center(child: Text("Erro: ${snapshot.error}"));
+            }
+
+            final cards = snapshot.data ?? [];
+
+            if (cards.isEmpty) {
+              return const Center(child: Text("0 card"));
+            }
+
             return ListView.builder(
+              padding: const EdgeInsets.fromLTRB(12, 8, 12, 24),
               itemCount: cards.length,
               itemBuilder: (context, index) {
                 final card = cards[index];
-                cardDTO = card;
                 return CardItem(
                   card: card,
                   onDelete: () => delete(card.id),
@@ -100,10 +108,8 @@ class _SearchCardPageState extends State<SearchCardPage> {
                 );
               },
             );
-          } else {
-            return const Center(child: Text("0 card"));
-          }
-        },
+          },
+        ),
       ),
     );
   }

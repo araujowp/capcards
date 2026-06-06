@@ -1,5 +1,4 @@
 ## [Unreleased]
-- Tratar sobreposição na lista de cartões.
 - ?Apresentação visual lista não editavel
 - Redesenhar tela de edição de cartoes.
 - Teste geral com cartões de todas as listas. 
@@ -33,6 +32,9 @@
 - ? Criar tela para manutenção listas menos utilizadas.
 - Compartilhar Estatisticas.
 - Corrigir importação com quantidade de revisoes diferentes
+
+# 4.2.3 - [2026-06-06]
+- Tratar sobreposição na lista de cartões.
 
 # 4.2.2 - [2026-06-04]
 - Salvar imagem de fundo escolhida.
