@@ -29,6 +29,7 @@ class DeckCardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color iconColor = editMode ? Colors.yellow : Colors.white;
+    final IconData allIcon = editMode ? Icons.lock : Icons.star;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       child: ClipRRect(
@@ -42,7 +43,7 @@ class DeckCardItem extends StatelessWidget {
               child: Row(
                 children: [
                   deckId == 0
-                      ? CapIcon(icon: Icons.star, imageColor: iconColor)
+                      ? CapIcon(icon: allIcon, imageColor: iconColor)
                       : CapIcon(imageColor: iconColor),
                   const SizedBox(width: 12),
                   Expanded(
@@ -76,22 +77,22 @@ class DeckCardItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (editMode)
+                  if (editMode && deckId != 0)
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.delete_outline,
-                            color: Colors.white70,
+                            color: iconColor,
                             size: 24,
                           ),
                           onPressed: onDelete,
                         ),
                         IconButton(
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.edit_outlined,
-                            color: Colors.white70,
+                            color: iconColor,
                             size: 24,
                           ),
                           onPressed: onEdit,

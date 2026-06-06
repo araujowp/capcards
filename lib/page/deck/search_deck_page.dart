@@ -37,7 +37,7 @@ class SearchDeckPage extends CapPage {
         return IconButton(
           icon: Icon(
             Icons.edit,
-            color: editMode ? Colors.white : Colors.yellow,
+            color: editMode ? Colors.yellow : Colors.white,
           ),
           onPressed: () {
             editModeNotifier.value = !editModeNotifier.value;
