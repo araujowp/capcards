@@ -1,10 +1,7 @@
 ## [Unreleased]
 - ?Apresentação visual lista não editavel
 - Redesenhar tela de edição de cartoes.
-- Teste geral com cartões de todas as listas. 
 - Notificar que a exclusao de deck e permanete e perde os cartoes.
-- Remover font redimensionavel.
-- Indicar que edição de decks foi precionado.
 - Inserir quebra de linha na criação de cartões
 - Ajustar fonte na criação de cartões
 - Configurações no cartão de teste.
@@ -26,14 +23,14 @@
 - Menu para estatisticas gerais.
 - Criar listas animadas (aperecer itens em sequencia)
 - Aprender a criar Lottie Animation
-- Revisar versões de dependencias.
-- ? Voltar para inicio sai da edição.
+- ? Voltar para inicio sair da edição.
 - ? Criar tela para manutenção com exclusao de cartões filhos.
 - ? Criar tela para manutenção listas menos utilizadas.
 - Compartilhar Estatisticas.
 - Corrigir importação com quantidade de revisoes diferentes
 
 # 4.2.3 - [2026-06-06]
+- Indicar que edição de decks foi precionado.
 - Tratar sobreposição na lista de cartões.
 
 # 4.2.2 - [2026-06-04]
@@ -43,6 +40,7 @@
 - Adicionar Miniaturas de imagens no cadastro de cartões.
 
 # 4.2.1 - [2026-05-23]
+- Teste geral com cartões de todas as listas. 
 - Dar mais espaço para a imagem nos cartões.
 - Corrigir mascara da barra de navegação.
 

@@ -31,13 +31,19 @@ class SearchDeckPage extends CapPage {
         },
       ),
     ),
-    Builder(
-      builder: (context) => IconButton(
-        icon: const Icon(Icons.edit, color: Colors.white),
-        onPressed: () {
-          editModeNotifier.value = !editModeNotifier.value;
-        },
-      ),
+    ValueListenableBuilder<bool>(
+      valueListenable: editModeNotifier,
+      builder: (context, editMode, child) {
+        return IconButton(
+          icon: Icon(
+            Icons.edit,
+            color: editMode ? Colors.white : Colors.yellow,
+          ),
+          onPressed: () {
+            editModeNotifier.value = !editModeNotifier.value;
+          },
+        );
+      },
     ),
   ];
 
