@@ -1,14 +1,14 @@
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:capcards/service/card/my_card.dart';
-import 'package:capcards/service/Deck.dart';
 import 'package:capcards/service/deck_service.dart';
+import 'package:capcards/service/my_deck.dart';
 
 class CardService {
   static Future<List<MyCard>> getAll() async {
     final List<CardDTO> cardDtos = await CardRepository.getAll();
 
-    final List<Deck> decks = await DeckService.getAll();
+    final List<MyDeck> decks = await DeckService.getAll();
 
     final Map<int, String> deckDescriptionMap = {
       for (final deck in decks) deck.id: deck.description,

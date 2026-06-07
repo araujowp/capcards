@@ -8,11 +8,11 @@ import 'package:capcards/page/test/swipable_card.dart';
 import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:capcards/repository/review/review_repository.dart';
-import 'package:capcards/service/Deck.dart';
+import 'package:capcards/service/my_deck.dart';
 import 'package:flutter/material.dart';
 
 class TestPage extends StatefulWidget {
-  final Deck deck;
+  final MyDeck deck;
   const TestPage({super.key, required this.deck});
 
   @override

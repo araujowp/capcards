@@ -1,10 +1,10 @@
-class Deck {
+class MyDeck {
   final int id;
   final String description;
   final int countCards;
   final int cardsReview;
 
-  const Deck({
+  const MyDeck({
     required this.id,
     required this.description,
     required this.countCards,

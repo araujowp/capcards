@@ -2,7 +2,7 @@ import 'package:capcards/page/cap_page.dart';
 import 'package:capcards/page/deck/deck_card_item.dart';
 import 'package:capcards/page/deck/search_deck_actions.dart';
 import 'package:capcards/page/test/test_page.dart';
-import 'package:capcards/service/Deck.dart';
+import 'package:capcards/service/my_deck.dart';
 import 'package:capcards/service/deck_service.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +52,7 @@ class SearchDeckPage extends CapPage {
 }
 
 class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
-  late Future<List<Deck>> _futureDecks;
+  late Future<List<MyDeck>> _futureDecks;
 
   @override
   void initState() {
@@ -89,7 +89,7 @@ class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
     });
   }
 
-  test(Deck deck) {
+  test(MyDeck deck) {
     if (!widget.editModeNotifier.value) {
       Navigator.push(
         context,
@@ -103,7 +103,7 @@ class SearchDeckPageState extends State<SearchDeckPage> with RouteAware {
     return ValueListenableBuilder<bool>(
       valueListenable: widget.editModeNotifier,
       builder: (context, editMode, _) {
-        return FutureBuilder<List<Deck>>(
+        return FutureBuilder<List<MyDeck>>(
           future: _futureDecks,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
