@@ -5,7 +5,6 @@ import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/page/test/action_card.dart';
 import 'package:capcards/page/test/second_chance_widget.dart';
 import 'package:capcards/page/test/swipable_card.dart';
-import 'package:capcards/repository/card/card_repository.dart';
 import 'package:capcards/repository/review/review_repository.dart';
 import 'package:capcards/service/card/card_service.dart';
 import 'package:capcards/service/card/my_card.dart';
@@ -84,7 +83,7 @@ class _TestPageState extends State<TestPage> {
     cards[currentCardIndex].revisionDate = await ReviewRepository.nextDate(
       cards[currentCardIndex].id,
     );
-    CardRepository.update(cards[currentCardIndex].toDTO());
+    CardService.update(cards[currentCardIndex]);
   }
 
   void fixErros() {
