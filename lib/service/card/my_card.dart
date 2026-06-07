@@ -1,17 +1,17 @@
 import 'package:capcards/repository/card/card_dto.dart';
 
 class MyCard {
-  final int? id;
+  final int id;
   final String frontDescription;
   final String backDescription;
   final int deckId;
   final String? deckDescription;
-  final DateTime revisionDate;
+  DateTime revisionDate;
   final String? frontImage;
   final String? backImage;
 
-  const MyCard({
-    this.id,
+  MyCard({
+    this.id = 0,
     required this.frontDescription,
     required this.backDescription,
     required this.deckId,
@@ -31,6 +31,28 @@ class MyCard {
       revisionDate: dto.revisionDate,
       frontImage: dto.frontImage,
       backImage: dto.backImage,
+    );
+  }
+
+  factory MyCard.empty() => MyCard(
+    id: -1,
+    frontDescription: "Front empty card",
+    backDescription: "back empty card",
+    deckId: -1,
+    revisionDate: CardDTO.defaultDate,
+    frontImage: "",
+    backImage: "",
+  );
+
+  CardDTO toDTO() {
+    return CardDTO(
+      id: id,
+      frontDescription: frontDescription,
+      backDescription: backDescription,
+      deckId: deckId,
+      revisionDate: revisionDate,
+      frontImage: frontImage,
+      backImage: backImage,
     );
   }
 }

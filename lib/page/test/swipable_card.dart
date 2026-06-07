@@ -1,9 +1,9 @@
 import 'package:capcards/page/test/flip_card.dart';
-import 'package:capcards/repository/card/card_dto.dart';
+import 'package:capcards/service/card/my_card.dart';
 import 'package:flutter/material.dart';
 
 class SwipableCard extends StatelessWidget {
-  final CardDTO card;
+  final MyCard card;
   final double height;
   final double width;
   final VoidCallback onCorrect;

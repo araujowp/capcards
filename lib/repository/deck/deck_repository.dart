@@ -10,6 +10,16 @@ class DeckRepository {
     return box.values.toList();
   }
 
+  static Future<DeckDTO?> getById(int id) async {
+    final box = Hive.box<DeckDTO>(_boxName);
+
+    if (!box.containsKey(id)) {
+      return null;
+    }
+
+    return box.get(id);
+  }
+
   static Future<int> add(String name) async {
     final box = Hive.box<DeckDTO>(_boxName);
 

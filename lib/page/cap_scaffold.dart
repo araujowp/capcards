@@ -1,9 +1,11 @@
 import 'package:capcards/components/app_service.dart';
+import 'package:capcards/components/cap_text.dart';
 import 'package:flutter/material.dart';
 
 class CapScaffold extends StatelessWidget {
   final Widget body;
   final String appBarText;
+  final String? appBarSubText;
   final List<Widget>? appBarActions;
   final bool extendBodyBehindAppBar;
   final EdgeInsets? padding;
@@ -16,6 +18,7 @@ class CapScaffold extends StatelessWidget {
     super.key,
     required this.body,
     required this.appBarText,
+    this.appBarSubText,
     this.appBarActions,
     this.extendBodyBehindAppBar = true,
     this.padding,
@@ -29,7 +32,14 @@ class CapScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appBarText, style: const TextStyle(color: Colors.white)),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(appBarText, style: const TextStyle(color: Colors.white)),
+            if (appBarSubText != null)
+              CapText(appBarSubText!, color: Colors.yellow),
+          ],
+        ),
         actions: appBarActions,
         backgroundColor: Colors.transparent,
         elevation: 0,

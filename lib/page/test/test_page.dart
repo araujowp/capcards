@@ -5,9 +5,11 @@ import 'package:capcards/page/statistics/test_stats.dart';
 import 'package:capcards/page/test/action_card.dart';
 import 'package:capcards/page/test/second_chance_widget.dart';
 import 'package:capcards/page/test/swipable_card.dart';
-import 'package:capcards/repository/card/card_dto.dart';
 import 'package:capcards/repository/card/card_repository.dart';
 import 'package:capcards/repository/review/review_repository.dart';
+import 'package:capcards/service/card/card_service.dart';
+import 'package:capcards/service/card/my_card.dart';
+import 'package:capcards/service/deck_service.dart';
 import 'package:capcards/service/my_deck.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +22,11 @@ class TestPage extends StatefulWidget {
 }
 
 class _TestPageState extends State<TestPage> {
-  late List<CardDTO> cards;
-  List<CardDTO> secondCards = [];
+  late List<MyCard> cards;
+  List<MyCard> secondCards = [];
   bool isLoading = true;
   int currentCardIndex = 0;
-  CardDTO currentCard = CardDTO.empty();
+  MyCard currentCard = MyCard.empty();
   TestStats stats = TestStats();
   bool startedTest = false;
   bool secondChance = false;
@@ -38,10 +40,10 @@ class _TestPageState extends State<TestPage> {
 
   Future<void> _loadShuffleCards() async {
     try {
-      if (widget.deck.id != 0) {
-        cards = await CardRepository.getByDeckId(widget.deck.id);
+      if (widget.deck.id != DeckService.idAllDecks) {
+        cards = await CardService.getByDeckId(widget.deck.id);
       } else {
-        cards = await CardRepository.getAll();
+        cards = await CardService.getAll();
       }
       cards.sort((a, b) => a.revisionDate.compareTo(b.revisionDate));
       cards = cards.take(12).toList();
@@ -51,12 +53,12 @@ class _TestPageState extends State<TestPage> {
     }
     setState(() {
       isLoading = false;
-      currentCard = cards.isNotEmpty ? cards[0] : CardDTO.empty();
+      currentCard = cards.isNotEmpty ? cards[0] : MyCard.empty();
     });
   }
 
-  CardDTO getNext() {
-    if (cards.isEmpty && secondCards.isEmpty) return CardDTO.empty();
+  MyCard getNext() {
+    if (cards.isEmpty && secondCards.isEmpty) return MyCard.empty();
 
     if (cards.isEmpty) {
       cards = secondCards;
@@ -82,7 +84,7 @@ class _TestPageState extends State<TestPage> {
     cards[currentCardIndex].revisionDate = await ReviewRepository.nextDate(
       cards[currentCardIndex].id,
     );
-    CardRepository.update(cards[currentCardIndex]);
+    CardRepository.update(cards[currentCardIndex].toDTO());
   }
 
   void fixErros() {
@@ -126,6 +128,9 @@ class _TestPageState extends State<TestPage> {
     final size = MediaQuery.of(context).size;
     final cardWidth = size.width;
     final cardHeight = size.height - 250;
+    String? subText = widget.deck.id == DeckService.idAllDecks
+        ? currentCard.deckDescription
+        : null;
 
     if (isLoading) {
       return Scaffold(
@@ -147,6 +152,7 @@ class _TestPageState extends State<TestPage> {
 
     return CapScaffold(
       appBarText: widget.deck.description,
+      appBarSubText: subText,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

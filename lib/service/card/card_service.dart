@@ -23,4 +23,18 @@ class CardService {
 
     return myCards;
   }
+
+  static Future<List<MyCard>> getByDeckId(int deckId) async {
+    final List<CardDTO> cardDtos = await CardRepository.getByDeckId(deckId);
+
+    final MyDeck? deck = await DeckService.getById(deckId);
+
+    return cardDtos.map((dto) {
+      return MyCard.fromDTO(dto, deckDescription: deck?.description);
+    }).toList();
+  }
+
+  static Future<void> update(MyCard updatedCard) async {
+    await CardRepository.update(updatedCard.toDTO());
+  }
 }

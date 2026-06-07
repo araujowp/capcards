@@ -5,6 +5,8 @@ import 'package:capcards/repository/deck/deck_repository.dart';
 import 'package:capcards/service/my_deck.dart';
 
 class DeckService {
+  static const int idAllDecks = 0;
+
   static Future<List<MyDeck>> getAll() async {
     final deckDTOs = await DeckRepository.getAll();
 
@@ -17,7 +19,7 @@ class DeckService {
 
     decks.add(
       MyDeck(
-        id: 0,
+        id: idAllDecks,
         description: "Todas as listas",
         countCards: allCards.length,
         cardsReview: allCardsReview,
@@ -39,6 +41,41 @@ class DeckService {
       );
     }
     return decks;
+  }
+
+  static Future<MyDeck?> getById(int id) async {
+    if (id == idAllDecks) {
+      final allCards = await CardRepository.getAll();
+
+      final cardsReview = allCards
+          .where((card) => card.revisionDate.isBefore(DateTime.now().toUtc()))
+          .length;
+
+      return MyDeck(
+        id: idAllDecks,
+        description: "Todas as listas",
+        countCards: allCards.length,
+        cardsReview: cardsReview,
+      );
+    }
+
+    final dto = await DeckRepository.getById(id);
+    if (dto == null) {
+      return null;
+    }
+
+    final cards = await CardRepository.getByDeckId(dto.id);
+    final count = cards.length;
+    final cardsReview = cards
+        .where((card) => card.revisionDate.isBefore(DateTime.now().toUtc()))
+        .length;
+
+    return MyDeck(
+      id: dto.id,
+      description: dto.description,
+      countCards: count,
+      cardsReview: cardsReview,
+    );
   }
 
   static Future<bool> delete(int id) async {
